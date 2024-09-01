@@ -19,14 +19,14 @@ IVERILOG_TARGETS        := $(SIM_TARGETS:%.v=%.fst)
 VVP                     := vvp
 RTL_PRIMER				:= $(ABS_TOP)/src/d_flip_flop.v
 
-sim/%.tb: sim/%.v
+sim/%.tb: sim/%.v FORCE
 	cd sim && $(VCS) $(VCS_OPTS) -o $*.tb $*.v $(RTL_PRIMER) ../src/$(patsubst %_tb.v,%.v,$(notdir $<))
 
 # Special case where one testbench depends on two sources
-sim/decoder_4_to_16_tb.tb: sim/decoder_4_to_16_tb.v
+sim/decoder_4_to_16_tb.tb: sim/decoder_4_to_16_tb.v FORCE
 	cd sim && $(VCS) $(VCS_OPTS) -o decoder_4_to_16_tb.tb decoder_4_to_16_tb.v $(RTL_PRIMER) ../src/line_decoder.v ../src/$(patsubst %_tb.v,%.v,$(notdir $<))
 
-$(VCS_TARGETS): sim/%.vpd: sim/%.tb
+$(VCS_TARGETS): sim/%.vpd: sim/%.tb FORCE
 	cd sim && ./$*.tb +verbose=1 +vpdfile+$*.vpd
 
 build/target.tcl: $(RTL) $(CONSTRAINTS)
@@ -87,5 +87,5 @@ clean:
 	sim/ucli.key sim/*.vpd sim/*.vcd \
 	sim/*.tbi sim/*.fst sim/*.jou sim/*.log sim/*.out
 
-.PHONY: setup synth impl program program-force vivado all clean %.tb
+.PHONY: setup synth impl program program-force vivado all clean %.tb FORCE
 .PRECIOUS: sim/%.tb sim/%.tbi sim/%.fst sim/%.vpd
