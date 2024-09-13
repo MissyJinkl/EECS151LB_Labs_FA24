@@ -44,4 +44,4 @@ include filelist.hsopt
 
 
 rmapats.so: $(HSOPT_OBJS)
-	@$(VCS_CC) $(LDFLAGS) $(LIBS) -shared -o ./../shift_register_behavioral_tb.tb.daidir/rmapats.so $(HSOPT_OBJS)
+	@$(VCS_CC) $(LDFLAGS) $(LIBS) -shared -o ./../decoder_4_to_16_tb.tb.daidir/rmapats.so $(HSOPT_OBJS)

@@ -1,12 +1,12 @@
 PIC_LD=ld
 
 ARCHIVE_OBJS=
-ARCHIVE_OBJS += _1938983_archive_1.so
-_1938983_archive_1.so : archive.5/_1938983_archive_1.a
+ARCHIVE_OBJS += _1945208_archive_1.so
+_1945208_archive_1.so : archive.7/_1945208_archive_1.a
 	@$(AR) -s $<
-	@$(PIC_LD) -shared  -Bsymbolic  -o .//../shift_register_behavioral_tb.tb.daidir//_1938983_archive_1.so --whole-archive $< --no-whole-archive
+	@$(PIC_LD) -shared  -Bsymbolic  -o .//../decoder_4_to_16_tb.tb.daidir//_1945208_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@
-	@ln -sf .//../shift_register_behavioral_tb.tb.daidir//_1938983_archive_1.so $@
+	@ln -sf .//../decoder_4_to_16_tb.tb.daidir//_1945208_archive_1.so $@
 
 
 
