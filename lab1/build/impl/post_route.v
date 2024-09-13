@@ -1,8 +1,8 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-// Date        : Fri Sep 13 08:54:12 2024
-// Host        : c111-3.EECS.Berkeley.EDU running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
+// Date        : Fri Sep 13 09:07:52 2024
+// Host        : c111-2.EECS.Berkeley.EDU running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 // Command     : write_verilog -force post_route.v
 // Design      : z1top
 // Purpose     : This is a Verilog netlist of the current design or from a specific cell of the design. The output is an
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* ECO_CHECKSUM = "2095e72e" *) 
+(* ECO_CHECKSUM = "397512b6" *) 
 (* STRUCTURAL_NETLIST = "yes" *)
 module z1top
    (CLK_125MHZ_FPGA,
@@ -26,29 +26,48 @@ module z1top
 
   wire \<const0> ;
   wire [3:0]BUTTONS;
-  wire [0:0]BUTTONS_IBUF;
+  wire [3:0]BUTTONS_IBUF;
   wire [5:0]LEDS;
-  wire [0:0]LEDS_OBUF;
+  wire [1:0]LEDS_OBUF;
   wire [1:0]SWITCHES;
   wire [0:0]SWITCHES_IBUF;
 
   IBUF \BUTTONS_IBUF[0]_inst 
        (.I(BUTTONS[0]),
-        .O(BUTTONS_IBUF));
+        .O(BUTTONS_IBUF[0]));
+  IBUF \BUTTONS_IBUF[1]_inst 
+       (.I(BUTTONS[1]),
+        .O(BUTTONS_IBUF[1]));
+  IBUF \BUTTONS_IBUF[2]_inst 
+       (.I(BUTTONS[2]),
+        .O(BUTTONS_IBUF[2]));
+  IBUF \BUTTONS_IBUF[3]_inst 
+       (.I(BUTTONS[3]),
+        .O(BUTTONS_IBUF[3]));
   GND GND
        (.G(\<const0> ));
   OBUF \LEDS_OBUF[0]_inst 
-       (.I(LEDS_OBUF),
+       (.I(LEDS_OBUF[0]),
         .O(LEDS[0]));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \LEDS_OBUF[0]_inst_i_1 
-       (.I0(BUTTONS_IBUF),
+       (.I0(BUTTONS_IBUF[0]),
         .I1(SWITCHES_IBUF),
-        .O(LEDS_OBUF));
+        .O(LEDS_OBUF[0]));
   OBUF \LEDS_OBUF[1]_inst 
-       (.I(\<const0> ),
+       (.I(LEDS_OBUF[1]),
         .O(LEDS[1]));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
+    \LEDS_OBUF[1]_inst_i_1 
+       (.I0(BUTTONS_IBUF[3]),
+        .I1(BUTTONS_IBUF[0]),
+        .I2(BUTTONS_IBUF[1]),
+        .I3(BUTTONS_IBUF[2]),
+        .O(LEDS_OBUF[1]));
   OBUF \LEDS_OBUF[2]_inst 
        (.I(\<const0> ),
         .O(LEDS[2]));
