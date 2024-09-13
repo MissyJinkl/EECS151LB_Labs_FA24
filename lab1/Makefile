@@ -15,7 +15,7 @@ VCS_OPTS                := -notice -line +lint=all,noVCDE,noNS,noSVA-UA -sverilo
 VCS_TARGETS             := $(SIM_TARGETS:%.v=%.vpd)
 SIM_RTL                 := $(subst /cygdrive/c/,C:/, $(shell find $(ABS_TOP)/sim -type f -name "*.v"))
 IVERILOG                := iverilog
-IVERILOG_OPTS           := -D IVERILOG=1 -g2019 -gassertions -Wall -Wno-timescale
+IVERILOG_OPTS           := -D IVERILOG=1 -g2012 -gassertions -Wall -Wno-timescale
 IVERILOG_TARGETS        := $(SIM_TARGETS:%.v=%.fst)
 VVP                     := vvp
 RTL_PRIMER				:= $(ABS_TOP)/src/d_flip_flop.v
