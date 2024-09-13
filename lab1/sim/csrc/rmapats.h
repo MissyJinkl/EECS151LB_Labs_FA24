@@ -2443,20 +2443,28 @@ static inline U asm_bsf (U in)
 #ifdef __cplusplus
 extern "C" {
 #endif
-void  hs_0_M_0_21__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_0_0__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_0_1__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
-void  hs_0_M_0_2__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode);
-void  hs_0_M_0_9__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_1_21__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_1_0__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_1_1__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
-void  hs_0_M_1_2__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode);
-void  hs_0_M_2_21__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_2_0__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_2_1__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
-void  hs_0_M_2_2__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode);
-void  hs_0_M_2_5__one_bit_comparator_behavioral_tb_tb_daidir (UB  * pcode, UB  val);
+void  hs_0_M_0_21__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_0_0__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_0_1__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
+void  hs_0_M_0_2__shift_register_behavioral_tb_tb_daidir (UB  * pcode);
+void  hs_0_M_1_21__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_1_0__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_1_1__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
+void  hs_0_M_1_2__shift_register_behavioral_tb_tb_daidir (UB  * pcode);
+void  hs_0_M_2_21__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_2_0__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_2_1__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
+void  hs_0_M_2_2__shift_register_behavioral_tb_tb_daidir (UB  * pcode);
+void  hs_0_M_2_9__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_3_21__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_3_0__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_3_1__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
+void  hs_0_M_3_2__shift_register_behavioral_tb_tb_daidir (UB  * pcode);
+void  hs_0_M_4_21__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_4_0__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_4_1__shift_register_behavioral_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
+void  hs_0_M_4_2__shift_register_behavioral_tb_tb_daidir (UB  * pcode);
+void  hs_0_M_4_5__shift_register_behavioral_tb_tb_daidir (UB  * pcode, UB  val);
 void  hsG_0__0 (struct dummyq_struct * I1297, EBLK  * I1292, U  I689);
 #ifdef __cplusplus
 }

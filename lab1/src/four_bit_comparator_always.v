@@ -1,18 +1,27 @@
 module four_bit_comparator_always (
-    input ____ a, // TODO
-    input ____ b, // TODO
+    input [3:0] a, // TODO
+    input [3:0] b, // TODO
     output reg greater,
     output reg less,
     output reg equal
 );
 
     always @(*) begin
-        if (____) begin // TODO
+        if (a>b) begin // TODO
             // TODO
-        end else if (____) begin // TODO
+            greater = 1;
+            less = 0;
+            equal = 0;
+        end else if (a<b) begin // TODO
             // TODO
+            greater = 0;
+            less = 1;
+            equal = 0;
         end else begin
             // TODO
+            greater = 0;
+            less = 0;
+            equal = 1;
         end
     end
 endmodule

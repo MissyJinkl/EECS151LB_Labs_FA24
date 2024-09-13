@@ -7,7 +7,8 @@ module shift_register_behavioral (
 
     always @(posedge clk) begin
         // TODO: See operators described in literals section
+        shift_reg <= {shift_reg[2:0], in};
     end
 
-    ____ out = ____; // TODO
+    assign out = shift_reg; // TODO
 endmodule
