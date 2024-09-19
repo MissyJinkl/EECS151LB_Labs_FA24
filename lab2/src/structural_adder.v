@@ -5,5 +5,21 @@ module structural_adder (
 );
     // TODO: Your implementation here.
     // TODO: Remove the assign statement below once you write your own RTL.
-    assign sum = 15'd0;
+    wire [14:0] carry;
+    assign carry[0] = 0;
+
+    genvar i;
+    generate
+        for (i = 0; i < 14; i = i + 1) begin:
+            full_adder adder (
+                .a(a[i]),
+                .b(b[i]),
+                .carry_in(carry[i]),
+                .sum(sum[i]),
+                .carry_out(carry[i+1])
+            );
+        end
+    endgenerate
+
+    assign sum[14] = carry[14];
 endmodule
