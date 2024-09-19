@@ -5,6 +5,7 @@ VIVADO                  ?= vivado
 VIVADO_OPTS             ?= -nolog -nojournal -mode batch
 FPGA_PART               ?= xc7z020clg400-1
 RTL                     += $(subst /cygdrive/c/,C:/, $(shell find $(ABS_TOP)/src -type f -name "*.v"))
+RTL_FPGA				:= $(ABS_TOP)/src/z1top.v
 CONSTRAINTS             += $(subst /cygdrive/c/,C:/, $(shell find $(ABS_TOP)/src -type f -name "*.xdc"))
 TOP                     ?= z1top
 SIM_RTL_PRIMER          := $(shell find $(ABS_TOP)/sim -type f -name "*.v")
@@ -14,7 +15,7 @@ VCS_OPTS                := -notice -line +lint=all,noVCDE,noNS,noSVA-UA -sverilo
 VCS_TARGETS             := $(SIM_TARGETS:%.v=%.vpd)
 SIM_RTL                 := $(subst /cygdrive/c/,C:/, $(shell find $(ABS_TOP)/sim -type f -name "*.v"))
 IVERILOG                := iverilog
-IVERILOG_OPTS           := -D IVERILOG=1 -g2019 -gassertions -Wall -Wno-timescale
+IVERILOG_OPTS           := -D IVERILOG=1 -g2012 -gassertions -Wall -Wno-timescale
 IVERILOG_TARGETS        := $(SIM_TARGETS:%.v=%.fst)
 VVP                     := vvp
 RTL_PRIMER				:= $(ABS_TOP)/src/d_flip_flop.v
@@ -29,7 +30,17 @@ sim/decoder_4_to_16_tb.tb: sim/decoder_4_to_16_tb.v FORCE
 $(VCS_TARGETS): sim/%.vpd: sim/%.tb FORCE
 	cd sim && ./$*.tb +verbose=1 +vpdfile+$*.vpd
 
-build/target.tcl: $(RTL) $(CONSTRAINTS)
+sim-all: 
+	make sim/one_bit_comparator_structural_tb.vpd 
+	make sim/one_bit_comparator_behavioral_tb.vpd 
+	make sim/one_bit_comparator_always_tb.vpd 
+	make sim/four_bit_comparator_always_tb.vpd 
+	make sim/shift_register_structural_tb.vpd 
+	make sim/shift_register_behavioral_tb.vpd 
+	make sim/simple_counter_tb.vpd 
+	make sim/decoder_4_to_16_tb.vpd
+
+build/target.tcl: $(RTL_FPGA) $(CONSTRAINTS)
 	mkdir -p build
 	truncate -s 0 $@
 	echo "set ABS_TOP                        $(ABS_TOP)"    >> $@
@@ -37,8 +48,8 @@ build/target.tcl: $(RTL) $(CONSTRAINTS)
 	echo "set FPGA_PART                      $(FPGA_PART)"  >> $@
 	echo "set_param general.maxThreads       4"    >> $@
 	echo "set_param general.maxBackupLogs    0"    >> $@
-	echo -n "set RTL { " >> $@
-	FLIST="$(RTL)"; for f in $$FLIST; do echo -n "$$f " ; done >> $@
+	echo -n "set RTL_FPGA { " >> $@
+	FLIST="$(RTL_FPGA)"; for f in $$FLIST; do echo -n "$$f " ; done >> $@
 	echo "}" >> $@
 	echo -n "set CONSTRAINTS { " >> $@
 	FLIST="$(CONSTRAINTS)"; for f in $$FLIST; do echo -n "$$f " ; done >> $@
@@ -50,9 +61,9 @@ elaborate: build/target.tcl $(SCRIPTS)/elaborate.tcl
 	mkdir -p ./build
 	cd ./build && $(VIVADO) $(VIVADO_OPTS) -source $(SCRIPTS)/elaborate.tcl |& tee elaborate.log
 
-build/synth/$(TOP).dcp: build/target.tcl $(SCRIPTS)/synth.tcl
+build/synth/$(TOP).dcp: build/target.tcl $(SCRIPTS)/synth_lab1.tcl
 	mkdir -p ./build/synth/
-	cd ./build/synth/ && $(VIVADO) $(VIVADO_OPTS) -source $(SCRIPTS)/synth.tcl |& tee synth.log
+	cd ./build/synth/ && $(VIVADO) $(VIVADO_OPTS) -source $(SCRIPTS)/synth_lab1.tcl |& tee synth.log
 
 synth: build/synth/$(TOP).dcp
 
