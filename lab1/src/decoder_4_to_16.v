@@ -4,7 +4,7 @@ module decoder_4_to_16 (
 );
     generate
         genvar i;
-        for (i=0; i<16; i=i+1) begin // TODO
+        for (i = 0; i < 16; i = i + 1) begin // TODO
             line_decoder ld (
                 .select(i), // TODO
                 .addr(addr), // TODO

@@ -1,0 +1,119 @@
+/*
+
+Xilinx Vivado v2021.1 (64-bit) [Major: 2021, Minor: 1]
+SW Build: 3247384 on Thu Jun 10 19:36:07 MDT 2021
+IP Build: 3246043 on Fri Jun 11 00:30:35 MDT 2021
+
+Process ID (PID): 1643092
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Fri Sep 13 10:13:32 PDT 2024
+Time zone: 	Pacific Standard Time (America/Los_Angeles)
+
+OS: Red Hat Enterprise Linux release 8.10 (Ootpa)
+OS Version: 4.18.0-553.16.1.el8_10.x86_64
+OS Architecture: amd64
+Available processors (cores): 32
+
+Display: 1
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.2 64-bit
+Java home: 	/share/instsww/xilinx/Vivado/2021.1/tps/lnx64/jre11.0.2
+Java executable: 	/share/instsww/xilinx/Vivado/2021.1/tps/lnx64/jre11.0.2/bin/java
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	eecs151-agk
+User home directory: /home/cc/eecs151/fa24/class/eecs151-agk
+User working directory: /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab1/build
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /share/instsww/xilinx/Vivado
+HDI_APPROOT: /share/instsww/xilinx/Vivado/2021.1
+RDI_DATADIR: /share/instsww/xilinx/Vivado/2021.1/data
+RDI_BINDIR: /share/instsww/xilinx/Vivado/2021.1/bin
+
+Vivado preferences file: /home/cc/eecs151/fa24/class/eecs151-agk/.Xilinx/Vivado/2021.1/vivado.xml
+Vivado preferences directory: /home/cc/eecs151/fa24/class/eecs151-agk/.Xilinx/Vivado/2021.1/
+Vivado layouts directory: /home/cc/eecs151/fa24/class/eecs151-agk/.Xilinx/Vivado/2021.1/data/layouts
+PlanAhead jar file: 	/share/instsww/xilinx/Vivado/2021.1/lib/classes/planAhead.jar
+Vivado log file: 	/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab1/build/vivado.log
+Vivado journal file: 	/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab1/build/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-1643092-c111-2.EECS.Berkeley.EDU
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /share/instsww/xilinx/Vivado/2021.1/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@license-srv.eecs.berkeley.edu
+XILINX_DSP: /share/instsww/xilinx/Vivado/2021.1/ids_lite/ISE
+XILINX_HLS: /share/instsww/xilinx/Vitis_HLS/2021.1
+XILINX_PLANAHEAD: /share/instsww/xilinx/Vivado/2021.1
+XILINX_SOURCED: yes
+XILINX_VITIS: 
+XILINX_VIVADO: /share/instsww/xilinx/Vivado/2021.1
+XILINX_VIVADO_HLS: /share/instsww/xilinx/Vivado/2021.1
+
+
+GUI allocated memory:	256 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,678 MB
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// Tcl Command: 'rdi::info_commands {device::*}'
+// Tcl Command: 'rdi::info_commands {debug::*}'
+// Tcl Command: 'rdi::info_commands {*}'
+// HMemoryUtils.trashcanNow. Engine heap size: 1,678 MB. GUI used memory: 69 MB. Current time: 9/13/24, 10:13:33 AM PDT
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.

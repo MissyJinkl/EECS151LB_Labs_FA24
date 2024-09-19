@@ -9,19 +9,19 @@ module four_bit_comparator_always (
     always @(*) begin
         if (a>b) begin // TODO
             // TODO
-            greater = 1;
-            less = 0;
-            equal = 0;
+            greater = 1'b1;
+            less = 1'b0;
+            equal = 1'b0;
         end else if (a<b) begin // TODO
             // TODO
-            greater = 0;
-            less = 1;
-            equal = 0;
+            greater = 1'b0;
+            less = 1'b1;
+            equal = 1'b0;
         end else begin
             // TODO
-            greater = 0;
-            less = 0;
-            equal = 1;
+            greater = 1'b0;
+            less = 1'b0;
+            equal = 1'b1;
         end
     end
 endmodule
