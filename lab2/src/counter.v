@@ -17,3 +17,24 @@ module counter (
     // Once the requisite number of cycles is reached, increment the count.
 endmodule
 
+module counter (
+    input wire clk,         // 时钟信号，125 MHz
+    input wire ce,          // 时钟使能信号
+    output reg [3:0] leds   // 输出到 LED，4-bit
+);
+
+    reg [26:0] count_125M;  // 27-bit 主计数器，用于计数到 125,000,000
+    localparam MAX_COUNT = 125_000_000 - 1;
+
+    always @(posedge clk) begin
+        if (ce) begin
+            if (count_125M == MAX_COUNT) begin
+                count_125M <= 0;       // 当计数到 125M时重置
+                leds <= leds + 1;      // 4-bit 计数器递增
+            end else begin
+                count_125M <= count_125M + 1;  // 主计数器递增
+            end
+        end
+    end
+
+endmodule
