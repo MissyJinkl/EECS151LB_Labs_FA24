@@ -1,0 +1,7 @@
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab2/sim/adder_testbench.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab2/src/adder_tester.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab2/src/behavioral_adder.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab2/src/counter.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab2/src/full_adder.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab2/src/structural_adder.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab2/src/z1top.v

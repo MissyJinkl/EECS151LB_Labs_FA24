@@ -10,7 +10,7 @@ module structural_adder (
 
     genvar i;
     generate
-        for (i = 0; i < 14; i = i + 1) begin: adder_stage
+        for (i = 0; i < 14; i = i + 1) begin:
             full_adder adder (
                 .a(a[i]),
                 .b(b[i]),
