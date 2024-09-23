@@ -30,6 +30,21 @@ module counter_testbench();
         // TODO: Change input values and step forward in time to test
         // your counter and its clock enable/disable functionality.
 
+        // test1：disable counter
+        ce = 0;
+        repeat (125_000_000) @(posedge clock);
+        assert (LEDS == 4'b0000) else $fatal("Test 1 failed: Counter should not increment when CE is 0");
+
+        // test 2: enable counter
+        ce = 1;
+        repeat (126_000_000) @(posedge clock); 
+        assert (LEDS == 4'b0001) else $fatal("Test 2 failed: Counter should increment after 1s");
+
+        // test 3: disable counter again
+        ce = 0;
+        repeat (125_000_000) @(posedge clock);
+        assert (LEDS == 4'b0001) else $fatal("Test 3 failed: Counter should hold value when CE is 0");
+
 
         `ifndef IVERILOG
             $vcdplusoff;
@@ -37,4 +52,3 @@ module counter_testbench();
         $finish();
     end
 endmodule
-
