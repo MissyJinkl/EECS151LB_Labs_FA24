@@ -7,8 +7,15 @@ module dac #(
     output next_sample,
     output pwm
 );
+    reg [CODE_WIDTH-1:0] counter = 0;
 
-    // Remove these lines once you create your dac
-    assign pwm = 0;
-    assign next_sample = 0;
+    assign pwm = (code==0) ? 1'b0 : (counter <= code);
+
+    always@(posedge clk) begin
+        if (counter == CYCLES_PER_WINDOW - 1) counter = 0;
+        else counter += 1;
+    end
+
+    assign next_sample = (counter == CYCLES_PER_WINDOW - 1);
+
 endmodule

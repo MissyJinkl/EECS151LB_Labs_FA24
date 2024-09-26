@@ -3,4 +3,5 @@
 */*/build
 */*/*.log
 */*/*.json
+*/*/sim/*.vpd
 # End of .gitignore
