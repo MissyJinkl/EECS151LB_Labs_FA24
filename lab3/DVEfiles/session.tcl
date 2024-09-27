@@ -1,14 +1,13 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Wed Sep 25 00:31:36 2024
+# Saved on Fri Sep 27 10:59:17 2024
 # Designs open: 1
-#   V1: /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/dac_tb.vpd
+#   V1: /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/counter_tb.vpd
 # Toplevel windows open: 1
 # 	TopLevel.1
-#   Source.1: dac_tb
-#   Group count = 2
-#   Group Group1 signal count = 4
-#   Group Group2 signal count = 4
+#   Source.1: counter_tb
+#   Group count = 1
+#   Group Group1 signal count = 5
 # End_DVE_Session_Save_Info
 
 # DVE version: P-2019.06_Full64
@@ -67,7 +66,7 @@ if {![gui_exist_window -window TopLevel.1]} {
 } else { 
     set TopLevel.1 TopLevel.1
 }
-gui_show_window -window ${TopLevel.1} -show_state normal -rect {{4 59} {1278 523}}
+gui_show_window -window ${TopLevel.1} -show_state normal -rect {{1 56} {1918 1053}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -108,23 +107,23 @@ gui_hide_toolbar -toolbar {Testbench}
 # End ToolBar settings
 
 # Docked window settings
-set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 167]
+set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 163]
 catch { set Hier.1 [gui_share_window -id ${HSPane.1} -type Hier] }
-gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 167
+gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 163
 gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value -1
 gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 166} {height 186} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
-set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 167]
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 162} {height 749} {dock_state left} {dock_on_new_line true} {child_hier_colhier 140} {child_hier_coltype 100} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 163]
 catch { set Data.1 [gui_share_window -id ${DLPane.1} -type Data] }
-gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 167
-gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 186
+gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 163
+gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 749
 gui_set_window_pref_key -window ${DLPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 166} {height 186} {dock_state left} {dock_on_new_line true} {child_data_colvariable 140} {child_data_colvalue 100} {child_data_coltype 40} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
-set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 172]
-gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 1220
-gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 172
+gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 162} {height 749} {dock_state left} {dock_on_new_line true} {child_data_colvariable 140} {child_data_colvalue 100} {child_data_coltype 40} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
+set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 168]
+gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 1860
+gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 168
 gui_set_window_pref_key -window ${Console.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1274} {height 171} {dock_state bottom} {dock_on_new_line true}}
+gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1917} {height 167} {dock_state bottom} {dock_on_new_line true}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -167,8 +166,8 @@ gui_update_statusbar_target_frame ${TopLevel.1}
 
 # DVE Open design session: 
 
-if { ![gui_is_db_opened -db {/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/dac_tb.vpd}] } {
-	gui_open_db -design V1 -file /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/dac_tb.vpd -nosource
+if { ![gui_is_db_opened -db {/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/counter_tb.vpd}] } {
+	gui_open_db -design V1 -file /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/counter_tb.vpd -nosource
 }
 gui_set_precision 10ps
 gui_set_time_units 10ps
@@ -186,19 +185,16 @@ gui_set_time_units 10ps
 # Global: Signal Compare
 
 # Global: Signal Groups
+gui_load_child_values {counter_tb}
 
 
-set _session_group_3 Group1
-gui_sg_create "$_session_group_3"
-set Group1 "$_session_group_3"
+set _session_group_1 Group1
+gui_sg_create "$_session_group_1"
+set Group1 "$_session_group_1"
 
-gui_sg_addsignal -group "$_session_group_3" { dac_tb.clk dac_tb.code dac_tb.pwm dac_tb.next_sample }
-
-set _session_group_4 Group2
-gui_sg_create "$_session_group_4"
-set Group2 "$_session_group_4"
-
-gui_sg_addsignal -group "$_session_group_4" { dac_tb.clk dac_tb.code dac_tb.pwm dac_tb.next_sample }
+gui_sg_addsignal -group "$_session_group_1" { counter_tb.clk counter_tb.buttons counter_tb.leds counter_tb.last_value counter_tb.CYCLES_PER_SECOND_SIM }
+gui_set_radix -radix {decimal} -signals {V1:counter_tb.CYCLES_PER_SECOND_SIM}
+gui_set_radix -radix {twosComplement} -signals {V1:counter_tb.CYCLES_PER_SECOND_SIM}
 
 # Global: Highlighting
 
@@ -208,7 +204,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 12110
+gui_set_time -C1_only 0
 
 
 
@@ -233,17 +229,17 @@ gui_list_set_filter -id ${Hier.1} -list { {Package 1} {All 0} {Process 1} {VirtP
 gui_list_set_filter -id ${Hier.1} -text {*}
 gui_hier_list_init -id ${Hier.1}
 gui_change_design -id ${Hier.1} -design V1
-catch {gui_list_select -id ${Hier.1} {dac_tb}}
+catch {gui_list_select -id ${Hier.1} {counter_tb}}
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Data.1} -text {*}
-gui_list_show_data -id ${Data.1} {dac_tb}
+gui_list_show_data -id ${Data.1} {counter_tb}
 gui_show_window -window ${Data.1}
-catch { gui_list_select -id ${Data.1} {dac_tb.clk dac_tb.code dac_tb.pwm dac_tb.next_sample }}
-gui_view_scroll -id ${Data.1} -vertical -set 205
+catch { gui_list_select -id ${Data.1} {counter_tb.clk counter_tb.buttons counter_tb.leds counter_tb.last_value counter_tb.CYCLES_PER_SECOND_SIM }}
+gui_view_scroll -id ${Data.1} -vertical -set 0
 gui_view_scroll -id ${Data.1} -horizontal -set 0
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
@@ -251,8 +247,8 @@ gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Source 'Source.1'
 gui_src_value_annotate -id ${Source.1} -switch false
 gui_set_env TOGGLE::VALUEANNOTATE 0
-gui_open_source -id ${Source.1}  -replace -active dac_tb /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/dac_tb.v
-gui_view_scroll -id ${Source.1} -vertical -set 48
+gui_open_source -id ${Source.1}  -replace -active counter_tb /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/counter_tb.v
+gui_view_scroll -id ${Source.1} -vertical -set 32
 gui_src_set_reusable -id ${Source.1}
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane

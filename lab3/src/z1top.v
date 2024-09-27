@@ -50,4 +50,5 @@ module z1top (
         .next_sample(next_sample),
         .code(code)
     );
+
 endmodule

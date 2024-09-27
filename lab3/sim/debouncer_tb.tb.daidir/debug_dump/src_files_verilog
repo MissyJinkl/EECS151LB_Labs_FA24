@@ -1,0 +1,9 @@
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/sim/debouncer_tb.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/button_parser.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/counter.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/dac.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/debouncer.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/edge_detector.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/sq_wave_gen.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/synchronizer.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/z1top.v

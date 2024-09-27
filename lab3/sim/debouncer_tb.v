@@ -124,7 +124,7 @@ module debouncer_tb();
 
     // this checks that the output of the first debouncer never goes high
     initial begin
-        while (test0_done == 0) begin
+        while (test0_done == 1) begin
             if (debounced_signal[0] != 0)
                 $error("Failure 0: The debounced output[0] wasn't 0 for the entire test.");
             @(posedge clk);

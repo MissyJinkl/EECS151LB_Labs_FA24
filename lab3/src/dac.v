@@ -13,7 +13,7 @@ module dac #(
 
     always@(posedge clk) begin
         if (counter == CYCLES_PER_WINDOW - 1) counter = 0;
-        else counter += 1;
+        else counter <= counter + 1;
     end
 
     assign next_sample = (counter == CYCLES_PER_WINDOW - 1);
