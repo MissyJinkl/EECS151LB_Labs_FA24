@@ -7,8 +7,8 @@ module sq_wave_gen_tb();
     always #(`CLK_PERIOD/2) clk = ~clk;
 
     // I/O
-    wire [9:0] code;
-    reg [2:0] buttons;
+    reg [9:0] code;
+    reg [2:0] buttons = 0;
     wire [3:0] leds;
     reg next_sample;
     reg rst;
@@ -61,10 +61,41 @@ module sq_wave_gen_tb();
                 // TODO: Play with the buttons to adjust the output frequency
                 // Hint: Use the num_samples_fetched integer to wait for
                 // X samples to be fetched by the sampling thread, example below
-                @(num_samples_fetched == 500);
-                $display("Fetched 500 samples at time %t", $time);
-                @(num_samples_fetched == 5000);
-                $display("Fetched 5000 samples at time %t", $time);
+
+
+                //increse frequency
+                repeat (200) begin
+                    buttons[0] = 1; 
+                    #16;
+                    buttons[0] = 0;  // Release button[2]
+                    #16;
+                end
+
+                @(num_samples_fetched == 42000);
+
+                //change mode
+                buttons[2] = 1; 
+                #16;
+                buttons[2] = 0;
+                #16;
+                @(num_samples_fetched == 43000);
+
+                //decrease frequency
+                repeat (6) begin
+                    buttons[1] = 1; 
+                    #16;
+                    buttons[1] = 0;
+                    #16;
+                end
+                @(num_samples_fetched == 80000);
+
+                rst = 1;  // Trigger reset
+                @(posedge clk);  // Wait for one clock cycle
+                rst = 0;
+                @(num_samples_fetched == 122000);
+
+                // Wait for enough samples to be fetched
+                $display("Fetched 122000 samples at time %t", $time);
             end
         join
 
