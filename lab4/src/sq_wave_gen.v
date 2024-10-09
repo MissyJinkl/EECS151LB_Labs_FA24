@@ -10,34 +10,26 @@ module sq_wave_gen #(
 );
     localparam HIGH_VALUE = 10'd562;
     localparam LOW_VALUE = 10'd462;
-    reg[11:0] COUNT_MAX = 139; //to support 20Hz, we need 12 digits
+    reg [11:0] COUNT_MAX = 139; //to support 20Hz, we need 12 digits
     reg [7:0] sample_counter = 0;
     reg wave_state = 0;
-    wire [2:0] button_out;
     reg mode = 0; //0 = linear, 1 = exponential
 
-    button_parser #(
-        .WIDTH(3)
-    ) button_signal (
-        .clk(clk),
-        .in(buttons),
-        .out(button_out)
-    );
 
-    always @(posedge button_out[2]) begin
+    always @(posedge buttons[2]) begin
         mode <= ~mode;
     end
 
-    always @(posedge button_out[1]) begin
-        if (mode) COUNT_MAX <= (COUNT_MAX >= 1530) ? (COUNT_MAX << 1) : 6;
-        else COUNT_MAX <= (COUNT_MAX >= 3060 - STEP) ? (COUNT_MAX + STEP) : 6;
-        sample_counter <= 0;
+    always @(posedge buttons[1]) begin
+        //if (mode) COUNT_MAX <= (COUNT_MAX <= 1530) ? (COUNT_MAX << 1) : 6;
+        //else COUNT_MAX <= (COUNT_MAX <= 3060 - STEP) ? (COUNT_MAX + STEP) : 6;
+        if (mode) COUNT_MAX <= COUNT_MAX << 1;
+        else COUNT_MAX <= COUNT_MAX + STEP;
     end
 
-    always @(posedge button_out[0]) begin
-        if (mode) COUNT_MAX <= (COUNT_MAX <= 10) ? (COUNT_MAX >> 1) : 3058;
-        else COUNT_MAX <= (COUNT_MAX <= 6 + STEP) ? (COUNT_MAX - STEP) : 3058;
-        sample_counter <= 0;
+    always @(posedge buttons[0]) begin
+        if (mode) COUNT_MAX <= (COUNT_MAX >= 10) ? (COUNT_MAX >> 1) : 3058;
+        else COUNT_MAX <= (COUNT_MAX >= 6 + STEP) ? (COUNT_MAX - STEP) : 3058;
     end
 
     always @(posedge clk) begin
@@ -50,7 +42,7 @@ module sq_wave_gen #(
         else begin
 
         if (next_sample) begin
-            if (sample_counter == COUNT_MAX - 1) begin
+            if (sample_counter >= COUNT_MAX - 1) begin
                 sample_counter <= 0;
                 wave_state <= ~wave_state; 
             end else begin
