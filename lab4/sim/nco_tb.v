@@ -65,7 +65,7 @@ module nco_tb();
                 // TODO: Play with the fcw to adjust the output frequency
                 // Hint: Use the num_samples_fetched integer to wait for
                 // X samples to be fetched by the sampling thread
-                fcw = 0; // TODO: Change this to play a 440 Hz tone
+                fcw = 60508; // TODO: Change this to play a 440 Hz tone
             end
             // Thread to check code for fcw = 2^16
             begin

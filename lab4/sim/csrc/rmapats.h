@@ -2443,14 +2443,14 @@ static inline U asm_bsf (U in)
 #ifdef __cplusplus
 extern "C" {
 #endif
-void  hs_0_M_0_21__sq_wave_gen_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_0_0__sq_wave_gen_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_0_1__sq_wave_gen_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
-void  hs_0_M_0_2__sq_wave_gen_tb_tb_daidir (UB  * pcode);
-void  hs_0_M_1_21__sq_wave_gen_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_1_0__sq_wave_gen_tb_tb_daidir (UB  * pcode, scalar  val);
-void  hs_0_M_1_1__sq_wave_gen_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
-void  hs_0_M_1_2__sq_wave_gen_tb_tb_daidir (UB  * pcode);
+void  hs_0_M_0_21__nco_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_0_0__nco_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_0_1__nco_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
+void  hs_0_M_0_2__nco_tb_tb_daidir (UB  * pcode);
+void  hs_0_M_1_21__nco_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_1_0__nco_tb_tb_daidir (UB  * pcode, scalar  val);
+void  hs_0_M_1_1__nco_tb_tb_daidir (UB  * pcode, scalar  val, U  I681, scalar  * I1312, U  did);
+void  hs_0_M_1_2__nco_tb_tb_daidir (UB  * pcode);
 void  hsG_0__0 (struct dummyq_struct * I1297, EBLK  * I1292, U  I689);
 #ifdef __cplusplus
 }

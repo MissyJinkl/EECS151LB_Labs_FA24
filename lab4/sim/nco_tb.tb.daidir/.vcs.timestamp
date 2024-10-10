@@ -1,0 +1,145 @@
+0 
+46
++cli+4
++itf+/share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/vcsdp.tab
++lint=all,noVCDE,noNS,noSVA-UA
++memcbk
++vcsd
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/share/instsww/synopsys-new/vcs/P-2019.06/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libvirsim.so /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libsnpsmalloc.so /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libvfs.so
+-Mout=nco_tb.tb
+-Msaverestoreobj=/share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/share/instsww/synopsys-new/vcs/P-2019.06/include
+-Xcbug=0x1
+-Xnotice=1
+-debug=4
+-full64
+-gen_obj
+-line
+-o nco_tb.tb
+-picarchive
+-sverilog
+-timescale=1ns/10ps
+-top
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/button_parser.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/dac.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/debouncer.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/edge_detector.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/fcw_ram.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/fsm.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/nco.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/sq_wave_gen.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/synchronizer.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/z1top.v
+/share/instsww/synopsys-new/vcs/P-2019.06/linux64/bin/vcs1
+nco_tb
+nco_tb.v
+75
+which_declare=declare -f
+XILINX_SOURCED=yes
+XDG_SESSION_ID=318
+XDG_RUNTIME_DIR=/run/user/90911
+XDG_DATA_DIRS=/home/cc/eecs151/fa24/class/eecs151-agk/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+VSCODE_IPC_HOOK_CLI=/run/user/90911/vscode-ipc-ceddf5de-99bb-44c1-a203-ad8d99ea779d.sock
+VSCODE_GIT_IPC_HANDLE=/run/user/90911/vscode-git-3c7c87bb9f.sock
+VSCODE_GIT_ASKPASS_NODE=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-d78a74bcdfad14d5d3b1b782f87255d802b57511/server/node
+VSCODE_GIT_ASKPASS_MAIN=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-d78a74bcdfad14d5d3b1b782f87255d802b57511/server/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+VMR_MODE_FLAG=64
+VCS_PATH=/share/instsww/synopsys-new/vcs/P-2019.06/bin
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_HOME=/share/instsww/synopsys-new/vcs/P-2019.06
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+UNAME=/bin/uname
+TOOL_HOME=/share/instsww/synopsys-new/vcs/P-2019.06/linux64
+TERM_PROGRAM_VERSION=1.94.0
+TERM_PROGRAM=vscode
+S_COLORS=auto
+SYNOPSYS_ROOT=/home/ff/cs250/tools/synopsys
+SSL_CERT_FILE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+SSL_CERT_DIR=/etc/pki/tls/certs
+SSH_CONNECTION=10.41.87.6 50918 128.32.40.184 22
+SSH_CLIENT=10.41.87.6 50918 22
+SERIALTTY=/dev/ttyPMOD
+SELINUX_USE_CURRENT_RANGE=
+SELINUX_ROLE_REQUESTED=
+SELINUX_LEVEL_REQUESTED=
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+RUNAS=/share/b/runas/x86_64
+RISCV=/home/ff/eecs151/tools-151/riscv-toolchain-fa21
+PATH_SOURCED=yes
+OVA_UUM=0
+OS=Linux
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH LD_PRELOAD
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULESHOME=/usr/share/Modules
+MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
+MODULEPATH=/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MGLS_LICENSE_FILE=1717@license-srv.eecs.berkeley.edu
+MFLAGS=
+MENTOR_SOURCED=yes
+MASTERDIR=/home/ff/eecs151
+MASTER=eecs151
+MAKE_TERMOUT=/dev/pts/6
+MAKE_TERMERR=/dev/pts/6
+MAKELEVEL=1
+MAKEFLAGS=
+LOADEDMODULES=
+LM_PROJECT=bwrc_users
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+INST_SOURCED=yes
+HISTCONTROL=ignoredups
+GIT_ASKPASS=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-d78a74bcdfad14d5d3b1b782f87255d802b57511/server/extensions/git/dist/askpass.sh
+ENV_SOURCED=yes
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/90911/bus
+CVS_RSH=ssh
+CONFIG_SHELL=/usr/bin/bash
+COLORTERM=truecolor
+CDS_LIC_FILE=5280@license-srv.eecs.berkeley.edu
+BASH_FUNC_which%%=() {  ( alias;_ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@_}
+BASH_FUNC_switchml%%=() {  typeset swfound=1;_ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then_ typeset swname='main';_ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then_ typeset swfound=0;_ unset MODULES_USE_COMPAT_VERSION;_ fi;_ else_ typeset swname='compatibility';_ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then_ typeset swfound=0;_ MODULES_USE_COMPAT_VERSION=1;_ export MODULES_USE_COMPAT_VERSION;_ fi;_ fi;_ if [ $swfound -eq 0 ]; then_ echo "Switching to Modules $swname version";_ source /usr/share/Modules/init/bash;_ else_ echo "Cannot switch to Modules $swname version, command not found";_ return 1;_ fi_}
+BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then_ eval "module $@";_ else_ /usr/bin/scl "$@";_ fi_}
+BASH_FUNC_module%%=() {  unset _mlshdbg;_ if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then_ case "$-" in _ *v*x*)_ set +vx;_ _mlshdbg='vx'_ ;;_ *v*)_ set +v;_ _mlshdbg='v'_ ;;_ *x*)_ set +x;_ _mlshdbg='x'_ ;;_ *)_ _mlshdbg=''_ ;;_ esac;_ fi;_ unset _mlre _mlIFS;_ if [ -n "${IFS+x}" ]; then_ _mlIFS=$IFS;_ fi;_ IFS=' ';_ for _mlv in ${MODULES_RUN_QUARANTINE:-};_ do_ if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then_ if [ -n "`eval 'echo ${'$_mlv'+x}'`" ]; then_ _mlre="${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' ";_ fi;_ _mlrv="MODULES_RUNENV_${_mlv}";_ _mlre="${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' ";_ fi;_ done;_ if [ -n "${_mlre:-}" ]; then_ eval `eval ${_mlre} /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'`;_ else_ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash "$@"`;_ fi;_ _mlstatus=$?;_ if [ -n "${_mlIFS+x}" ]; then_ IFS=$_mlIFS;_ else_ unset IFS;_ fi;_ unset _mlre _mlv _mlrv _mlIFS;_ if [ -n "${_mlshdbg:-}" ]; then_ set -$_mlshdbg;_ fi;_ unset _mlshdbg;_ return $_mlstatus_}
+BASH_FUNC_ml%%=() {  module ml "$@"_}
+AUTOGRADER_SOURCED=yes
+ARCH=x86_64
+AGILEESOFD_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
+ADS_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
+0
+12
+1728528901 nco_tb.v
+1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/z1top.v
+1728255883 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/synchronizer.v
+1728520952 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/sq_wave_gen.v
+1728529018 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/nco.v
+1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/fsm.v
+1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/fcw_ram.v
+1728255886 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/edge_detector.v
+1728255884 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/debouncer.v
+1728416551 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/dac.v
+1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/src/button_parser.v
+1559359020 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/vcsdp.tab
+4
+1559360489 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libvirsim.so
+1559360051 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so
+1559360008 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libsnpsmalloc.so
+1559360050 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libvfs.so
+1728529022 nco_tb.tb.daidir
+-1 partitionlib
