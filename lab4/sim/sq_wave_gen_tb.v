@@ -66,31 +66,33 @@ module sq_wave_gen_tb();
                 //increse frequency
                 repeat (200) begin
                     buttons[0] = 1; 
-                    #16;
+                    #8;
                     buttons[0] = 0;  // Release button[2]
-                    #16;
+                    #8;
                 end
 
                 @(num_samples_fetched == 42000);
 
                 //change mode
                 buttons[2] = 1; 
-                #16;
+                #8;
                 buttons[2] = 0;
-                #16;
-                @(num_samples_fetched == 43000);
+                #32;
 
+    
                 //decrease frequency
-                repeat (6) begin
+                repeat (5) begin
                     buttons[1] = 1; 
-                    #16;
+                    #8;
                     buttons[1] = 0;
-                    #16;
+                    #8;
                 end
+
                 @(num_samples_fetched == 80000);
 
                 rst = 1;  // Trigger reset
                 @(posedge clk);  // Wait for one clock cycle
+                #8;
                 rst = 0;
                 @(num_samples_fetched == 122000);
 

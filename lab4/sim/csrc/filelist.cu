@@ -1,16 +1,16 @@
 PIC_LD=ld
 
 ARCHIVE_OBJS=
-ARCHIVE_OBJS += _267499_archive_1.so
-_267499_archive_1.so : archive.9/_267499_archive_1.a
+ARCHIVE_OBJS += _811158_archive_1.so
+_811158_archive_1.so : archive.18/_811158_archive_1.a
 	@$(AR) -s $<
-	@$(PIC_LD) -shared  -Bsymbolic  -o .//../sq_wave_gen_tb.tb.daidir//_267499_archive_1.so --whole-archive $< --no-whole-archive
+	@$(PIC_LD) -shared  -Bsymbolic  -o .//../sq_wave_gen_tb.tb.daidir//_811158_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@
-	@ln -sf .//../sq_wave_gen_tb.tb.daidir//_267499_archive_1.so $@
+	@ln -sf .//../sq_wave_gen_tb.tb.daidir//_811158_archive_1.so $@
 
 
 ARCHIVE_OBJS += _prev_archive_1.so
-_prev_archive_1.so : archive.9/_prev_archive_1.a
+_prev_archive_1.so : archive.18/_prev_archive_1.a
 	@$(AR) -s $<
 	@$(PIC_LD) -shared  -Bsymbolic  -o .//../sq_wave_gen_tb.tb.daidir//_prev_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@

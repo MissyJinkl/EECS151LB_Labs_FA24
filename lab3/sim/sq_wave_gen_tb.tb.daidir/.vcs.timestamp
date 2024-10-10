@@ -44,16 +44,16 @@
 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/bin/vcs1
 sq_wave_gen_tb
 sq_wave_gen_tb.v
-76
+75
 which_declare=declare -f
 XILINX_SOURCED=yes
-XDG_SESSION_ID=158
+XDG_SESSION_ID=318
 XDG_RUNTIME_DIR=/run/user/90911
 XDG_DATA_DIRS=/home/cc/eecs151/fa24/class/eecs151-agk/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
-VSCODE_IPC_HOOK_CLI=/run/user/90911/vscode-ipc-c48ac48f-3621-4ec1-b637-d90d52a88519.sock
+VSCODE_IPC_HOOK_CLI=/run/user/90911/vscode-ipc-087ada6d-210c-489d-8815-ba894973c7ba.sock
 VSCODE_GIT_IPC_HANDLE=/run/user/90911/vscode-git-3c7c87bb9f.sock
-VSCODE_GIT_ASKPASS_NODE=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/server/node
-VSCODE_GIT_ASKPASS_MAIN=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/server/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_NODE=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-d78a74bcdfad14d5d3b1b782f87255d802b57511/server/node
+VSCODE_GIT_ASKPASS_MAIN=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-d78a74bcdfad14d5d3b1b782f87255d802b57511/server/extensions/git/dist/askpass-main.js
 VSCODE_GIT_ASKPASS_EXTRA_ARGS=
 VMR_MODE_FLAG=64
 VCS_PATH=/share/instsww/synopsys-new/vcs/P-2019.06/bin
@@ -65,14 +65,14 @@ VCS_ARG_ADDED_FOR_TMP=1
 VCS_ARCH=linux64
 UNAME=/bin/uname
 TOOL_HOME=/share/instsww/synopsys-new/vcs/P-2019.06/linux64
-TERM_PROGRAM_VERSION=1.93.1
+TERM_PROGRAM_VERSION=1.94.0
 TERM_PROGRAM=vscode
 S_COLORS=auto
 SYNOPSYS_ROOT=/home/ff/cs250/tools/synopsys
 SSL_CERT_FILE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 SSL_CERT_DIR=/etc/pki/tls/certs
-SSH_CONNECTION=10.41.85.91 60551 128.32.40.184 22
-SSH_CLIENT=10.41.85.91 60551 22
+SSH_CONNECTION=10.41.87.6 50918 128.32.40.184 22
+SSH_CLIENT=10.41.87.6 50918 22
 SERIALTTY=/dev/ttyPMOD
 SELINUX_USE_CURRENT_RANGE=
 SELINUX_ROLE_REQUESTED=
@@ -94,8 +94,8 @@ MFLAGS=
 MENTOR_SOURCED=yes
 MASTERDIR=/home/ff/eecs151
 MASTER=eecs151
-MAKE_TERMOUT=/dev/pts/0
-MAKE_TERMERR=/dev/pts/0
+MAKE_TERMOUT=/dev/pts/9
+MAKE_TERMERR=/dev/pts/9
 MAKELEVEL=1
 MAKEFLAGS=
 LOADEDMODULES=
@@ -104,9 +104,8 @@ LESSOPEN=||/usr/bin/lesspipe.sh %s
 LC_ALL=C
 INST_SOURCED=yes
 HISTCONTROL=ignoredups
-GIT_ASKPASS=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-38c31bc77e0dd6ae88a4e9cc93428cc27a56ba40/server/extensions/git/dist/askpass.sh
+GIT_ASKPASS=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-d78a74bcdfad14d5d3b1b782f87255d802b57511/server/extensions/git/dist/askpass.sh
 ENV_SOURCED=yes
-EECS151_SOURCED=yes
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/90911/bus
 CVS_RSH=ssh
 CONFIG_SHELL=/usr/bin/bash
@@ -126,11 +125,11 @@ ADS_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
 1726775835 sq_wave_gen_tb.v
 1727453097 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/z1top.v
 1727386381 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/synchronizer.v
-1727454533 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/sq_wave_gen.v
+1728516675 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/sq_wave_gen.v
 1727420178 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/edge_detector.v
 1727453025 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/debouncer.v
 1727452869 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/dac.v
-1727454404 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/counter.v
+1727458095 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/counter.v
 1726775835 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab3/src/button_parser.v
 1559359020 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/vcsdp.tab
 4
@@ -138,5 +137,5 @@ ADS_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
 1559360051 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so
 1559360008 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libsnpsmalloc.so
 1559360050 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libvfs.so
-1727455247 sq_wave_gen_tb.tb.daidir
+1728516686 sq_wave_gen_tb.tb.daidir
 -1 partitionlib

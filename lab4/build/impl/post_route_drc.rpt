@@ -1,8 +1,8 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Tue Oct  8 13:08:44 2024
-| Host         : c111-18.EECS.Berkeley.EDU running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
+| Date         : Wed Oct  9 17:40:26 2024
+| Host         : c111-16.EECS.Berkeley.EDU running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 | Command      : report_drc -file post_route_drc.rpt
 | Design       : z1top
 | Device       : xc7z020clg400-1
@@ -24,28 +24,15 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 3
-+-------------+----------+-------------------------------------------------------------+------------+
-| Rule        | Severity | Description                                                 | Violations |
-+-------------+----------+-------------------------------------------------------------+------------+
-| PDRC-153    | Warning  | Gated clock check                                           | 1          |
-| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
-| ZPS7-1      | Warning  | PS7 block required                                          | 1          |
-+-------------+----------+-------------------------------------------------------------+------------+
+             Violations found: 1
++--------+----------+--------------------+------------+
+| Rule   | Severity | Description        | Violations |
++--------+----------+--------------------+------------+
+| ZPS7-1 | Warning  | PS7 block required | 1          |
++--------+----------+--------------------+------------+
 
 2. REPORT DETAILS
 -----------------
-PDRC-153#1 Warning
-Gated clock check  
-Net bp/button_edge_detector/sq_wave_buttons[0] is a gated clock net sourced by a combinational pin bp/button_edge_detector/mode_i_2/O, cell bp/button_edge_detector/mode_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PLHOLDVIO-2#1 Warning
-Non-Optimal connections which could lead to hold violations  
-A LUT bp/button_edge_detector/mode_i_2 is driving clock pin of 1 cells. This could lead to large hold time violations. Involved cells are:
-gen/mode_reg
-Related violations: <none>
-
 ZPS7-1#1 Warning
 PS7 block required  
 The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
