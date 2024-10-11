@@ -8,7 +8,7 @@ VSRC=..
 TARGET_ARCH=
 
 # Choose name of executable 
-PRODUCTBASE=$(VSRC)/nco_tb.tb
+PRODUCTBASE=$(VSRC)/fsm_tb.tb
 
 PRODUCT=$(PRODUCTBASE)
 
@@ -39,7 +39,7 @@ LD=g++
 STRIPFLAGS= 
 
 PRE_LDFLAGS= # Loader Flags
-LDFLAGS= -rdynamic  -Wl,-rpath='$$ORIGIN'/nco_tb.tb.daidir -Wl,-rpath=./nco_tb.tb.daidir -Wl,-rpath=/share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib -L/share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib 
+LDFLAGS= -rdynamic  -Wl,-rpath='$$ORIGIN'/fsm_tb.tb.daidir -Wl,-rpath=./fsm_tb.tb.daidir -Wl,-rpath=/share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib -L/share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib 
 # Picarchive Flags
 PICLDFLAGS= -Wl,-rpath-link=./ 
 

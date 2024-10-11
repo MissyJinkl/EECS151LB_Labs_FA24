@@ -1,0 +1,197 @@
+{
+    "stat": {
+        "ru_self_end": {
+            "ru_nivcsw": 18,
+            "ru_utime_sec": 0.14249200000000001,
+            "ru_maxrss_kb": 125764,
+            "ru_stime_sec": 0.032687000000000001,
+            "ru_minflt": 8879,
+            "ru_majflt": 0,
+            "ru_nvcsw": 417
+        },
+        "ru_childs_end": {
+            "ru_nivcsw": 2,
+            "ru_utime_sec": 0.011381,
+            "ru_maxrss_kb": 118072,
+            "ru_stime_sec": 0.019786000000000002,
+            "ru_minflt": 3967,
+            "ru_majflt": 0,
+            "ru_nvcsw": 18
+        },
+        "peak_mem_kb": 330120,
+        "cpu_cycles_end": 3643053927337985
+    },
+    "Modules": {
+        "...MASTER...": {
+            "nQuads": 0,
+            "start_perf": [
+                0.28301692008972168,
+                0.104661,
+                0.026192,
+                317332,
+                330120,
+                1728590237.5743079,
+                3643053715265783
+            ],
+            "child_modules": {
+                "fsm_tb": 1,
+                "std": 1
+            },
+            "end_perf": [
+                0.30118298530578613,
+                0.10668999999999999,
+                0.027203999999999999,
+                318628,
+                330120,
+                3643053751606319,
+                0,
+                0
+            ],
+            "nRouts": 5,
+            "nMops": 0
+        },
+        "std": {
+            "nQuads": 218,
+            "start_perf": [
+                0.30132699012756348,
+                0.106805,
+                0.027234000000000001,
+                318628,
+                330120,
+                1728590237.592618,
+                3643053751825709
+            ],
+            "child_modules": {},
+            "Compiled": "Yes",
+            "svclass": [
+                "$vcs_nba_dyn_obj",
+                0,
+                35,
+                2,
+                2,
+                0,
+                0,
+                "sigprop$$",
+                0,
+                35,
+                2,
+                2,
+                0,
+                0,
+                "process",
+                0,
+                200,
+                8,
+                8,
+                0,
+                0,
+                "event",
+                0,
+                34,
+                2,
+                2,
+                0,
+                0,
+                "mailbox",
+                0,
+                140,
+                9,
+                9,
+                0,
+                0,
+                "semaphore",
+                0,
+                84,
+                5,
+                5,
+                0,
+                0
+            ],
+            "num_classes": 6,
+            "Compiled Times": 45,
+            "end_perf": [
+                0.32161998748779297,
+                0.111494,
+                0.028145,
+                318628,
+                330120,
+                3643053792405917,
+                0,
+                0
+            ],
+            "nRouts": 33,
+            "nMops": 528
+        },
+        "fsm_tb": {
+            "nQuads": 1529,
+            "start_perf": [
+                0.32171010971069336,
+                0.111566,
+                0.028164000000000002,
+                318628,
+                330120,
+                1728590237.6130011,
+                3643053792526747
+            ],
+            "significant_routs": [
+                [
+                    98,
+                    "R_VCSgd_IgWWP_62",
+                    9931806,
+                    6517,
+                    695
+                ]
+            ],
+            "child_modules": {},
+            "Compiled": "Yes",
+            "Compiled Times": 22,
+            "end_perf": [
+                0.3660891056060791,
+                0.13966500000000001,
+                0.030949999999999998,
+                323316,
+                330120,
+                3643053881134277,
+                17190052107,
+                0
+            ],
+            "nRouts": 141,
+            "nMops": 3242
+        }
+    },
+    "CompUnits": {
+        "IgWWP_d": {
+            "mod": "fsm_tb",
+            "out": "IgWWP_d.o",
+            "archive": "archive.44/_1097150_archive_1.a",
+            "mode": 4,
+            "bytes": 67446,
+            "text": 27777,
+            "checksum": 0
+        }
+    },
+    "reusePaths": {
+        "amcQw_d": {
+            "icPath": "csrc"
+        },
+        "reYIK_d": {
+            "icPath": "csrc"
+        }
+    },
+    "ObjArchives": [
+        {
+            "archive": "archive.44/_1097150_archive_1.a",
+            "objects": [
+                [
+                    "IgWWP_d.o",
+                    67446
+                ],
+                [
+                    "amcQwB.o",
+                    102538
+                ]
+            ],
+            "size": 169984
+        }
+    ]
+}
