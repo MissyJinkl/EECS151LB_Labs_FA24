@@ -1,7 +1,7 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-// Date        : Thu Oct 10 01:07:30 2024
+// Date        : Thu Oct 10 18:25:40 2024
 // Host        : c111-16.EECS.Berkeley.EDU running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 // Command     : write_verilog -force post_route.v
 // Design      : z1top
@@ -15,18 +15,22 @@
 module button_parser
    (\edge_detect_pulse_reg[3] ,
     Q,
-    \edge_detect_pulse_reg[1] ,
     \edge_detect_pulse_reg[0] ,
+    \present_state_reg[0] ,
+    \edge_detect_pulse_reg[2] ,
+    \edge_detect_pulse_reg[2]_0 ,
+    \edge_detect_pulse_reg[0]_0 ,
+    \edge_detect_pulse_reg[0]_1 ,
+    \edge_detect_pulse_reg[0]_2 ,
     D,
+    \edge_detect_pulse_reg[1] ,
     \edge_detect_pulse_reg[1]_0 ,
-    \edge_detect_pulse_reg[1]_1 ,
     \edge_detect_pulse_reg[3]_0 ,
     E,
-    \edge_detect_pulse_reg[1]_2 ,
-    \edge_detect_pulse_reg[2] ,
-    wr_en,
-    \sync_signal_reg[0] ,
     \edge_detect_pulse_reg[3]_1 ,
+    \edge_detect_pulse_reg[1]_1 ,
+    \edge_detect_pulse_reg[0]_3 ,
+    \sync_signal_reg[0] ,
     \edge_detect_pulse_reg[3]_2 ,
     \edge_detect_pulse_reg[3]_3 ,
     CLK_125MHZ_FPGA_IBUF_BUFG,
@@ -34,29 +38,35 @@ module button_parser
     CO,
     \COUNT_MAX_reg[11] ,
     LEDS_OBUF,
-    COUNT_MAX13_in,
     \COUNT_MAX_reg[11]_0 ,
     \COUNT_MAX_reg[11]_1 ,
+    COUNT_MAX13_in,
     COUNT_MAX1,
     sq_wave_leds,
     \COUNT_MAX_reg[10] ,
     \COUNT_MAX_reg[11]_2 ,
     \COUNT_MAX_reg[11]_3 ,
+    SR,
+    wr_en,
     \middle_reg[3]_inv );
   output \edge_detect_pulse_reg[3] ;
   output [3:0]Q;
-  output \edge_detect_pulse_reg[1] ;
   output \edge_detect_pulse_reg[0] ;
-  output [4:0]D;
+  output \present_state_reg[0] ;
+  output \edge_detect_pulse_reg[2] ;
+  output \edge_detect_pulse_reg[2]_0 ;
+  output \edge_detect_pulse_reg[0]_0 ;
+  output \edge_detect_pulse_reg[0]_1 ;
+  output \edge_detect_pulse_reg[0]_2 ;
+  output [2:0]D;
+  output \edge_detect_pulse_reg[1] ;
   output \edge_detect_pulse_reg[1]_0 ;
-  output \edge_detect_pulse_reg[1]_1 ;
   output \edge_detect_pulse_reg[3]_0 ;
   output [0:0]E;
-  output \edge_detect_pulse_reg[1]_2 ;
-  output \edge_detect_pulse_reg[2] ;
-  output wr_en;
-  output \sync_signal_reg[0] ;
   output \edge_detect_pulse_reg[3]_1 ;
+  output \edge_detect_pulse_reg[1]_1 ;
+  output \edge_detect_pulse_reg[0]_3 ;
+  output \sync_signal_reg[0] ;
   output \edge_detect_pulse_reg[3]_2 ;
   output \edge_detect_pulse_reg[3]_3 ;
   input CLK_125MHZ_FPGA_IBUF_BUFG;
@@ -64,43 +74,51 @@ module button_parser
   input [0:0]CO;
   input [0:0]\COUNT_MAX_reg[11] ;
   input [1:0]LEDS_OBUF;
-  input [4:0]COUNT_MAX13_in;
-  input \COUNT_MAX_reg[11]_0 ;
-  input [6:0]\COUNT_MAX_reg[11]_1 ;
-  input [3:0]COUNT_MAX1;
+  input [3:0]\COUNT_MAX_reg[11]_0 ;
+  input \COUNT_MAX_reg[11]_1 ;
+  input [2:0]COUNT_MAX13_in;
+  input [1:0]COUNT_MAX1;
   input [0:0]sq_wave_leds;
   input \COUNT_MAX_reg[10] ;
   input \COUNT_MAX_reg[11]_2 ;
   input \COUNT_MAX_reg[11]_3 ;
+  input [0:0]SR;
+  input wr_en;
   input [3:0]\middle_reg[3]_inv ;
 
   wire CLK_125MHZ_FPGA_IBUF_BUFG;
   wire [0:0]CO;
-  wire [3:0]COUNT_MAX1;
-  wire [4:0]COUNT_MAX13_in;
+  wire [1:0]COUNT_MAX1;
+  wire [2:0]COUNT_MAX13_in;
   wire \COUNT_MAX_reg[10] ;
   wire [0:0]\COUNT_MAX_reg[11] ;
-  wire \COUNT_MAX_reg[11]_0 ;
-  wire [6:0]\COUNT_MAX_reg[11]_1 ;
+  wire [3:0]\COUNT_MAX_reg[11]_0 ;
+  wire \COUNT_MAX_reg[11]_1 ;
   wire \COUNT_MAX_reg[11]_2 ;
   wire \COUNT_MAX_reg[11]_3 ;
-  wire [4:0]D;
+  wire [2:0]D;
   wire [0:0]E;
   wire [1:0]LEDS_OBUF;
   wire [3:0]Q;
+  wire [0:0]SR;
   wire [3:0]debounced_signals;
   wire \edge_detect_pulse_reg[0] ;
+  wire \edge_detect_pulse_reg[0]_0 ;
+  wire \edge_detect_pulse_reg[0]_1 ;
+  wire \edge_detect_pulse_reg[0]_2 ;
+  wire \edge_detect_pulse_reg[0]_3 ;
   wire \edge_detect_pulse_reg[1] ;
   wire \edge_detect_pulse_reg[1]_0 ;
   wire \edge_detect_pulse_reg[1]_1 ;
-  wire \edge_detect_pulse_reg[1]_2 ;
   wire \edge_detect_pulse_reg[2] ;
+  wire \edge_detect_pulse_reg[2]_0 ;
   wire \edge_detect_pulse_reg[3] ;
   wire \edge_detect_pulse_reg[3]_0 ;
   wire \edge_detect_pulse_reg[3]_1 ;
   wire \edge_detect_pulse_reg[3]_2 ;
   wire \edge_detect_pulse_reg[3]_3 ;
   wire [3:0]\middle_reg[3]_inv ;
+  wire \present_state_reg[0] ;
   wire \sample_counter_reg[0] ;
   wire [0:0]sq_wave_leds;
   wire \sync_signal_reg[0] ;
@@ -126,17 +144,23 @@ module button_parser
         .E(E),
         .LEDS_OBUF(LEDS_OBUF),
         .Q(Q),
+        .SR(SR),
         .\edge_detect_pulse_reg[0]_0 (\edge_detect_pulse_reg[0] ),
+        .\edge_detect_pulse_reg[0]_1 (\edge_detect_pulse_reg[0]_0 ),
+        .\edge_detect_pulse_reg[0]_2 (\edge_detect_pulse_reg[0]_1 ),
+        .\edge_detect_pulse_reg[0]_3 (\edge_detect_pulse_reg[0]_2 ),
+        .\edge_detect_pulse_reg[0]_4 (\edge_detect_pulse_reg[0]_3 ),
         .\edge_detect_pulse_reg[1]_0 (\edge_detect_pulse_reg[1] ),
         .\edge_detect_pulse_reg[1]_1 (\edge_detect_pulse_reg[1]_0 ),
         .\edge_detect_pulse_reg[1]_2 (\edge_detect_pulse_reg[1]_1 ),
-        .\edge_detect_pulse_reg[1]_3 (\edge_detect_pulse_reg[1]_2 ),
         .\edge_detect_pulse_reg[2]_0 (\edge_detect_pulse_reg[2] ),
+        .\edge_detect_pulse_reg[2]_1 (\edge_detect_pulse_reg[2]_0 ),
         .\edge_detect_pulse_reg[3]_0 (\edge_detect_pulse_reg[3] ),
         .\edge_detect_pulse_reg[3]_1 (\edge_detect_pulse_reg[3]_0 ),
         .\edge_detect_pulse_reg[3]_2 (\edge_detect_pulse_reg[3]_1 ),
         .\edge_detect_pulse_reg[3]_3 (\edge_detect_pulse_reg[3]_2 ),
         .\edge_detect_pulse_reg[3]_4 (\edge_detect_pulse_reg[3]_3 ),
+        .\present_state_reg[0] (\present_state_reg[0] ),
         .\sample_counter_reg[0] (\sample_counter_reg[0] ),
         .\signal_in_d_reg[3]_0 (debounced_signals),
         .sq_wave_leds(sq_wave_leds),
@@ -539,7 +563,6 @@ module debouncer
   wire [3:0]D;
   wire [3:0]Q;
   wire \debounce_logic[0].debounced_signal[0]_i_1_n_0 ;
-  wire \debounce_logic[0].saturating_counter[0][3]_i_1_n_0 ;
   wire \debounce_logic[0].saturating_counter[0][7]_i_1_n_0 ;
   wire \debounce_logic[0].saturating_counter[0][7]_i_4_n_0 ;
   wire \debounce_logic[0].saturating_counter[0][7]_i_5_n_0 ;
@@ -551,7 +574,6 @@ module debouncer
   wire \debounce_logic[1].saturating_counter[1][7]_i_5_n_0 ;
   wire [7:0]\debounce_logic[1].saturating_counter_reg[1]_1 ;
   wire \debounce_logic[2].debounced_signal[2]_i_1_n_0 ;
-  wire \debounce_logic[2].saturating_counter[2][3]_i_1_n_0 ;
   wire \debounce_logic[2].saturating_counter[2][7]_i_1_n_0 ;
   wire \debounce_logic[2].saturating_counter[2][7]_i_2_n_0 ;
   wire \debounce_logic[2].saturating_counter[2][7]_i_4_n_0 ;
@@ -606,9 +628,9 @@ module debouncer
        (.I0(\debounce_logic[0].saturating_counter[0][7]_i_4_n_0 ),
         .I1(\debounce_logic[0].saturating_counter_reg[0]_0 [6]),
         .I2(\debounce_logic[0].saturating_counter_reg[0]_0 [7]),
-        .I3(\debounce_logic[0].saturating_counter_reg[0]_0 [5]),
+        .I3(\debounce_logic[0].saturating_counter_reg[0]_0 [3]),
         .I4(\debounce_logic[0].saturating_counter_reg[0]_0 [4]),
-        .I5(\debounce_logic[0].saturating_counter_reg[0]_0 [3]),
+        .I5(\debounce_logic[0].saturating_counter_reg[0]_0 [5]),
         .O(\debounce_logic[0].debounced_signal[0]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -618,14 +640,12 @@ module debouncer
         .D(\debounce_logic[0].debounced_signal[0]_i_1_n_0 ),
         .Q(D[0]),
         .R(\<const0> ));
-  (* \PinAttr:I0:HOLD_DETOUR  = "197" *) 
   (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \debounce_logic[0].saturating_counter[0][0]_i_1 
        (.I0(\debounce_logic[0].saturating_counter_reg[0]_0 [0]),
         .O(p_0_in[0]));
-  (* \PinAttr:I0:HOLD_DETOUR  = "197" *) 
   (* SOFT_HLUTNM = "soft_lutpair13" *) 
   LUT2 #(
     .INIT(4'h6)) 
@@ -645,10 +665,10 @@ module debouncer
     .INIT(16'h6AAA)) 
     \debounce_logic[0].saturating_counter[0][3]_i_1 
        (.I0(\debounce_logic[0].saturating_counter_reg[0]_0 [3]),
-        .I1(\debounce_logic[0].saturating_counter_reg[0]_0 [2]),
+        .I1(\debounce_logic[0].saturating_counter_reg[0]_0 [1]),
         .I2(\debounce_logic[0].saturating_counter_reg[0]_0 [0]),
-        .I3(\debounce_logic[0].saturating_counter_reg[0]_0 [1]),
-        .O(\debounce_logic[0].saturating_counter[0][3]_i_1_n_0 ));
+        .I3(\debounce_logic[0].saturating_counter_reg[0]_0 [2]),
+        .O(p_0_in[3]));
   (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
@@ -659,7 +679,6 @@ module debouncer
         .I3(\debounce_logic[0].saturating_counter_reg[0]_0 [1]),
         .I4(\debounce_logic[0].saturating_counter_reg[0]_0 [3]),
         .O(p_0_in[4]));
-  (* \PinAttr:I2:HOLD_DETOUR  = "154" *) 
   LUT6 #(
     .INIT(64'h6AAAAAAAAAAAAAAA)) 
     \debounce_logic[0].saturating_counter[0][5]_i_1 
@@ -747,7 +766,7 @@ module debouncer
     \debounce_logic[0].saturating_counter_reg[0][3] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(saturating_counter),
-        .D(\debounce_logic[0].saturating_counter[0][3]_i_1_n_0 ),
+        .D(p_0_in[3]),
         .Q(\debounce_logic[0].saturating_counter_reg[0]_0 [3]),
         .R(\debounce_logic[0].saturating_counter[0][7]_i_1_n_0 ));
   FDRE #(
@@ -800,14 +819,14 @@ module debouncer
         .D(\debounce_logic[1].debounced_signal[1]_i_1_n_0 ),
         .Q(D[1]),
         .R(\<const0> ));
-  (* \PinAttr:I0:HOLD_DETOUR  = "193" *) 
+  (* \PinAttr:I0:HOLD_DETOUR  = "197" *) 
   (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \debounce_logic[1].saturating_counter[1][0]_i_1 
        (.I0(\debounce_logic[1].saturating_counter_reg[1]_1 [0]),
         .O(p_0_in__0[0]));
-  (* \PinAttr:I0:HOLD_DETOUR  = "193" *) 
+  (* \PinAttr:I0:HOLD_DETOUR  = "197" *) 
   (* SOFT_HLUTNM = "soft_lutpair14" *) 
   LUT2 #(
     .INIT(4'h6)) 
@@ -815,6 +834,7 @@ module debouncer
        (.I0(\debounce_logic[1].saturating_counter_reg[1]_1 [0]),
         .I1(\debounce_logic[1].saturating_counter_reg[1]_1 [1]),
         .O(p_0_in__0[1]));
+  (* \PinAttr:I1:HOLD_DETOUR  = "190" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \debounce_logic[1].saturating_counter[1][2]_i_1 
@@ -822,7 +842,7 @@ module debouncer
         .I1(\debounce_logic[1].saturating_counter_reg[1]_1 [0]),
         .I2(\debounce_logic[1].saturating_counter_reg[1]_1 [1]),
         .O(p_0_in__0[2]));
-  (* \PinAttr:I1:HOLD_DETOUR  = "162" *) 
+  (* \PinAttr:I1:HOLD_DETOUR  = "166" *) 
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
@@ -832,7 +852,7 @@ module debouncer
         .I2(\debounce_logic[1].saturating_counter_reg[1]_1 [0]),
         .I3(\debounce_logic[1].saturating_counter_reg[1]_1 [2]),
         .O(p_0_in__0[3]));
-  (* \PinAttr:I3:HOLD_DETOUR  = "162" *) 
+  (* \PinAttr:I3:HOLD_DETOUR  = "166" *) 
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
@@ -843,7 +863,6 @@ module debouncer
         .I3(\debounce_logic[1].saturating_counter_reg[1]_1 [1]),
         .I4(\debounce_logic[1].saturating_counter_reg[1]_1 [3]),
         .O(p_0_in__0[4]));
-  (* \PinAttr:I2:HOLD_DETOUR  = "150" *) 
   LUT6 #(
     .INIT(64'h6AAAAAAAAAAAAAAA)) 
     \debounce_logic[1].saturating_counter[1][5]_i_1 
@@ -888,6 +907,7 @@ module debouncer
         .I4(\debounce_logic[1].saturating_counter_reg[1]_1 [5]),
         .I5(\debounce_logic[1].saturating_counter_reg[1]_1 [6]),
         .O(p_0_in__0[7]));
+  (* \PinAttr:I1:HOLD_DETOUR  = "190" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \debounce_logic[1].saturating_counter[1][7]_i_4 
@@ -972,9 +992,9 @@ module debouncer
        (.I0(\debounce_logic[2].saturating_counter[2][7]_i_4_n_0 ),
         .I1(\debounce_logic[2].saturating_counter_reg[2]_2 [6]),
         .I2(\debounce_logic[2].saturating_counter_reg[2]_2 [7]),
-        .I3(\debounce_logic[2].saturating_counter_reg[2]_2 [5]),
+        .I3(\debounce_logic[2].saturating_counter_reg[2]_2 [3]),
         .I4(\debounce_logic[2].saturating_counter_reg[2]_2 [4]),
-        .I5(\debounce_logic[2].saturating_counter_reg[2]_2 [3]),
+        .I5(\debounce_logic[2].saturating_counter_reg[2]_2 [5]),
         .O(\debounce_logic[2].debounced_signal[2]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -984,12 +1004,14 @@ module debouncer
         .D(\debounce_logic[2].debounced_signal[2]_i_1_n_0 ),
         .Q(D[2]),
         .R(\<const0> ));
+  (* \PinAttr:I0:HOLD_DETOUR  = "197" *) 
   (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \debounce_logic[2].saturating_counter[2][0]_i_1 
        (.I0(\debounce_logic[2].saturating_counter_reg[2]_2 [0]),
         .O(p_0_in__1[0]));
+  (* \PinAttr:I0:HOLD_DETOUR  = "197" *) 
   (* SOFT_HLUTNM = "soft_lutpair15" *) 
   LUT2 #(
     .INIT(4'h6)) 
@@ -1004,17 +1026,17 @@ module debouncer
         .I1(\debounce_logic[2].saturating_counter_reg[2]_2 [0]),
         .I2(\debounce_logic[2].saturating_counter_reg[2]_2 [1]),
         .O(p_0_in__1[2]));
-  (* \PinAttr:I3:HOLD_DETOUR  = "152" *) 
+  (* \PinAttr:I3:HOLD_DETOUR  = "172" *) 
   (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
     \debounce_logic[2].saturating_counter[2][3]_i_1 
        (.I0(\debounce_logic[2].saturating_counter_reg[2]_2 [3]),
-        .I1(\debounce_logic[2].saturating_counter_reg[2]_2 [2]),
+        .I1(\debounce_logic[2].saturating_counter_reg[2]_2 [1]),
         .I2(\debounce_logic[2].saturating_counter_reg[2]_2 [0]),
-        .I3(\debounce_logic[2].saturating_counter_reg[2]_2 [1]),
-        .O(\debounce_logic[2].saturating_counter[2][3]_i_1_n_0 ));
-  (* \PinAttr:I3:HOLD_DETOUR  = "152" *) 
+        .I3(\debounce_logic[2].saturating_counter_reg[2]_2 [2]),
+        .O(p_0_in__1[3]));
+  (* \PinAttr:I1:HOLD_DETOUR  = "172" *) 
   (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
@@ -1112,7 +1134,7 @@ module debouncer
     \debounce_logic[2].saturating_counter_reg[2][3] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\debounce_logic[2].saturating_counter[2][7]_i_2_n_0 ),
-        .D(\debounce_logic[2].saturating_counter[2][3]_i_1_n_0 ),
+        .D(p_0_in__1[3]),
         .Q(\debounce_logic[2].saturating_counter_reg[2]_2 [3]),
         .R(\debounce_logic[2].saturating_counter[2][7]_i_1_n_0 ));
   FDRE #(
@@ -1165,14 +1187,12 @@ module debouncer
         .D(\debounce_logic[3].debounced_signal[3]_i_1_n_0 ),
         .Q(D[3]),
         .R(\<const0> ));
-  (* \PinAttr:I0:HOLD_DETOUR  = "192" *) 
   (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \debounce_logic[3].saturating_counter[3][0]_i_1 
        (.I0(\debounce_logic[3].saturating_counter_reg[3]_3 [0]),
         .O(p_0_in__2[0]));
-  (* \PinAttr:I0:HOLD_DETOUR  = "192" *) 
   (* SOFT_HLUTNM = "soft_lutpair16" *) 
   LUT2 #(
     .INIT(4'h6)) 
@@ -1180,6 +1200,7 @@ module debouncer
        (.I0(\debounce_logic[3].saturating_counter_reg[3]_3 [0]),
         .I1(\debounce_logic[3].saturating_counter_reg[3]_3 [1]),
         .O(p_0_in__2[1]));
+  (* \PinAttr:I1:HOLD_DETOUR  = "192" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \debounce_logic[3].saturating_counter[3][2]_i_1 
@@ -1187,7 +1208,6 @@ module debouncer
         .I1(\debounce_logic[3].saturating_counter_reg[3]_3 [0]),
         .I2(\debounce_logic[3].saturating_counter_reg[3]_3 [1]),
         .O(p_0_in__2[2]));
-  (* \PinAttr:I1:HOLD_DETOUR  = "157" *) 
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT4 #(
     .INIT(16'h6AAA)) 
@@ -1197,7 +1217,6 @@ module debouncer
         .I2(\debounce_logic[3].saturating_counter_reg[3]_3 [0]),
         .I3(\debounce_logic[3].saturating_counter_reg[3]_3 [2]),
         .O(p_0_in__2[3]));
-  (* \PinAttr:I3:HOLD_DETOUR  = "157" *) 
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT5 #(
     .INIT(32'h6AAAAAAA)) 
@@ -1218,7 +1237,7 @@ module debouncer
         .I4(\debounce_logic[3].saturating_counter_reg[3]_3 [2]),
         .I5(\debounce_logic[3].saturating_counter_reg[3]_3 [4]),
         .O(p_0_in__2[5]));
-  (* \PinAttr:I4:HOLD_DETOUR  = "179" *) 
+  (* \PinAttr:I3:HOLD_DETOUR  = "185" *) 
   LUT5 #(
     .INIT(32'hDFFF2000)) 
     \debounce_logic[3].saturating_counter[3][6]_i_1 
@@ -1253,6 +1272,7 @@ module debouncer
         .I4(\debounce_logic[3].saturating_counter_reg[3]_3 [5]),
         .I5(\debounce_logic[3].saturating_counter_reg[3]_3 [6]),
         .O(p_0_in__2[7]));
+  (* \PinAttr:I1:HOLD_DETOUR  = "192" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \debounce_logic[3].saturating_counter[3][7]_i_4 
@@ -1260,6 +1280,7 @@ module debouncer
         .I1(\debounce_logic[3].saturating_counter_reg[3]_3 [0]),
         .I2(\debounce_logic[3].saturating_counter_reg[3]_3 [2]),
         .O(\debounce_logic[3].saturating_counter[3][7]_i_4_n_0 ));
+  (* \PinAttr:I0:HOLD_DETOUR  = "185" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \debounce_logic[3].saturating_counter[3][7]_i_5 
@@ -1539,62 +1560,74 @@ endmodule
 module edge_detector
    (\edge_detect_pulse_reg[3]_0 ,
     Q,
-    \edge_detect_pulse_reg[1]_0 ,
     \edge_detect_pulse_reg[0]_0 ,
+    \present_state_reg[0] ,
+    \edge_detect_pulse_reg[2]_0 ,
+    \edge_detect_pulse_reg[2]_1 ,
+    \edge_detect_pulse_reg[0]_1 ,
+    \edge_detect_pulse_reg[0]_2 ,
+    \edge_detect_pulse_reg[0]_3 ,
     D,
+    \edge_detect_pulse_reg[1]_0 ,
     \edge_detect_pulse_reg[1]_1 ,
-    \edge_detect_pulse_reg[1]_2 ,
     \edge_detect_pulse_reg[3]_1 ,
     E,
-    \edge_detect_pulse_reg[1]_3 ,
-    \edge_detect_pulse_reg[2]_0 ,
-    wr_en,
-    \sync_signal_reg[0] ,
     \edge_detect_pulse_reg[3]_2 ,
+    \edge_detect_pulse_reg[1]_2 ,
+    \edge_detect_pulse_reg[0]_4 ,
+    \sync_signal_reg[0] ,
     \edge_detect_pulse_reg[3]_3 ,
     \edge_detect_pulse_reg[3]_4 ,
     \sample_counter_reg[0] ,
     CO,
     \COUNT_MAX_reg[11] ,
     LEDS_OBUF,
-    COUNT_MAX13_in,
     \COUNT_MAX_reg[11]_0 ,
     \COUNT_MAX_reg[11]_1 ,
+    COUNT_MAX13_in,
     COUNT_MAX1,
     sq_wave_leds,
     \COUNT_MAX_reg[10] ,
     \COUNT_MAX_reg[11]_2 ,
     \COUNT_MAX_reg[11]_3 ,
+    SR,
+    wr_en,
     \signal_in_d_reg[3]_0 ,
     CLK_125MHZ_FPGA_IBUF_BUFG);
   output \edge_detect_pulse_reg[3]_0 ;
   output [3:0]Q;
-  output \edge_detect_pulse_reg[1]_0 ;
   output \edge_detect_pulse_reg[0]_0 ;
-  output [4:0]D;
+  output \present_state_reg[0] ;
+  output \edge_detect_pulse_reg[2]_0 ;
+  output \edge_detect_pulse_reg[2]_1 ;
+  output \edge_detect_pulse_reg[0]_1 ;
+  output \edge_detect_pulse_reg[0]_2 ;
+  output \edge_detect_pulse_reg[0]_3 ;
+  output [2:0]D;
+  output \edge_detect_pulse_reg[1]_0 ;
   output \edge_detect_pulse_reg[1]_1 ;
-  output \edge_detect_pulse_reg[1]_2 ;
   output \edge_detect_pulse_reg[3]_1 ;
   output [0:0]E;
-  output \edge_detect_pulse_reg[1]_3 ;
-  output \edge_detect_pulse_reg[2]_0 ;
-  output wr_en;
-  output \sync_signal_reg[0] ;
   output \edge_detect_pulse_reg[3]_2 ;
+  output \edge_detect_pulse_reg[1]_2 ;
+  output \edge_detect_pulse_reg[0]_4 ;
+  output \sync_signal_reg[0] ;
   output \edge_detect_pulse_reg[3]_3 ;
   output \edge_detect_pulse_reg[3]_4 ;
   input \sample_counter_reg[0] ;
   input [0:0]CO;
   input [0:0]\COUNT_MAX_reg[11] ;
   input [1:0]LEDS_OBUF;
-  input [4:0]COUNT_MAX13_in;
-  input \COUNT_MAX_reg[11]_0 ;
-  input [6:0]\COUNT_MAX_reg[11]_1 ;
-  input [3:0]COUNT_MAX1;
+  input [3:0]\COUNT_MAX_reg[11]_0 ;
+  input \COUNT_MAX_reg[11]_1 ;
+  input [2:0]COUNT_MAX13_in;
+  input [1:0]COUNT_MAX1;
   input [0:0]sq_wave_leds;
   input \COUNT_MAX_reg[10] ;
   input \COUNT_MAX_reg[11]_2 ;
   input \COUNT_MAX_reg[11]_3 ;
+  input [0:0]SR;
+  input wr_en;
   input [3:0]\signal_in_d_reg[3]_0 ;
   input CLK_125MHZ_FPGA_IBUF_BUFG;
 
@@ -1602,37 +1635,41 @@ module edge_detector
   wire \<const1> ;
   wire CLK_125MHZ_FPGA_IBUF_BUFG;
   wire [0:0]CO;
-  wire [3:0]COUNT_MAX1;
-  wire [4:0]COUNT_MAX13_in;
-  wire \COUNT_MAX[11]_i_6_n_0 ;
+  wire [1:0]COUNT_MAX1;
+  wire [2:0]COUNT_MAX13_in;
+  wire \COUNT_MAX[11]_i_5_n_0 ;
   wire \COUNT_MAX[4]_i_2_n_0 ;
-  wire \COUNT_MAX[5]_i_2_n_0 ;
-  wire \COUNT_MAX[6]_i_2_n_0 ;
   wire \COUNT_MAX_reg[10] ;
   wire [0:0]\COUNT_MAX_reg[11] ;
-  wire \COUNT_MAX_reg[11]_0 ;
-  wire [6:0]\COUNT_MAX_reg[11]_1 ;
+  wire [3:0]\COUNT_MAX_reg[11]_0 ;
+  wire \COUNT_MAX_reg[11]_1 ;
   wire \COUNT_MAX_reg[11]_2 ;
   wire \COUNT_MAX_reg[11]_3 ;
-  wire [4:0]D;
+  wire [2:0]D;
   wire [0:0]E;
   wire [1:0]LEDS_OBUF;
   wire [3:0]Q;
+  wire [0:0]SR;
   wire \edge_detect_pulse[0]_i_1_n_0 ;
   wire \edge_detect_pulse[1]_i_1_n_0 ;
   wire \edge_detect_pulse[2]_i_1_n_0 ;
   wire \edge_detect_pulse[3]_i_1_n_0 ;
   wire \edge_detect_pulse_reg[0]_0 ;
+  wire \edge_detect_pulse_reg[0]_1 ;
+  wire \edge_detect_pulse_reg[0]_2 ;
+  wire \edge_detect_pulse_reg[0]_3 ;
+  wire \edge_detect_pulse_reg[0]_4 ;
   wire \edge_detect_pulse_reg[1]_0 ;
   wire \edge_detect_pulse_reg[1]_1 ;
   wire \edge_detect_pulse_reg[1]_2 ;
-  wire \edge_detect_pulse_reg[1]_3 ;
   wire \edge_detect_pulse_reg[2]_0 ;
+  wire \edge_detect_pulse_reg[2]_1 ;
   wire \edge_detect_pulse_reg[3]_0 ;
   wire \edge_detect_pulse_reg[3]_1 ;
   wire \edge_detect_pulse_reg[3]_2 ;
   wire \edge_detect_pulse_reg[3]_3 ;
   wire \edge_detect_pulse_reg[3]_4 ;
+  wire \present_state_reg[0] ;
   wire \sample_counter_reg[0] ;
   wire [3:0]signal_in_d;
   wire [3:0]\signal_in_d_reg[3]_0 ;
@@ -1643,12 +1680,12 @@ module edge_detector
   LUT5 #(
     .INIT(32'hF4F4FFF4)) 
     \COUNT_MAX[10]_i_1 
-       (.I0(\edge_detect_pulse_reg[1]_2 ),
-        .I1(\COUNT_MAX_reg[11]_1 [5]),
+       (.I0(\edge_detect_pulse_reg[1]_0 ),
+        .I1(\COUNT_MAX_reg[11]_0 [2]),
         .I2(\COUNT_MAX_reg[10] ),
-        .I3(COUNT_MAX13_in[3]),
+        .I3(COUNT_MAX13_in[1]),
         .I4(\edge_detect_pulse_reg[1]_1 ),
-        .O(D[3]));
+        .O(D[1]));
   LUT4 #(
     .INIT(16'hFF0E)) 
     \COUNT_MAX[11]_i_1 
@@ -1660,13 +1697,13 @@ module edge_detector
   LUT6 #(
     .INIT(64'hFFF4FFF4FFFFFFF4)) 
     \COUNT_MAX[11]_i_2 
-       (.I0(\edge_detect_pulse_reg[1]_1 ),
-        .I1(COUNT_MAX13_in[4]),
-        .I2(\COUNT_MAX_reg[11]_0 ),
-        .I3(\COUNT_MAX[11]_i_6_n_0 ),
-        .I4(\COUNT_MAX_reg[11]_1 [6]),
-        .I5(\edge_detect_pulse_reg[1]_2 ),
-        .O(D[4]));
+       (.I0(\edge_detect_pulse_reg[1]_0 ),
+        .I1(\COUNT_MAX_reg[11]_0 [3]),
+        .I2(\COUNT_MAX_reg[11]_1 ),
+        .I3(\COUNT_MAX[11]_i_5_n_0 ),
+        .I4(COUNT_MAX13_in[2]),
+        .I5(\edge_detect_pulse_reg[1]_1 ),
+        .O(D[2]));
   LUT4 #(
     .INIT(16'hFDFF)) 
     \COUNT_MAX[11]_i_3 
@@ -1674,16 +1711,16 @@ module edge_detector
         .I1(\COUNT_MAX_reg[11] ),
         .I2(Q[3]),
         .I3(\COUNT_MAX_reg[11]_3 ),
-        .O(\edge_detect_pulse_reg[1]_1 ));
+        .O(\edge_detect_pulse_reg[1]_0 ));
   LUT5 #(
     .INIT(32'h00002022)) 
-    \COUNT_MAX[11]_i_6 
-       (.I0(COUNT_MAX1[3]),
+    \COUNT_MAX[11]_i_5 
+       (.I0(COUNT_MAX1[1]),
         .I1(sq_wave_leds),
         .I2(\COUNT_MAX_reg[11] ),
         .I3(Q[1]),
         .I4(Q[3]),
-        .O(\COUNT_MAX[11]_i_6_n_0 ));
+        .O(\COUNT_MAX[11]_i_5_n_0 ));
   LUT4 #(
     .INIT(16'hFDFF)) 
     \COUNT_MAX[11]_i_7 
@@ -1691,14 +1728,14 @@ module edge_detector
         .I1(\COUNT_MAX_reg[11] ),
         .I2(Q[3]),
         .I3(\COUNT_MAX_reg[11]_2 ),
-        .O(\edge_detect_pulse_reg[1]_2 ));
+        .O(\edge_detect_pulse_reg[1]_1 ));
   LUT3 #(
     .INIT(8'hEF)) 
     \COUNT_MAX[2]_i_3 
        (.I0(Q[3]),
         .I1(\COUNT_MAX_reg[11] ),
         .I2(Q[1]),
-        .O(\edge_detect_pulse_reg[3]_3 ));
+        .O(\edge_detect_pulse_reg[3]_4 ));
   LUT4 #(
     .INIT(16'hBBFB)) 
     \COUNT_MAX[2]_i_5 
@@ -1708,22 +1745,22 @@ module edge_detector
         .I3(\COUNT_MAX_reg[11] ),
         .O(\edge_detect_pulse_reg[3]_1 ));
   LUT4 #(
-    .INIT(16'h0051)) 
+    .INIT(16'hFFAE)) 
     \COUNT_MAX[2]_i_6 
        (.I0(Q[3]),
         .I1(Q[1]),
         .I2(\COUNT_MAX_reg[11] ),
         .I3(sq_wave_leds),
-        .O(\edge_detect_pulse_reg[3]_4 ));
+        .O(\edge_detect_pulse_reg[3]_2 ));
   LUT6 #(
     .INIT(64'hFFF4FFF4FFFFFFF4)) 
     \COUNT_MAX[4]_i_1 
-       (.I0(\edge_detect_pulse_reg[1]_1 ),
-        .I1(COUNT_MAX13_in[0]),
-        .I2(\COUNT_MAX_reg[11]_0 ),
+       (.I0(\edge_detect_pulse_reg[1]_0 ),
+        .I1(\COUNT_MAX_reg[11]_0 [0]),
+        .I2(\COUNT_MAX_reg[11]_1 ),
         .I3(\COUNT_MAX[4]_i_2_n_0 ),
-        .I4(\COUNT_MAX_reg[11]_1 [0]),
-        .I5(\edge_detect_pulse_reg[1]_2 ),
+        .I4(COUNT_MAX13_in[0]),
+        .I5(\edge_detect_pulse_reg[1]_1 ),
         .O(D[0]));
   LUT6 #(
     .INIT(64'h3232003202020002)) 
@@ -1733,58 +1770,27 @@ module edge_detector
         .I2(sq_wave_leds),
         .I3(Q[1]),
         .I4(\COUNT_MAX_reg[11] ),
-        .I5(\COUNT_MAX_reg[11]_1 [2]),
+        .I5(\COUNT_MAX_reg[11]_0 [1]),
         .O(\COUNT_MAX[4]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFF4FFF4FFFFFFF4)) 
-    \COUNT_MAX[5]_i_1 
-       (.I0(\edge_detect_pulse_reg[1]_2 ),
-        .I1(\COUNT_MAX_reg[11]_1 [1]),
-        .I2(\COUNT_MAX_reg[11]_0 ),
-        .I3(\COUNT_MAX[5]_i_2_n_0 ),
-        .I4(COUNT_MAX13_in[1]),
-        .I5(\edge_detect_pulse_reg[1]_1 ),
-        .O(D[1]));
-  LUT6 #(
-    .INIT(64'h3232003202020002)) 
-    \COUNT_MAX[5]_i_2 
-       (.I0(COUNT_MAX1[1]),
-        .I1(Q[3]),
-        .I2(sq_wave_leds),
-        .I3(Q[1]),
-        .I4(\COUNT_MAX_reg[11] ),
-        .I5(\COUNT_MAX_reg[11]_1 [3]),
-        .O(\COUNT_MAX[5]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFF4FFF4FFFFFFF4)) 
-    \COUNT_MAX[6]_i_1 
-       (.I0(\edge_detect_pulse_reg[1]_2 ),
-        .I1(\COUNT_MAX_reg[11]_1 [2]),
-        .I2(\COUNT_MAX_reg[11]_0 ),
-        .I3(\COUNT_MAX[6]_i_2_n_0 ),
-        .I4(COUNT_MAX13_in[2]),
-        .I5(\edge_detect_pulse_reg[1]_1 ),
-        .O(D[2]));
-  LUT6 #(
-    .INIT(64'h3232003202020002)) 
-    \COUNT_MAX[6]_i_2 
-       (.I0(COUNT_MAX1[2]),
-        .I1(Q[3]),
-        .I2(sq_wave_leds),
-        .I3(Q[1]),
-        .I4(\COUNT_MAX_reg[11] ),
-        .I5(\COUNT_MAX_reg[11]_1 [4]),
-        .O(\COUNT_MAX[6]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h2)) 
-    \COUNT_MAX[7]_i_4 
+    \COUNT_MAX[7]_i_5 
        (.I0(Q[1]),
         .I1(\COUNT_MAX_reg[11] ),
-        .O(\edge_detect_pulse_reg[1]_3 ));
+        .O(\edge_detect_pulse_reg[1]_2 ));
   GND GND
        (.G(\<const0> ));
   VCC VCC
        (.P(\<const1> ));
+  LUT5 #(
+    .INIT(32'hE0000000)) 
+    \d_in[23]_i_1 
+       (.I0(Q[0]),
+        .I1(Q[1]),
+        .I2(\COUNT_MAX_reg[11] ),
+        .I3(LEDS_OBUF[0]),
+        .I4(LEDS_OBUF[1]),
+        .O(\edge_detect_pulse_reg[0]_2 ));
   LUT2 #(
     .INIT(4'h2)) 
     \edge_detect_pulse[0]_i_1 
@@ -1797,7 +1803,6 @@ module edge_detector
        (.I0(\signal_in_d_reg[3]_0 [1]),
         .I1(signal_in_d[1]),
         .O(\edge_detect_pulse[1]_i_1_n_0 ));
-  (* \PinAttr:I1:HOLD_DETOUR  = "153" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \edge_detect_pulse[2]_i_1 
@@ -1844,13 +1849,13 @@ module edge_detector
         .R(\<const0> ));
   LUT5 #(
     .INIT(32'hBFFFFFFF)) 
-    \fcw[5]_i_3 
+    \fcw[11]_i_2 
        (.I0(Q[0]),
-        .I1(LEDS_OBUF[1]),
-        .I2(LEDS_OBUF[0]),
-        .I3(\COUNT_MAX_reg[11] ),
-        .I4(Q[1]),
-        .O(\edge_detect_pulse_reg[0]_0 ));
+        .I1(\COUNT_MAX_reg[11] ),
+        .I2(Q[1]),
+        .I3(LEDS_OBUF[0]),
+        .I4(LEDS_OBUF[1]),
+        .O(\edge_detect_pulse_reg[0]_1 ));
   LUT4 #(
     .INIT(16'hFB04)) 
     mode_i_1
@@ -1859,19 +1864,48 @@ module edge_detector
         .I2(Q[3]),
         .I3(sq_wave_leds),
         .O(\sync_signal_reg[0] ));
-  LUT2 #(
-    .INIT(4'h8)) 
-    \next_state[0]_i_2 
-       (.I0(Q[2]),
-        .I1(\COUNT_MAX_reg[11] ),
-        .O(\edge_detect_pulse_reg[2]_0 ));
   LUT3 #(
     .INIT(8'h1F)) 
-    \next_state[1]_i_3 
-       (.I0(Q[1]),
-        .I1(Q[0]),
+    \next_state[0]_i_3 
+       (.I0(Q[0]),
+        .I1(Q[1]),
         .I2(\COUNT_MAX_reg[11] ),
-        .O(\edge_detect_pulse_reg[1]_0 ));
+        .O(\edge_detect_pulse_reg[0]_3 ));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \next_state[0]_i_4 
+       (.I0(Q[2]),
+        .I1(\COUNT_MAX_reg[11] ),
+        .O(\edge_detect_pulse_reg[2]_1 ));
+  LUT5 #(
+    .INIT(32'hFF40FFFF)) 
+    \next_state[1]_i_2 
+       (.I0(Q[0]),
+        .I1(Q[2]),
+        .I2(\COUNT_MAX_reg[11] ),
+        .I3(LEDS_OBUF[0]),
+        .I4(LEDS_OBUF[1]),
+        .O(\edge_detect_pulse_reg[0]_0 ));
+  LUT6 #(
+    .INIT(64'hCCCCCCC04400CCC0)) 
+    \next_state[1]_i_3 
+       (.I0(LEDS_OBUF[0]),
+        .I1(\COUNT_MAX_reg[11] ),
+        .I2(Q[1]),
+        .I3(Q[0]),
+        .I4(LEDS_OBUF[1]),
+        .I5(Q[2]),
+        .O(\present_state_reg[0] ));
+  LUT6 #(
+    .INIT(64'h2A2A2AEAC0C0C0C0)) 
+    rd_en_i_2
+       (.I0(Q[2]),
+        .I1(LEDS_OBUF[0]),
+        .I2(LEDS_OBUF[1]),
+        .I3(Q[0]),
+        .I4(Q[1]),
+        .I5(\COUNT_MAX_reg[11] ),
+        .O(\edge_detect_pulse_reg[2]_0 ));
   (* OPT_MODIFIED = "RETARGET" *) 
   LUT3 #(
     .INIT(8'hEA)) 
@@ -1886,7 +1920,7 @@ module edge_detector
     sel_i_1
        (.I0(Q[3]),
         .I1(\sample_counter_reg[0] ),
-        .O(\edge_detect_pulse_reg[3]_2 ));
+        .O(\edge_detect_pulse_reg[3]_3 ));
   FDRE #(
     .INIT(1'b0)) 
     \signal_in_d_reg[0] 
@@ -1919,94 +1953,84 @@ module edge_detector
         .D(\signal_in_d_reg[3]_0 [3]),
         .Q(signal_in_d[3]),
         .R(\<const0> ));
-  LUT2 #(
-    .INIT(4'hE)) 
+  LUT6 #(
+    .INIT(64'hEFFFAAAA2000AAAA)) 
     wr_en_i_1
-       (.I0(Q[0]),
-        .I1(Q[1]),
-        .O(wr_en));
+       (.I0(\edge_detect_pulse_reg[0]_2 ),
+        .I1(Q[0]),
+        .I2(Q[2]),
+        .I3(\COUNT_MAX_reg[11] ),
+        .I4(SR),
+        .I5(wr_en),
+        .O(\edge_detect_pulse_reg[0]_4 ));
 endmodule
 
 module fcw_ram
    (D,
     Q,
     addr,
-    \ram_reg[0][0]_0 ,
-    \fcw_reg[20] ,
-    \fcw_reg[20]_0 ,
-    \fcw_reg[20]_1 ,
-    \fcw_reg[20]_2 ,
-    O,
-    \fcw_reg[18] ,
-    \fcw_reg[15] ,
-    \fcw_reg[15]_0 ,
-    \fcw_reg[14] ,
-    \fcw_reg[6] ,
-    \fcw_reg[6]_0 ,
+    \ram_reg[3][0]_0 ,
     \fcw_reg[0] ,
     \fcw_reg[0]_0 ,
     \fcw_reg[0]_1 ,
     \fcw_reg[0]_2 ,
-    fcw1,
-    \fcw_reg[23] ,
-    \fcw_reg[23]_0 ,
-    \fcw_reg[1] ,
-    \fcw_reg[5] ,
-    \fcw_reg[1]_0 ,
-    \fcw_reg[2] ,
-    \fcw_reg[2]_0 ,
-    \fcw_reg[7] ,
+    \fcw_reg[0]_3 ,
     \fcw_reg[11] ,
-    \fcw_reg[5]_0 ,
-    \fcw_reg[5]_1 ,
+    \fcw_reg[5] ,
     \ram_reg[3][2]_0 ,
-    \fcw_reg[5]_2 ,
+    \fcw_reg[11]_0 ,
+    \fcw_reg[2] ,
+    \fcw_reg[11]_1 ,
+    \fcw_reg[1] ,
+    \fcw_reg[1]_0 ,
+    O,
+    \fcw_reg[2]_0 ,
+    fcw1,
+    \fcw_reg[9] ,
+    \fcw_reg[11]_2 ,
+    \fcw_reg[17] ,
+    \fcw_reg[17]_0 ,
+    \fcw_reg[21] ,
+    \fcw_reg[23] ,
     \ram_reg[0][23]_0 ,
     CLK_125MHZ_FPGA_IBUF_BUFG,
     E);
-  output [14:0]D;
-  output [8:0]Q;
+  output [13:0]D;
+  output [9:0]Q;
   input [1:0]addr;
-  input \ram_reg[0][0]_0 ;
-  input \fcw_reg[20] ;
-  input \fcw_reg[20]_0 ;
-  input \fcw_reg[20]_1 ;
-  input \fcw_reg[20]_2 ;
-  input [2:0]O;
-  input \fcw_reg[18] ;
-  input \fcw_reg[15] ;
-  input [1:0]\fcw_reg[15]_0 ;
-  input \fcw_reg[14] ;
-  input \fcw_reg[6] ;
-  input [0:0]\fcw_reg[6]_0 ;
+  input \ram_reg[3][0]_0 ;
   input \fcw_reg[0] ;
   input \fcw_reg[0]_0 ;
   input \fcw_reg[0]_1 ;
   input \fcw_reg[0]_2 ;
-  input [4:0]fcw1;
-  input \fcw_reg[23] ;
-  input [1:0]\fcw_reg[23]_0 ;
-  input \fcw_reg[1] ;
-  input [1:0]\fcw_reg[5] ;
-  input [0:0]\fcw_reg[1]_0 ;
-  input \fcw_reg[2] ;
-  input \fcw_reg[2]_0 ;
-  input \fcw_reg[7] ;
+  input \fcw_reg[0]_3 ;
   input \fcw_reg[11] ;
-  input \fcw_reg[5]_0 ;
-  input [0:0]\fcw_reg[5]_1 ;
+  input [0:0]\fcw_reg[5] ;
   input [2:0]\ram_reg[3][2]_0 ;
-  input \fcw_reg[5]_2 ;
+  input \fcw_reg[11]_0 ;
+  input [1:0]\fcw_reg[2] ;
+  input \fcw_reg[11]_1 ;
+  input \fcw_reg[1] ;
+  input \fcw_reg[1]_0 ;
+  input [3:0]O;
+  input \fcw_reg[2]_0 ;
+  input [10:0]fcw1;
+  input [1:0]\fcw_reg[9] ;
+  input [0:0]\fcw_reg[11]_2 ;
+  input \fcw_reg[17] ;
+  input [0:0]\fcw_reg[17]_0 ;
+  input [1:0]\fcw_reg[21] ;
+  input [1:0]\fcw_reg[23] ;
   input [23:0]\ram_reg[0][23]_0 ;
   input CLK_125MHZ_FPGA_IBUF_BUFG;
   input [0:0]E;
 
   wire \<const0> ;
   wire CLK_125MHZ_FPGA_IBUF_BUFG;
-  wire [14:0]D;
+  wire [13:0]D;
   wire [0:0]E;
-  wire [2:0]O;
-  wire [8:0]Q;
+  wire [3:0]O;
+  wire [9:0]Q;
   wire [1:0]addr;
   wire [23:0]d_out;
   wire \d_out[0]_i_1_n_0 ;
@@ -2033,58 +2057,57 @@ module fcw_ram
   wire \d_out[7]_i_1_n_0 ;
   wire \d_out[8]_i_1_n_0 ;
   wire \d_out[9]_i_1_n_0 ;
-  wire [4:0]fcw1;
+  wire [10:0]fcw1;
+  wire \fcw[0]_i_3_n_0 ;
+  wire \fcw[11]_i_3_n_0 ;
+  wire \fcw[2]_i_2_n_0 ;
+  wire \fcw[3]_i_2_n_0 ;
   wire \fcw[4]_i_2_n_0 ;
   wire \fcw[5]_i_2_n_0 ;
+  wire \fcw[7]_i_2_n_0 ;
+  wire \fcw[9]_i_2_n_0 ;
   wire \fcw_reg[0] ;
   wire \fcw_reg[0]_0 ;
   wire \fcw_reg[0]_1 ;
   wire \fcw_reg[0]_2 ;
+  wire \fcw_reg[0]_3 ;
   wire \fcw_reg[11] ;
-  wire \fcw_reg[14] ;
-  wire \fcw_reg[15] ;
-  wire [1:0]\fcw_reg[15]_0 ;
-  wire \fcw_reg[18] ;
+  wire \fcw_reg[11]_0 ;
+  wire \fcw_reg[11]_1 ;
+  wire [0:0]\fcw_reg[11]_2 ;
+  wire \fcw_reg[17] ;
+  wire [0:0]\fcw_reg[17]_0 ;
   wire \fcw_reg[1] ;
-  wire [0:0]\fcw_reg[1]_0 ;
-  wire \fcw_reg[20] ;
-  wire \fcw_reg[20]_0 ;
-  wire \fcw_reg[20]_1 ;
-  wire \fcw_reg[20]_2 ;
-  wire \fcw_reg[23] ;
-  wire [1:0]\fcw_reg[23]_0 ;
-  wire \fcw_reg[2] ;
+  wire \fcw_reg[1]_0 ;
+  wire [1:0]\fcw_reg[21] ;
+  wire [1:0]\fcw_reg[23] ;
+  wire [1:0]\fcw_reg[2] ;
   wire \fcw_reg[2]_0 ;
-  wire [1:0]\fcw_reg[5] ;
-  wire \fcw_reg[5]_0 ;
-  wire [0:0]\fcw_reg[5]_1 ;
-  wire \fcw_reg[5]_2 ;
-  wire \fcw_reg[6] ;
-  wire [0:0]\fcw_reg[6]_0 ;
-  wire \fcw_reg[7] ;
+  wire [0:0]\fcw_reg[5] ;
+  wire [1:0]\fcw_reg[9] ;
   wire ram;
   wire \ram[0][23]_i_1_n_0 ;
   wire \ram[1][23]_i_1_n_0 ;
   wire \ram[2][23]_i_1_n_0 ;
   wire [23:0]\ram_reg[0] ;
-  wire \ram_reg[0][0]_0 ;
   wire [23:0]\ram_reg[0][23]_0 ;
   wire [23:0]\ram_reg[1] ;
   wire [23:0]\ram_reg[2] ;
   wire [23:0]\ram_reg[3] ;
+  wire \ram_reg[3][0]_0 ;
   wire [2:0]\ram_reg[3][2]_0 ;
 
   GND GND
        (.G(\<const0> ));
   LUT6 #(
-    .INIT(64'hFFAAF0CC00AAF0CC)) 
+    .INIT(64'hF0AAFFCCF0AA00CC)) 
     \d_out[0]_i_1 
        (.I0(\ram_reg[1] [0]),
         .I1(\ram_reg[0] [0]),
-        .I2(\ram_reg[2] [0]),
+        .I2(\ram_reg[3] [0]),
         .I3(addr[1]),
         .I4(addr[0]),
-        .I5(\ram_reg[3] [0]),
+        .I5(\ram_reg[2] [0]),
         .O(\d_out[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hFFAAF0CC00AAF0CC)) 
@@ -2097,14 +2120,14 @@ module fcw_ram
         .I5(\ram_reg[3] [10]),
         .O(\d_out[10]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFAAF0CC00AAF0CC)) 
+    .INIT(64'hF0AAFFCCF0AA00CC)) 
     \d_out[11]_i_1 
        (.I0(\ram_reg[1] [11]),
         .I1(\ram_reg[0] [11]),
-        .I2(\ram_reg[2] [11]),
+        .I2(\ram_reg[3] [11]),
         .I3(addr[1]),
         .I4(addr[0]),
-        .I5(\ram_reg[3] [11]),
+        .I5(\ram_reg[2] [11]),
         .O(\d_out[11]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hFFAAF0CC00AAF0CC)) 
@@ -2147,23 +2170,23 @@ module fcw_ram
         .I5(\ram_reg[3] [15]),
         .O(\d_out[15]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFAAF0CC00AAF0CC)) 
+    .INIT(64'hF0AAFFCCF0AA00CC)) 
     \d_out[16]_i_1 
        (.I0(\ram_reg[1] [16]),
         .I1(\ram_reg[0] [16]),
-        .I2(\ram_reg[2] [16]),
+        .I2(\ram_reg[3] [16]),
         .I3(addr[1]),
         .I4(addr[0]),
-        .I5(\ram_reg[3] [16]),
+        .I5(\ram_reg[2] [16]),
         .O(\d_out[16]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFCCF0AA00CCF0AA)) 
+    .INIT(64'hFFAAF0CC00AAF0CC)) 
     \d_out[17]_i_1 
-       (.I0(\ram_reg[0] [17]),
-        .I1(\ram_reg[2] [17]),
-        .I2(\ram_reg[1] [17]),
-        .I3(addr[0]),
-        .I4(addr[1]),
+       (.I0(\ram_reg[1] [17]),
+        .I1(\ram_reg[0] [17]),
+        .I2(\ram_reg[2] [17]),
+        .I3(addr[1]),
+        .I4(addr[0]),
         .I5(\ram_reg[3] [17]),
         .O(\d_out[17]_i_1_n_0 ));
   LUT6 #(
@@ -2177,23 +2200,23 @@ module fcw_ram
         .I5(\ram_reg[3] [18]),
         .O(\d_out[18]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFAAF0CC00AAF0CC)) 
+    .INIT(64'hF0AAFFCCF0AA00CC)) 
     \d_out[19]_i_1 
        (.I0(\ram_reg[1] [19]),
         .I1(\ram_reg[0] [19]),
-        .I2(\ram_reg[2] [19]),
+        .I2(\ram_reg[3] [19]),
         .I3(addr[1]),
         .I4(addr[0]),
-        .I5(\ram_reg[3] [19]),
+        .I5(\ram_reg[2] [19]),
         .O(\d_out[19]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFCCF0AA00CCF0AA)) 
+    .INIT(64'hFFAAF0CC00AAF0CC)) 
     \d_out[1]_i_1 
-       (.I0(\ram_reg[0] [1]),
-        .I1(\ram_reg[2] [1]),
-        .I2(\ram_reg[1] [1]),
-        .I3(addr[0]),
-        .I4(addr[1]),
+       (.I0(\ram_reg[1] [1]),
+        .I1(\ram_reg[0] [1]),
+        .I2(\ram_reg[2] [1]),
+        .I3(addr[1]),
+        .I4(addr[0]),
         .I5(\ram_reg[3] [1]),
         .O(\d_out[1]_i_1_n_0 ));
   LUT6 #(
@@ -2247,14 +2270,14 @@ module fcw_ram
         .I5(\ram_reg[3] [2]),
         .O(\d_out[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFAAF0CC00AAF0CC)) 
+    .INIT(64'hF0AAFFCCF0AA00CC)) 
     \d_out[3]_i_1 
        (.I0(\ram_reg[1] [3]),
         .I1(\ram_reg[0] [3]),
-        .I2(\ram_reg[2] [3]),
+        .I2(\ram_reg[3] [3]),
         .I3(addr[1]),
         .I4(addr[0]),
-        .I5(\ram_reg[3] [3]),
+        .I5(\ram_reg[2] [3]),
         .O(\d_out[3]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hFFAAF0CC00AAF0CC)) 
@@ -2297,23 +2320,23 @@ module fcw_ram
         .I5(\ram_reg[3] [7]),
         .O(\d_out[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFAAF0CC00AAF0CC)) 
+    .INIT(64'hF0AAFFCCF0AA00CC)) 
     \d_out[8]_i_1 
        (.I0(\ram_reg[1] [8]),
         .I1(\ram_reg[0] [8]),
-        .I2(\ram_reg[2] [8]),
+        .I2(\ram_reg[3] [8]),
         .I3(addr[1]),
         .I4(addr[0]),
-        .I5(\ram_reg[3] [8]),
+        .I5(\ram_reg[2] [8]),
         .O(\d_out[8]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFCCF0AA00CCF0AA)) 
+    .INIT(64'hFFAAF0CC00AAF0CC)) 
     \d_out[9]_i_1 
-       (.I0(\ram_reg[0] [9]),
-        .I1(\ram_reg[2] [9]),
-        .I2(\ram_reg[1] [9]),
-        .I3(addr[0]),
-        .I4(addr[1]),
+       (.I0(\ram_reg[1] [9]),
+        .I1(\ram_reg[0] [9]),
+        .I2(\ram_reg[2] [9]),
+        .I3(addr[1]),
+        .I4(addr[0]),
         .I5(\ram_reg[3] [9]),
         .O(\d_out[9]_i_1_n_0 ));
   FDRE #(
@@ -2330,7 +2353,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[10]_i_1_n_0 ),
-        .Q(Q[3]),
+        .Q(Q[2]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2346,7 +2369,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[12]_i_1_n_0 ),
-        .Q(Q[4]),
+        .Q(Q[3]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2354,7 +2377,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[13]_i_1_n_0 ),
-        .Q(Q[5]),
+        .Q(Q[4]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2362,7 +2385,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[14]_i_1_n_0 ),
-        .Q(d_out[14]),
+        .Q(Q[5]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2370,7 +2393,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[15]_i_1_n_0 ),
-        .Q(d_out[15]),
+        .Q(Q[6]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2378,7 +2401,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[16]_i_1_n_0 ),
-        .Q(Q[6]),
+        .Q(Q[7]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2386,7 +2409,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[17]_i_1_n_0 ),
-        .Q(Q[7]),
+        .Q(d_out[17]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2394,7 +2417,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[18]_i_1_n_0 ),
-        .Q(d_out[18]),
+        .Q(Q[8]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2402,7 +2425,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[19]_i_1_n_0 ),
-        .Q(Q[8]),
+        .Q(d_out[19]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2418,7 +2441,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[20]_i_1_n_0 ),
-        .Q(d_out[20]),
+        .Q(Q[9]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2458,7 +2481,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[3]_i_1_n_0 ),
-        .Q(Q[0]),
+        .Q(d_out[3]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2482,7 +2505,7 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[6]_i_1_n_0 ),
-        .Q(d_out[6]),
+        .Q(Q[0]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2506,197 +2529,253 @@ module fcw_ram
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(\d_out[9]_i_1_n_0 ),
-        .Q(Q[2]),
+        .Q(d_out[9]),
         .R(\<const0> ));
   LUT6 #(
-    .INIT(64'hFFFFFFFF4545FF45)) 
+    .INIT(64'hFF05FF05FFFFFF15)) 
     \fcw[0]_i_1 
        (.I0(\fcw_reg[0] ),
         .I1(\fcw_reg[0]_0 ),
         .I2(\fcw_reg[0]_1 ),
-        .I3(d_out[0]),
-        .I4(\fcw_reg[20] ),
-        .I5(\fcw_reg[0]_2 ),
+        .I3(\fcw[0]_i_3_n_0 ),
+        .I4(\fcw_reg[0]_2 ),
+        .I5(\fcw_reg[0]_3 ),
         .O(D[0]));
-  LUT4 #(
-    .INIT(16'hFFAE)) 
-    \fcw[11]_i_1 
-       (.I0(\fcw_reg[2] ),
-        .I1(d_out[11]),
-        .I2(\fcw_reg[20] ),
-        .I3(\fcw_reg[11] ),
-        .O(D[7]));
   LUT6 #(
-    .INIT(64'h22F2FFFF22F222F2)) 
-    \fcw[14]_i_1 
-       (.I0(d_out[14]),
-        .I1(\fcw_reg[20] ),
-        .I2(\fcw_reg[14] ),
-        .I3(\fcw_reg[20]_1 ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(\fcw_reg[15]_0 [0]),
+    .INIT(64'h2A2A2AAA22222222)) 
+    \fcw[0]_i_3 
+       (.I0(d_out[0]),
+        .I1(\fcw_reg[11] ),
+        .I2(\fcw_reg[5] ),
+        .I3(\ram_reg[3][2]_0 [1]),
+        .I4(\ram_reg[3][2]_0 [0]),
+        .I5(\fcw_reg[11]_0 ),
+        .O(\fcw[0]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFF2222222)) 
+    \fcw[11]_i_1 
+       (.I0(\fcw_reg[0]_1 ),
+        .I1(\fcw_reg[11]_1 ),
+        .I2(\fcw_reg[0]_2 ),
+        .I3(\fcw_reg[11] ),
+        .I4(\fcw_reg[11]_0 ),
+        .I5(\fcw[11]_i_3_n_0 ),
         .O(D[8]));
   LUT6 #(
+    .INIT(64'hF444F444FFFFF444)) 
+    \fcw[11]_i_3 
+       (.I0(\fcw_reg[1]_0 ),
+        .I1(d_out[11]),
+        .I2(fcw1[5]),
+        .I3(\fcw_reg[2]_0 ),
+        .I4(\fcw_reg[11]_2 ),
+        .I5(\fcw_reg[11]_1 ),
+        .O(\fcw[11]_i_3_n_0 ));
+  LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
-    \fcw[15]_i_1 
-       (.I0(d_out[15]),
-        .I1(\fcw_reg[20] ),
-        .I2(\fcw_reg[15] ),
-        .I3(\fcw_reg[20]_1 ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(\fcw_reg[15]_0 [1]),
+    \fcw[17]_i_1 
+       (.I0(d_out[17]),
+        .I1(\fcw_reg[1]_0 ),
+        .I2(fcw1[6]),
+        .I3(\fcw_reg[1] ),
+        .I4(\fcw_reg[17] ),
+        .I5(\fcw_reg[17]_0 ),
         .O(D[9]));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
-    \fcw[18]_i_1 
-       (.I0(d_out[18]),
-        .I1(\fcw_reg[20] ),
-        .I2(\fcw_reg[18] ),
-        .I3(\fcw_reg[20]_1 ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(O[0]),
+    \fcw[19]_i_1 
+       (.I0(d_out[19]),
+        .I1(\fcw_reg[1]_0 ),
+        .I2(fcw1[7]),
+        .I3(\fcw_reg[1] ),
+        .I4(\fcw_reg[17] ),
+        .I5(\fcw_reg[21] [0]),
         .O(D[10]));
   LUT6 #(
-    .INIT(64'h0C0CFFAEFF0CFFAE)) 
+    .INIT(64'h0ECE0ECEFFFF0ECE)) 
     \fcw[1]_i_1 
        (.I0(\fcw_reg[0]_1 ),
-        .I1(d_out[1]),
-        .I2(\fcw_reg[20] ),
-        .I3(\fcw_reg[1]_0 ),
-        .I4(\fcw_reg[1] ),
-        .I5(\fcw_reg[23] ),
+        .I1(\fcw_reg[2] [0]),
+        .I2(\fcw_reg[11]_1 ),
+        .I3(\fcw_reg[1] ),
+        .I4(d_out[1]),
+        .I5(\fcw_reg[1]_0 ),
         .O(D[1]));
-  LUT6 #(
-    .INIT(64'h22F2FFFF22F222F2)) 
-    \fcw[20]_i_1 
-       (.I0(d_out[20]),
-        .I1(\fcw_reg[20] ),
-        .I2(\fcw_reg[20]_0 ),
-        .I3(\fcw_reg[20]_1 ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(O[1]),
-        .O(D[11]));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
     \fcw[21]_i_1 
        (.I0(d_out[21]),
-        .I1(\fcw_reg[20] ),
-        .I2(fcw1[2]),
-        .I3(\fcw_reg[23] ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(O[2]),
-        .O(D[12]));
+        .I1(\fcw_reg[1]_0 ),
+        .I2(fcw1[8]),
+        .I3(\fcw_reg[1] ),
+        .I4(\fcw_reg[17] ),
+        .I5(\fcw_reg[21] [1]),
+        .O(D[11]));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
     \fcw[22]_i_1 
        (.I0(d_out[22]),
-        .I1(\fcw_reg[20] ),
-        .I2(fcw1[3]),
-        .I3(\fcw_reg[23] ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(\fcw_reg[23]_0 [0]),
-        .O(D[13]));
+        .I1(\fcw_reg[1]_0 ),
+        .I2(fcw1[9]),
+        .I3(\fcw_reg[1] ),
+        .I4(\fcw_reg[17] ),
+        .I5(\fcw_reg[23] [0]),
+        .O(D[12]));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
     \fcw[23]_i_2 
        (.I0(d_out[23]),
-        .I1(\fcw_reg[20] ),
-        .I2(fcw1[4]),
-        .I3(\fcw_reg[23] ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(\fcw_reg[23]_0 [1]),
-        .O(D[14]));
-  LUT4 #(
-    .INIT(16'hEEFE)) 
+        .I1(\fcw_reg[1]_0 ),
+        .I2(fcw1[10]),
+        .I3(\fcw_reg[1] ),
+        .I4(\fcw_reg[17] ),
+        .I5(\fcw_reg[23] [1]),
+        .O(D[13]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFF2222222)) 
     \fcw[2]_i_1 
-       (.I0(\fcw_reg[2] ),
-        .I1(\fcw_reg[2]_0 ),
-        .I2(d_out[2]),
-        .I3(\fcw_reg[20] ),
+       (.I0(\fcw_reg[0]_1 ),
+        .I1(\fcw_reg[11]_1 ),
+        .I2(\fcw_reg[0]_2 ),
+        .I3(\fcw_reg[11] ),
+        .I4(\fcw_reg[11]_0 ),
+        .I5(\fcw[2]_i_2_n_0 ),
         .O(D[2]));
+  LUT6 #(
+    .INIT(64'hFFFF44F444F444F4)) 
+    \fcw[2]_i_2 
+       (.I0(\fcw_reg[1]_0 ),
+        .I1(d_out[2]),
+        .I2(O[0]),
+        .I3(\fcw_reg[11]_1 ),
+        .I4(\fcw_reg[2] [1]),
+        .I5(\fcw_reg[2]_0 ),
+        .O(\fcw[2]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFF2222222)) 
+    \fcw[3]_i_1 
+       (.I0(\fcw_reg[0]_1 ),
+        .I1(\fcw_reg[11]_1 ),
+        .I2(\fcw_reg[0]_2 ),
+        .I3(\fcw_reg[11] ),
+        .I4(\fcw_reg[11]_0 ),
+        .I5(\fcw[3]_i_2_n_0 ),
+        .O(D[3]));
+  LUT6 #(
+    .INIT(64'hFFFF44F444F444F4)) 
+    \fcw[3]_i_2 
+       (.I0(\fcw_reg[1]_0 ),
+        .I1(d_out[3]),
+        .I2(O[1]),
+        .I3(\fcw_reg[11]_1 ),
+        .I4(fcw1[0]),
+        .I5(\fcw_reg[2]_0 ),
+        .O(\fcw[3]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hCFCECFCEFFFFCFCE)) 
     \fcw[4]_i_1 
        (.I0(\fcw_reg[0]_1 ),
         .I1(\fcw[4]_i_2_n_0 ),
-        .I2(\fcw_reg[1] ),
-        .I3(\fcw_reg[5] [0]),
-        .I4(fcw1[0]),
-        .I5(\fcw_reg[23] ),
-        .O(D[3]));
+        .I2(\fcw_reg[11]_1 ),
+        .I3(O[2]),
+        .I4(fcw1[1]),
+        .I5(\fcw_reg[1] ),
+        .O(D[4]));
   LUT6 #(
     .INIT(64'h2A2A2AAA22222222)) 
     \fcw[4]_i_2 
        (.I0(d_out[4]),
-        .I1(\fcw_reg[5]_0 ),
-        .I2(\fcw_reg[5]_1 ),
-        .I3(\ram_reg[3][2]_0 [0]),
-        .I4(\ram_reg[3][2]_0 [1]),
-        .I5(\fcw_reg[5]_2 ),
+        .I1(\fcw_reg[11] ),
+        .I2(\fcw_reg[5] ),
+        .I3(\ram_reg[3][2]_0 [1]),
+        .I4(\ram_reg[3][2]_0 [0]),
+        .I5(\fcw_reg[11]_0 ),
         .O(\fcw[4]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hCFCECFCEFFFFCFCE)) 
     \fcw[5]_i_1 
        (.I0(\fcw_reg[0]_1 ),
         .I1(\fcw[5]_i_2_n_0 ),
-        .I2(\fcw_reg[1] ),
-        .I3(\fcw_reg[5] [1]),
-        .I4(fcw1[1]),
-        .I5(\fcw_reg[23] ),
-        .O(D[4]));
+        .I2(\fcw_reg[11]_1 ),
+        .I3(O[3]),
+        .I4(fcw1[2]),
+        .I5(\fcw_reg[1] ),
+        .O(D[5]));
   LUT6 #(
     .INIT(64'h2A2A2AAA22222222)) 
     \fcw[5]_i_2 
        (.I0(d_out[5]),
-        .I1(\fcw_reg[5]_0 ),
-        .I2(\fcw_reg[5]_1 ),
-        .I3(\ram_reg[3][2]_0 [0]),
-        .I4(\ram_reg[3][2]_0 [1]),
-        .I5(\fcw_reg[5]_2 ),
+        .I1(\fcw_reg[11] ),
+        .I2(\fcw_reg[5] ),
+        .I3(\ram_reg[3][2]_0 [1]),
+        .I4(\ram_reg[3][2]_0 [0]),
+        .I5(\fcw_reg[11]_0 ),
         .O(\fcw[5]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h22F2FFFF22F222F2)) 
-    \fcw[6]_i_1 
-       (.I0(d_out[6]),
-        .I1(\fcw_reg[20] ),
-        .I2(\fcw_reg[6] ),
-        .I3(\fcw_reg[20]_1 ),
-        .I4(\fcw_reg[20]_2 ),
-        .I5(\fcw_reg[6]_0 ),
-        .O(D[5]));
-  LUT4 #(
-    .INIT(16'hFFAE)) 
+    .INIT(64'hFFFFFFFFF2222222)) 
     \fcw[7]_i_1 
-       (.I0(\fcw_reg[2] ),
-        .I1(d_out[7]),
-        .I2(\fcw_reg[20] ),
-        .I3(\fcw_reg[7] ),
+       (.I0(\fcw_reg[0]_1 ),
+        .I1(\fcw_reg[11]_1 ),
+        .I2(\fcw_reg[0]_2 ),
+        .I3(\fcw_reg[11] ),
+        .I4(\fcw_reg[11]_0 ),
+        .I5(\fcw[7]_i_2_n_0 ),
         .O(D[6]));
+  LUT6 #(
+    .INIT(64'hF444F444FFFFF444)) 
+    \fcw[7]_i_2 
+       (.I0(\fcw_reg[1]_0 ),
+        .I1(d_out[7]),
+        .I2(fcw1[3]),
+        .I3(\fcw_reg[2]_0 ),
+        .I4(\fcw_reg[9] [0]),
+        .I5(\fcw_reg[11]_1 ),
+        .O(\fcw[7]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFF2222222)) 
+    \fcw[9]_i_1 
+       (.I0(\fcw_reg[0]_1 ),
+        .I1(\fcw_reg[11]_1 ),
+        .I2(\fcw_reg[0]_2 ),
+        .I3(\fcw_reg[11] ),
+        .I4(\fcw_reg[11]_0 ),
+        .I5(\fcw[9]_i_2_n_0 ),
+        .O(D[7]));
+  LUT6 #(
+    .INIT(64'hFFFF44F444F444F4)) 
+    \fcw[9]_i_2 
+       (.I0(\fcw_reg[1]_0 ),
+        .I1(d_out[9]),
+        .I2(\fcw_reg[9] [1]),
+        .I3(\fcw_reg[11]_1 ),
+        .I4(fcw1[4]),
+        .I5(\fcw_reg[2]_0 ),
+        .O(\fcw[9]_i_2_n_0 ));
   LUT3 #(
     .INIT(8'h02)) 
     \ram[0][23]_i_1 
-       (.I0(\ram_reg[0][0]_0 ),
+       (.I0(\ram_reg[3][0]_0 ),
         .I1(addr[1]),
         .I2(addr[0]),
         .O(\ram[0][23]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h08)) 
     \ram[1][23]_i_1 
-       (.I0(\ram_reg[0][0]_0 ),
+       (.I0(\ram_reg[3][0]_0 ),
         .I1(addr[0]),
         .I2(addr[1]),
         .O(\ram[1][23]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h08)) 
     \ram[2][23]_i_1 
-       (.I0(\ram_reg[0][0]_0 ),
+       (.I0(\ram_reg[3][0]_0 ),
         .I1(addr[1]),
         .I2(addr[0]),
         .O(\ram[2][23]_i_1_n_0 ));
   LUT3 #(
     .INIT(8'h80)) 
     \ram[3][23]_i_1 
-       (.I0(\ram_reg[0][0]_0 ),
+       (.I0(\ram_reg[3][0]_0 ),
         .I1(addr[1]),
         .I2(addr[0]),
         .O(ram));
@@ -3472,6 +3551,7 @@ endmodule
 
 module fsm
    (Q,
+    wr_en,
     O,
     \fcw_reg[7]_0 ,
     \fcw_reg[11]_0 ,
@@ -3480,18 +3560,23 @@ module fsm
     \fcw_reg[22]_0 ,
     LEDS_OBUF,
     S,
+    SR,
     CLK_125MHZ_FPGA_IBUF_BUFG,
-    wr_en,
-    \d_in_reg[2]_0 ,
+    wr_en_reg_0,
+    \next_state_reg[1]_0 ,
     sq_wave_leds,
     pa_reg,
+    \fcw_reg[0]_0 ,
     \ram_reg[3][2] ,
-    \fcw_reg[1]_0 ,
-    \next_state_reg[1]_0 ,
+    \fcw_reg[11]_1 ,
+    rd_en_reg_0,
     \next_state_reg[1]_1 ,
     \next_state_reg[1]_2 ,
-    \next_state_reg[0]_0 );
+    \next_state_reg[0]_0 ,
+    \next_state_reg[0]_1 ,
+    \d_in_reg[0]_0 );
   output [22:0]Q;
+  output wr_en;
   output [3:0]O;
   output [3:0]\fcw_reg[7]_0 ;
   output [3:0]\fcw_reg[11]_0 ;
@@ -3500,17 +3585,21 @@ module fsm
   output [3:0]\fcw_reg[22]_0 ;
   output [5:0]LEDS_OBUF;
   output [0:0]S;
+  output [0:0]SR;
   input CLK_125MHZ_FPGA_IBUF_BUFG;
-  input wr_en;
-  input [0:0]\d_in_reg[2]_0 ;
+  input wr_en_reg_0;
+  input [0:0]\next_state_reg[1]_0 ;
   input [0:0]sq_wave_leds;
   input [23:0]pa_reg;
-  input [2:0]\ram_reg[3][2] ;
-  input \fcw_reg[1]_0 ;
-  input \next_state_reg[1]_0 ;
+  input \fcw_reg[0]_0 ;
+  input [3:0]\ram_reg[3][2] ;
+  input \fcw_reg[11]_1 ;
+  input rd_en_reg_0;
   input \next_state_reg[1]_1 ;
   input \next_state_reg[1]_2 ;
   input \next_state_reg[0]_0 ;
+  input \next_state_reg[0]_1 ;
+  input \d_in_reg[0]_0 ;
 
   wire \<const0> ;
   wire \<const1> ;
@@ -3519,6 +3608,7 @@ module fsm
   wire [3:0]O;
   wire [22:0]Q;
   wire [0:0]S;
+  wire [0:0]SR;
   wire [1:0]addr;
   wire \addr[0]_i_1_n_0 ;
   wire \addr[1]_i_1_n_0 ;
@@ -3528,6 +3618,7 @@ module fsm
   wire \addr[1]_i_5_n_0 ;
   wire \addr[1]_i_6_n_0 ;
   wire \addr[1]_i_7_n_0 ;
+  wire \addr[1]_i_8_n_0 ;
   wire \clk_counter[0]_i_2_n_0 ;
   wire [26:0]clk_counter_reg;
   wire \clk_counter_reg[0]_i_1_n_0 ;
@@ -3579,6 +3670,7 @@ module fsm
   wire \d_in[19]_i_1_n_0 ;
   wire \d_in[1]_i_1_n_0 ;
   wire \d_in[20]_i_1_n_0 ;
+  wire \d_in[20]_i_2_n_0 ;
   wire \d_in[21]_i_1_n_0 ;
   wire \d_in[22]_i_1_n_0 ;
   wire \d_in[23]_i_10_n_0 ;
@@ -3586,7 +3678,6 @@ module fsm
   wire \d_in[23]_i_12_n_0 ;
   wire \d_in[23]_i_13_n_0 ;
   wire \d_in[23]_i_14_n_0 ;
-  wire \d_in[23]_i_1_n_0 ;
   wire \d_in[23]_i_2_n_0 ;
   wire \d_in[23]_i_3_n_0 ;
   wire \d_in[23]_i_4_n_0 ;
@@ -3603,8 +3694,8 @@ module fsm
   wire \d_in[7]_i_1_n_0 ;
   wire \d_in[8]_i_1_n_0 ;
   wire \d_in[9]_i_1_n_0 ;
-  wire [0:0]\d_in_reg[2]_0 ;
-  wire [19:3]d_out;
+  wire \d_in_reg[0]_0 ;
+  wire [20:6]d_out;
   wire [23:23]fcw;
   wire [23:3]fcw1;
   wire fcw1_carry__0_n_0;
@@ -3656,43 +3747,34 @@ module fsm
   wire \fcw1_inferred__0/i__carry__3_n_0 ;
   wire \fcw1_inferred__0/i__carry_n_0 ;
   wire \fcw[0]_i_2_n_0 ;
-  wire \fcw[0]_i_3_n_0 ;
   wire \fcw[10]_i_1_n_0 ;
-  wire \fcw[11]_i_2_n_0 ;
-  wire \fcw[11]_i_3_n_0 ;
   wire \fcw[11]_i_4_n_0 ;
-  wire \fcw[11]_i_5_n_0 ;
-  wire \fcw[11]_i_6_n_0 ;
   wire \fcw[12]_i_1_n_0 ;
   wire \fcw[12]_i_2_n_0 ;
   wire \fcw[13]_i_1_n_0 ;
   wire \fcw[13]_i_2_n_0 ;
-  wire \fcw[13]_i_3_n_0 ;
+  wire \fcw[14]_i_1_n_0 ;
   wire \fcw[14]_i_2_n_0 ;
+  wire \fcw[15]_i_1_n_0 ;
   wire \fcw[15]_i_2_n_0 ;
   wire \fcw[16]_i_1_n_0 ;
-  wire \fcw[17]_i_1_n_0 ;
+  wire \fcw[18]_i_1_n_0 ;
   wire \fcw[18]_i_2_n_0 ;
-  wire \fcw[19]_i_1_n_0 ;
+  wire \fcw[20]_i_1_n_0 ;
   wire \fcw[20]_i_2_n_0 ;
-  wire \fcw[23]_i_1_n_0 ;
   wire \fcw[23]_i_3_n_0 ;
   wire \fcw[23]_i_4_n_0 ;
   wire \fcw[23]_i_5_n_0 ;
   wire \fcw[23]_i_6_n_0 ;
-  wire \fcw[2]_i_2_n_0 ;
-  wire \fcw[3]_i_1_n_0 ;
-  wire \fcw[3]_i_2_n_0 ;
+  wire \fcw[6]_i_1_n_0 ;
   wire \fcw[6]_i_2_n_0 ;
-  wire \fcw[7]_i_2_n_0 ;
   wire \fcw[8]_i_1_n_0 ;
   wire \fcw[8]_i_2_n_0 ;
-  wire \fcw[9]_i_1_n_0 ;
-  wire \fcw[9]_i_2_n_0 ;
+  wire \fcw_reg[0]_0 ;
   wire [3:0]\fcw_reg[11]_0 ;
+  wire \fcw_reg[11]_1 ;
   wire [3:0]\fcw_reg[15]_0 ;
   wire [3:0]\fcw_reg[19]_0 ;
-  wire \fcw_reg[1]_0 ;
   wire [3:0]\fcw_reg[22]_0 ;
   wire [3:0]\fcw_reg[7]_0 ;
   wire i__carry__0_i_1_n_0;
@@ -3705,7 +3787,8 @@ module fsm
   wire \next_state[0]_i_1_n_0 ;
   wire \next_state[1]_i_1_n_0 ;
   wire \next_state_reg[0]_0 ;
-  wire \next_state_reg[1]_0 ;
+  wire \next_state_reg[0]_1 ;
+  wire [0:0]\next_state_reg[1]_0 ;
   wire \next_state_reg[1]_1 ;
   wire \next_state_reg[1]_2 ;
   wire notes_n_0;
@@ -3714,7 +3797,6 @@ module fsm
   wire notes_n_11;
   wire notes_n_12;
   wire notes_n_13;
-  wire notes_n_14;
   wire notes_n_2;
   wire notes_n_3;
   wire notes_n_4;
@@ -3755,12 +3837,14 @@ module fsm
   wire \pa_reg[8]_i_1_n_0 ;
   wire \present_state[0]_i_1_n_0 ;
   wire \present_state[1]_i_1_n_0 ;
-  wire [2:0]\ram_reg[3][2] ;
+  wire [3:0]\ram_reg[3][2] ;
   wire rd_en;
   wire rd_en_i_1_n_0;
+  wire rd_en_i_3_n_0;
+  wire rd_en_reg_0;
   wire [0:0]sq_wave_leds;
   wire wr_en;
-  wire wr_en_reg_n_0;
+  wire wr_en_reg_0;
   wire [3:0]\NLW_clk_counter_reg[0]_i_1_CO_UNCONNECTED ;
   wire [3:0]\NLW_clk_counter_reg[12]_i_1_CO_UNCONNECTED ;
   wire [3:0]\NLW_clk_counter_reg[16]_i_1_CO_UNCONNECTED ;
@@ -3791,108 +3875,110 @@ module fsm
     \LEDS_OBUF[0]_inst_i_1 
        (.I0(addr[0]),
         .I1(addr[1]),
-        .I2(\d_in_reg[2]_0 ),
+        .I2(\next_state_reg[1]_0 ),
         .I3(sq_wave_leds),
         .O(LEDS_OBUF[0]));
   LUT3 #(
     .INIT(8'h08)) 
     \LEDS_OBUF[1]_inst_i_1 
-       (.I0(\d_in_reg[2]_0 ),
+       (.I0(\next_state_reg[1]_0 ),
         .I1(addr[0]),
         .I2(addr[1]),
         .O(LEDS_OBUF[1]));
   LUT3 #(
     .INIT(8'h08)) 
     \LEDS_OBUF[2]_inst_i_1 
-       (.I0(\d_in_reg[2]_0 ),
+       (.I0(\next_state_reg[1]_0 ),
         .I1(addr[1]),
         .I2(addr[0]),
         .O(LEDS_OBUF[2]));
   LUT3 #(
     .INIT(8'h80)) 
     \LEDS_OBUF[3]_inst_i_1 
-       (.I0(\d_in_reg[2]_0 ),
+       (.I0(\next_state_reg[1]_0 ),
         .I1(addr[1]),
         .I2(addr[0]),
         .O(LEDS_OBUF[3]));
   VCC VCC
        (.P(\<const1> ));
-  (* \PinAttr:I2:HOLD_DETOUR  = "200" *) 
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
-  LUT3 #(
-    .INIT(8'hB4)) 
+  LUT4 #(
+    .INIT(16'hEF10)) 
     \addr[0]_i_1 
-       (.I0(LEDS_OBUF[5]),
-        .I1(\addr[1]_i_2_n_0 ),
-        .I2(addr[0]),
+       (.I0(\addr[1]_i_4_n_0 ),
+        .I1(\addr[1]_i_3_n_0 ),
+        .I2(\addr[1]_i_2_n_0 ),
+        .I3(addr[0]),
         .O(\addr[0]_i_1_n_0 ));
-  (* \PinAttr:I1:HOLD_DETOUR  = "200" *) 
-  (* SOFT_HLUTNM = "soft_lutpair30" *) 
-  LUT5 #(
-    .INIT(32'hFF9F0060)) 
+  LUT6 #(
+    .INIT(64'hFFFFFF9F00000060)) 
     \addr[1]_i_1 
        (.I0(LEDS_OBUF[4]),
         .I1(addr[0]),
         .I2(\addr[1]_i_2_n_0 ),
-        .I3(LEDS_OBUF[5]),
-        .I4(addr[1]),
+        .I3(\addr[1]_i_3_n_0 ),
+        .I4(\addr[1]_i_4_n_0 ),
+        .I5(addr[1]),
         .O(\addr[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000010000)) 
+    .INIT(64'h0000000000000001)) 
     \addr[1]_i_2 
-       (.I0(\addr[1]_i_3_n_0 ),
-        .I1(clk_counter_reg[16]),
-        .I2(clk_counter_reg[15]),
-        .I3(clk_counter_reg[14]),
-        .I4(\addr[1]_i_4_n_0 ),
-        .I5(\addr[1]_i_5_n_0 ),
+       (.I0(clk_counter_reg[0]),
+        .I1(clk_counter_reg[4]),
+        .I2(clk_counter_reg[22]),
+        .I3(clk_counter_reg[6]),
+        .I4(\addr[1]_i_5_n_0 ),
+        .I5(\addr[1]_i_6_n_0 ),
         .O(\addr[1]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'hFFFE)) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
     \addr[1]_i_3 
        (.I0(clk_counter_reg[19]),
-        .I1(clk_counter_reg[20]),
-        .I2(clk_counter_reg[17]),
-        .I3(clk_counter_reg[18]),
+        .I1(clk_counter_reg[9]),
+        .I2(clk_counter_reg[24]),
+        .I3(clk_counter_reg[8]),
+        .I4(\addr[1]_i_7_n_0 ),
         .O(\addr[1]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000001)) 
+  LUT5 #(
+    .INIT(32'hFFFFFFFE)) 
     \addr[1]_i_4 
-       (.I0(clk_counter_reg[25]),
+       (.I0(LEDS_OBUF[5]),
         .I1(clk_counter_reg[26]),
-        .I2(clk_counter_reg[22]),
-        .I3(clk_counter_reg[21]),
-        .I4(clk_counter_reg[24]),
-        .I5(clk_counter_reg[23]),
+        .I2(clk_counter_reg[25]),
+        .I3(clk_counter_reg[23]),
+        .I4(\addr[1]_i_8_n_0 ),
         .O(\addr[1]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
     \addr[1]_i_5 
-       (.I0(\addr[1]_i_6_n_0 ),
-        .I1(\addr[1]_i_7_n_0 ),
-        .I2(clk_counter_reg[6]),
-        .I3(clk_counter_reg[7]),
-        .I4(clk_counter_reg[4]),
-        .I5(clk_counter_reg[5]),
+       (.I0(clk_counter_reg[13]),
+        .I1(clk_counter_reg[14]),
+        .I2(clk_counter_reg[3]),
+        .I3(clk_counter_reg[16]),
         .O(\addr[1]_i_5_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+  LUT4 #(
+    .INIT(16'hFFFE)) 
     \addr[1]_i_6 
-       (.I0(clk_counter_reg[12]),
-        .I1(clk_counter_reg[13]),
-        .I2(clk_counter_reg[11]),
+       (.I0(clk_counter_reg[20]),
+        .I1(clk_counter_reg[18]),
+        .I2(clk_counter_reg[2]),
         .I3(clk_counter_reg[10]),
-        .I4(clk_counter_reg[9]),
-        .I5(clk_counter_reg[8]),
         .O(\addr[1]_i_6_n_0 ));
   LUT4 #(
     .INIT(16'hFFFE)) 
     \addr[1]_i_7 
-       (.I0(clk_counter_reg[2]),
-        .I1(clk_counter_reg[3]),
-        .I2(clk_counter_reg[1]),
-        .I3(clk_counter_reg[0]),
+       (.I0(clk_counter_reg[1]),
+        .I1(clk_counter_reg[21]),
+        .I2(clk_counter_reg[5]),
+        .I3(clk_counter_reg[12]),
         .O(\addr[1]_i_7_n_0 ));
+  LUT4 #(
+    .INIT(16'hFFFE)) 
+    \addr[1]_i_8 
+       (.I0(clk_counter_reg[7]),
+        .I1(clk_counter_reg[11]),
+        .I2(clk_counter_reg[15]),
+        .I3(clk_counter_reg[17]),
+        .O(\addr[1]_i_8_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \addr_reg[0] 
@@ -4192,184 +4278,176 @@ module fsm
         .D(\clk_counter_reg[8]_i_1_n_6 ),
         .Q(clk_counter_reg[9]),
         .R(\<const0> ));
-  LUT5 #(
-    .INIT(32'hCC80FF80)) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  LUT4 #(
+    .INIT(16'hEE0E)) 
     \d_in[0]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(Q[0]),
-        .I4(\d_in[23]_i_4_n_0 ),
+       (.I0(\d_in[20]_i_2_n_0 ),
+        .I1(Q[0]),
+        .I2(\d_in[23]_i_4_n_0 ),
+        .I3(\ram_reg[3][2] [0]),
         .O(\d_in[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h4073404000330000)) 
+    .INIT(64'h085D080800550000)) 
     \d_in[10]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1_carry__1_n_7),
         .I5(fcw1[10]),
         .O(\d_in[10]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000B08000008080)) 
+    .INIT(64'h00000000C4808080)) 
     \d_in[11]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
-        .I4(\d_in[11]_i_3_n_0 ),
-        .I5(\ram_reg[3][2] [1]),
+        .I4(\ram_reg[3][2] [1]),
+        .I5(\d_in[11]_i_3_n_0 ),
         .O(\d_in[11]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hE2)) 
     \d_in[11]_i_2 
-       (.I0(fcw1[11]),
+       (.I0(fcw1_carry__1_n_6),
         .I1(\ram_reg[3][2] [0]),
-        .I2(fcw1_carry__1_n_6),
+        .I2(fcw1[11]),
         .O(\d_in[11]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h7)) 
     \d_in[11]_i_3 
-       (.I0(LEDS_OBUF[5]),
-        .I1(LEDS_OBUF[4]),
+       (.I0(LEDS_OBUF[4]),
+        .I1(LEDS_OBUF[5]),
         .O(\d_in[11]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[12]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__1_n_5),
-        .I5(fcw1[12]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__1_n_5),
+        .I2(fcw1[12]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[12]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[13]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__1_n_4),
-        .I5(fcw1[13]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__1_n_4),
+        .I2(fcw1[13]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[13]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[14]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__2_n_7),
-        .I5(fcw1[14]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__2_n_7),
+        .I2(fcw1[14]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[14]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[15]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__2_n_6),
-        .I5(fcw1[15]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__2_n_6),
+        .I2(fcw1[15]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[15]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h4073404000330000)) 
+    .INIT(64'h085D080800550000)) 
     \d_in[16]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1_carry__2_n_5),
         .I5(fcw1[16]),
         .O(\d_in[16]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h4073404000330000)) 
+    .INIT(64'h085D080800550000)) 
     \d_in[17]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1_carry__2_n_4),
         .I5(fcw1[17]),
         .O(\d_in[17]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[18]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__3_n_7),
-        .I5(fcw1[18]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__3_n_7),
+        .I2(fcw1[18]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[18]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h4073404000330000)) 
+    .INIT(64'h085D080800550000)) 
     \d_in[19]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1_carry__3_n_6),
         .I5(fcw1[19]),
         .O(\d_in[19]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h7F7F3300)) 
+  (* SOFT_HLUTNM = "soft_lutpair36" *) 
+  LUT4 #(
+    .INIT(16'h2F22)) 
     \d_in[1]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
+       (.I0(\d_in[23]_i_4_n_0 ),
         .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(Q[1]),
+        .I2(\d_in[20]_i_2_n_0 ),
+        .I3(Q[1]),
         .O(\d_in[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[20]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__3_n_5),
-        .I5(fcw1[20]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__3_n_5),
+        .I2(fcw1[20]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[20]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h4073404000330000)) 
-    \d_in[21]_i_1 
+  LUT3 #(
+    .INIT(8'h80)) 
+    \d_in[20]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
         .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+        .I2(\next_state_reg[1]_0 ),
+        .O(\d_in[20]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h085D080800550000)) 
+    \d_in[21]_i_1 
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1_carry__3_n_4),
         .I5(fcw1[21]),
         .O(\d_in[21]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h4073404000330000)) 
+    .INIT(64'h085D080800550000)) 
     \d_in[22]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1_carry__4_n_7),
         .I5(fcw1[22]),
         .O(\d_in[22]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h88800000)) 
-    \d_in[23]_i_1 
-       (.I0(LEDS_OBUF[5]),
-        .I1(LEDS_OBUF[4]),
-        .I2(\ram_reg[3][2] [1]),
-        .I3(\ram_reg[3][2] [0]),
-        .I4(\d_in_reg[2]_0 ),
-        .O(\d_in[23]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hFFFE)) 
     \d_in[23]_i_10 
-       (.I0(Q[14]),
-        .I1(Q[15]),
-        .I2(Q[12]),
-        .I3(Q[13]),
+       (.I0(Q[19]),
+        .I1(Q[21]),
+        .I2(Q[13]),
+        .I3(Q[15]),
         .O(\d_in[23]_i_10_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFFFF8)) 
@@ -4387,7 +4465,7 @@ module fsm
         .I1(Q[11]),
         .I2(\d_in[23]_i_13_n_0 ),
         .I3(Q[5]),
-        .I4(\d_in[23]_i_5_n_0 ),
+        .I4(\d_in[23]_i_6_n_0 ),
         .I5(\d_in[23]_i_14_n_0 ),
         .O(\d_in[23]_i_12_n_0 ));
   LUT2 #(
@@ -4404,17 +4482,17 @@ module fsm
         .I2(Q[15]),
         .O(\d_in[23]_i_14_n_0 ));
   LUT6 #(
-    .INIT(64'h4073404000330000)) 
+    .INIT(64'h085D080800550000)) 
     \d_in[23]_i_2 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1_carry__4_n_6),
         .I5(fcw1[23]),
         .O(\d_in[23]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h00000000000000FE)) 
+    .INIT(64'h00000000000000FD)) 
     \d_in[23]_i_3 
        (.I0(\d_in[23]_i_5_n_0 ),
         .I1(\d_in[23]_i_6_n_0 ),
@@ -4433,30 +4511,30 @@ module fsm
         .I4(Q[20]),
         .I5(Q[18]),
         .O(\d_in[23]_i_4_n_0 ));
-  LUT4 #(
-    .INIT(16'h7FFF)) 
-    \d_in[23]_i_5 
-       (.I0(Q[8]),
-        .I1(Q[9]),
-        .I2(Q[7]),
-        .I3(Q[10]),
-        .O(\d_in[23]_i_5_n_0 ));
-  LUT3 #(
-    .INIT(8'h1F)) 
-    \d_in[23]_i_6 
-       (.I0(Q[5]),
-        .I1(Q[6]),
-        .I2(Q[11]),
-        .O(\d_in[23]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000000000001)) 
-    \d_in[23]_i_7 
+    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    \d_in[23]_i_5 
        (.I0(Q[6]),
         .I1(Q[4]),
         .I2(Q[3]),
         .I3(Q[2]),
         .I4(Q[1]),
         .I5(Q[0]),
+        .O(\d_in[23]_i_5_n_0 ));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    \d_in[23]_i_6 
+       (.I0(Q[8]),
+        .I1(Q[9]),
+        .I2(Q[7]),
+        .I3(Q[10]),
+        .O(\d_in[23]_i_6_n_0 ));
+  LUT3 #(
+    .INIT(8'h1F)) 
+    \d_in[23]_i_7 
+       (.I0(Q[5]),
+        .I1(Q[6]),
+        .I2(Q[11]),
         .O(\d_in[23]_i_7_n_0 ));
   LUT4 #(
     .INIT(16'hFFFE)) 
@@ -4469,87 +4547,85 @@ module fsm
   LUT4 #(
     .INIT(16'hFFFE)) 
     \d_in[23]_i_9 
-       (.I0(Q[20]),
-        .I1(Q[21]),
-        .I2(Q[18]),
-        .I3(Q[19]),
+       (.I0(Q[12]),
+        .I1(Q[18]),
+        .I2(Q[14]),
+        .I3(Q[20]),
         .O(\d_in[23]_i_9_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hE2)) 
     \d_in[2]_i_1 
-       (.I0(Q[2]),
+       (.I0(fcw1_carry_n_7),
         .I1(\ram_reg[3][2] [0]),
-        .I2(fcw1_carry_n_7),
+        .I2(Q[2]),
         .O(\d_in[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
+  (* SOFT_HLUTNM = "soft_lutpair41" *) 
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hE2)) 
     \d_in[3]_i_1 
-       (.I0(fcw1[3]),
+       (.I0(fcw1_carry_n_6),
         .I1(\ram_reg[3][2] [0]),
-        .I2(fcw1_carry_n_6),
+        .I2(fcw1[3]),
         .O(\d_in[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h7373333373403300)) 
+    .INIT(64'h5D5D55555D085500)) 
     \d_in[4]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1[4]),
         .I5(fcw1_carry_n_5),
         .O(\d_in[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h7373333373403300)) 
+    .INIT(64'h5D5D55555D085500)) 
     \d_in[5]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\d_in[23]_i_3_n_0 ),
         .I3(\d_in[23]_i_4_n_0 ),
         .I4(fcw1[5]),
         .I5(fcw1_carry_n_4),
         .O(\d_in[5]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[6]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__0_n_7),
-        .I5(fcw1[6]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__0_n_7),
+        .I2(fcw1[6]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[6]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair39" *) 
+  (* SOFT_HLUTNM = "soft_lutpair38" *) 
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hE2)) 
     \d_in[7]_i_1 
-       (.I0(fcw1[7]),
+       (.I0(fcw1_carry__0_n_6),
         .I1(\ram_reg[3][2] [0]),
-        .I2(fcw1_carry__0_n_6),
+        .I2(fcw1[7]),
         .O(\d_in[7]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hCCFFCCCC80B38080)) 
+  LUT5 #(
+    .INIT(32'hFFFFF044)) 
     \d_in[8]_i_1 
-       (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in_reg[2]_0 ),
-        .I3(\d_in[23]_i_4_n_0 ),
-        .I4(fcw1_carry__0_n_5),
-        .I5(fcw1[8]),
+       (.I0(\d_in[23]_i_4_n_0 ),
+        .I1(fcw1_carry__0_n_5),
+        .I2(fcw1[8]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\d_in[20]_i_2_n_0 ),
         .O(\d_in[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair40" *) 
   LUT3 #(
-    .INIT(8'hB8)) 
+    .INIT(8'hE2)) 
     \d_in[9]_i_1 
-       (.I0(fcw1[9]),
+       (.I0(fcw1_carry__0_n_4),
         .I1(\ram_reg[3][2] [0]),
-        .I2(fcw1_carry__0_n_4),
+        .I2(fcw1[9]),
         .O(\d_in[9]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \d_in_reg[0] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[0]_i_1_n_0 ),
         .Q(d_in[0]),
         .R(\<const0> ));
@@ -4557,7 +4633,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[10] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[10]_i_1_n_0 ),
         .Q(d_in[10]),
         .R(\<const0> ));
@@ -4565,7 +4641,7 @@ module fsm
     .INIT(1'b1)) 
     \d_in_reg[11] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[11]_i_2_n_0 ),
         .Q(d_in[11]),
         .S(\d_in[11]_i_1_n_0 ));
@@ -4573,7 +4649,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[12] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[12]_i_1_n_0 ),
         .Q(d_in[12]),
         .R(\<const0> ));
@@ -4581,7 +4657,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[13] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[13]_i_1_n_0 ),
         .Q(d_in[13]),
         .R(\<const0> ));
@@ -4589,7 +4665,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[14] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[14]_i_1_n_0 ),
         .Q(d_in[14]),
         .R(\<const0> ));
@@ -4597,7 +4673,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[15] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[15]_i_1_n_0 ),
         .Q(d_in[15]),
         .R(\<const0> ));
@@ -4605,7 +4681,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[16] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[16]_i_1_n_0 ),
         .Q(d_in[16]),
         .R(\<const0> ));
@@ -4613,7 +4689,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[17] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[17]_i_1_n_0 ),
         .Q(d_in[17]),
         .R(\<const0> ));
@@ -4621,7 +4697,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[18] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[18]_i_1_n_0 ),
         .Q(d_in[18]),
         .R(\<const0> ));
@@ -4629,7 +4705,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[19] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[19]_i_1_n_0 ),
         .Q(d_in[19]),
         .R(\<const0> ));
@@ -4637,7 +4713,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[1] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[1]_i_1_n_0 ),
         .Q(d_in[1]),
         .R(\<const0> ));
@@ -4645,7 +4721,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[20] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[20]_i_1_n_0 ),
         .Q(d_in[20]),
         .R(\<const0> ));
@@ -4653,7 +4729,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[21] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[21]_i_1_n_0 ),
         .Q(d_in[21]),
         .R(\<const0> ));
@@ -4661,7 +4737,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[22] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[22]_i_1_n_0 ),
         .Q(d_in[22]),
         .R(\<const0> ));
@@ -4669,7 +4745,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[23] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[23]_i_2_n_0 ),
         .Q(d_in[23]),
         .R(\<const0> ));
@@ -4677,7 +4753,7 @@ module fsm
     .INIT(1'b1)) 
     \d_in_reg[2] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[2]_i_1_n_0 ),
         .Q(d_in[2]),
         .S(\d_in[11]_i_1_n_0 ));
@@ -4685,7 +4761,7 @@ module fsm
     .INIT(1'b1)) 
     \d_in_reg[3] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[3]_i_1_n_0 ),
         .Q(d_in[3]),
         .S(\d_in[11]_i_1_n_0 ));
@@ -4693,7 +4769,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[4] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[4]_i_1_n_0 ),
         .Q(d_in[4]),
         .R(\<const0> ));
@@ -4701,7 +4777,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[5] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[5]_i_1_n_0 ),
         .Q(d_in[5]),
         .R(\<const0> ));
@@ -4709,7 +4785,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[6] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[6]_i_1_n_0 ),
         .Q(d_in[6]),
         .R(\<const0> ));
@@ -4717,7 +4793,7 @@ module fsm
     .INIT(1'b1)) 
     \d_in_reg[7] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[7]_i_1_n_0 ),
         .Q(d_in[7]),
         .S(\d_in[11]_i_1_n_0 ));
@@ -4725,7 +4801,7 @@ module fsm
     .INIT(1'b0)) 
     \d_in_reg[8] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[8]_i_1_n_0 ),
         .Q(d_in[8]),
         .R(\<const0> ));
@@ -4733,7 +4809,7 @@ module fsm
     .INIT(1'b1)) 
     \d_in_reg[9] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
+        .CE(\d_in_reg[0]_0 ),
         .D(\d_in[9]_i_1_n_0 ),
         .Q(d_in[9]),
         .S(\d_in[11]_i_1_n_0 ));
@@ -4924,23 +5000,15 @@ module fsm
         .O(fcw1[23:22]),
         .S({\<const0> ,\<const0> ,fcw,Q[22]}));
   LUT6 #(
-    .INIT(64'h777FFFFFFFFFFFFF)) 
+    .INIT(64'h1FFFFFFFFFFFFFFF)) 
     \fcw[0]_i_2 
-       (.I0(LEDS_OBUF[5]),
-        .I1(LEDS_OBUF[4]),
-        .I2(\ram_reg[3][2] [1]),
-        .I3(\ram_reg[3][2] [0]),
-        .I4(\d_in_reg[2]_0 ),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\ram_reg[3][2] [1]),
+        .I2(\next_state_reg[1]_0 ),
+        .I3(LEDS_OBUF[4]),
+        .I4(LEDS_OBUF[5]),
         .I5(Q[0]),
         .O(\fcw[0]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h8000)) 
-    \fcw[0]_i_3 
-       (.I0(\ram_reg[3][2] [0]),
-        .I1(\d_in_reg[2]_0 ),
-        .I2(LEDS_OBUF[4]),
-        .I3(LEDS_OBUF[5]),
-        .O(\fcw[0]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
     \fcw[10]_i_1 
@@ -4951,49 +5019,14 @@ module fsm
         .I4(\fcw[23]_i_5_n_0 ),
         .I5(fcw1_carry__1_n_7),
         .O(\fcw[10]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h8F888F888F8F8F88)) 
-    \fcw[11]_i_2 
-       (.I0(\fcw[0]_i_3_n_0 ),
-        .I1(\d_in[23]_i_3_n_0 ),
-        .I2(\fcw_reg[1]_0 ),
-        .I3(\d_in[23]_i_11_n_0 ),
-        .I4(\fcw[11]_i_4_n_0 ),
-        .I5(\fcw[11]_i_5_n_0 ),
-        .O(\fcw[11]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0B00080008000800)) 
-    \fcw[11]_i_3 
-       (.I0(fcw1[11]),
-        .I1(\ram_reg[3][2] [0]),
-        .I2(\d_in[11]_i_3_n_0 ),
-        .I3(\d_in_reg[2]_0 ),
-        .I4(\ram_reg[3][2] [1]),
-        .I5(fcw1_carry__1_n_6),
-        .O(\fcw[11]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hBBBBBBBBBBBBABAA)) 
+  LUT4 #(
+    .INIT(16'h8000)) 
     \fcw[11]_i_4 
-       (.I0(\fcw[23]_i_6_n_0 ),
-        .I1(\d_in[23]_i_14_n_0 ),
-        .I2(\d_in[23]_i_5_n_0 ),
-        .I3(\fcw[11]_i_6_n_0 ),
-        .I4(Q[11]),
-        .I5(Q[12]),
+       (.I0(\ram_reg[3][2] [0]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(LEDS_OBUF[5]),
+        .I3(LEDS_OBUF[4]),
         .O(\fcw[11]_i_4_n_0 ));
-  LUT2 #(
-    .INIT(4'h7)) 
-    \fcw[11]_i_5 
-       (.I0(Q[20]),
-        .I1(Q[18]),
-        .O(\fcw[11]_i_5_n_0 ));
-  LUT3 #(
-    .INIT(8'hFE)) 
-    \fcw[11]_i_6 
-       (.I0(Q[5]),
-        .I1(Q[6]),
-        .I2(Q[4]),
-        .O(\fcw[11]_i_6_n_0 ));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
     \fcw[12]_i_1 
@@ -5008,51 +5041,61 @@ module fsm
     .INIT(16'hC080)) 
     \fcw[12]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\d_in_reg[2]_0 ),
+        .I1(\next_state_reg[1]_0 ),
         .I2(\ram_reg[3][2] [0]),
         .I3(fcw1[12]),
         .O(\fcw[12]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFBAFFFFFFBAFFBA)) 
+    .INIT(64'h22F2FFFF22F222F2)) 
     \fcw[13]_i_1 
        (.I0(\fcw[13]_i_2_n_0 ),
-        .I1(\fcw[23]_i_3_n_0 ),
+        .I1(\d_in[11]_i_3_n_0 ),
         .I2(d_out[13]),
-        .I3(\fcw[13]_i_3_n_0 ),
+        .I3(\fcw[23]_i_3_n_0 ),
         .I4(\fcw[23]_i_5_n_0 ),
         .I5(fcw1_carry__1_n_4),
         .O(\fcw[13]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'h80000000)) 
+  LUT4 #(
+    .INIT(16'hC080)) 
     \fcw[13]_i_2 
-       (.I0(fcw1[13]),
-        .I1(LEDS_OBUF[5]),
-        .I2(LEDS_OBUF[4]),
-        .I3(\d_in_reg[2]_0 ),
-        .I4(\ram_reg[3][2] [0]),
-        .O(\fcw[13]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h80000000)) 
-    \fcw[13]_i_3 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(LEDS_OBUF[5]),
-        .I2(LEDS_OBUF[4]),
-        .I3(\d_in_reg[2]_0 ),
-        .I4(\ram_reg[3][2] [0]),
-        .O(\fcw[13]_i_3_n_0 ));
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\ram_reg[3][2] [0]),
+        .I3(fcw1[13]),
+        .O(\fcw[13]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h22F2FFFF22F222F2)) 
+    \fcw[14]_i_1 
+       (.I0(\fcw[14]_i_2_n_0 ),
+        .I1(\d_in[11]_i_3_n_0 ),
+        .I2(d_out[14]),
+        .I3(\fcw[23]_i_3_n_0 ),
+        .I4(\fcw[23]_i_5_n_0 ),
+        .I5(fcw1_carry__2_n_7),
+        .O(\fcw[14]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hC080)) 
     \fcw[14]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\d_in_reg[2]_0 ),
+        .I1(\next_state_reg[1]_0 ),
         .I2(\ram_reg[3][2] [0]),
         .I3(fcw1[14]),
         .O(\fcw[14]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h22F2FFFF22F222F2)) 
+    \fcw[15]_i_1 
+       (.I0(\fcw[15]_i_2_n_0 ),
+        .I1(\d_in[11]_i_3_n_0 ),
+        .I2(d_out[15]),
+        .I3(\fcw[23]_i_3_n_0 ),
+        .I4(\fcw[23]_i_5_n_0 ),
+        .I5(fcw1_carry__2_n_6),
+        .O(\fcw[15]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hC080)) 
     \fcw[15]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\d_in_reg[2]_0 ),
+        .I1(\next_state_reg[1]_0 ),
         .I2(\ram_reg[3][2] [0]),
         .I3(fcw1[15]),
         .O(\fcw[15]_i_2_n_0 ));
@@ -5068,37 +5111,37 @@ module fsm
         .O(\fcw[16]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
-    \fcw[17]_i_1 
-       (.I0(fcw1[17]),
-        .I1(\fcw[23]_i_4_n_0 ),
-        .I2(d_out[17]),
+    \fcw[18]_i_1 
+       (.I0(\fcw[18]_i_2_n_0 ),
+        .I1(\d_in[11]_i_3_n_0 ),
+        .I2(d_out[18]),
         .I3(\fcw[23]_i_3_n_0 ),
         .I4(\fcw[23]_i_5_n_0 ),
-        .I5(fcw1_carry__2_n_4),
-        .O(\fcw[17]_i_1_n_0 ));
+        .I5(fcw1_carry__3_n_7),
+        .O(\fcw[18]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hC080)) 
     \fcw[18]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\d_in_reg[2]_0 ),
+        .I1(\next_state_reg[1]_0 ),
         .I2(\ram_reg[3][2] [0]),
         .I3(fcw1[18]),
         .O(\fcw[18]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
-    \fcw[19]_i_1 
-       (.I0(fcw1[19]),
-        .I1(\fcw[23]_i_4_n_0 ),
-        .I2(d_out[19]),
+    \fcw[20]_i_1 
+       (.I0(\fcw[20]_i_2_n_0 ),
+        .I1(\d_in[11]_i_3_n_0 ),
+        .I2(d_out[20]),
         .I3(\fcw[23]_i_3_n_0 ),
         .I4(\fcw[23]_i_5_n_0 ),
-        .I5(fcw1_carry__3_n_6),
-        .O(\fcw[19]_i_1_n_0 ));
+        .I5(fcw1_carry__3_n_5),
+        .O(\fcw[20]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hC080)) 
     \fcw[20]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\d_in_reg[2]_0 ),
+        .I1(\next_state_reg[1]_0 ),
         .I2(\ram_reg[3][2] [0]),
         .I3(fcw1[20]),
         .O(\fcw[20]_i_2_n_0 ));
@@ -5107,23 +5150,23 @@ module fsm
     \fcw[23]_i_1 
        (.I0(LEDS_OBUF[5]),
         .I1(LEDS_OBUF[4]),
-        .O(\fcw[23]_i_1_n_0 ));
+        .O(SR));
   LUT5 #(
     .INIT(32'hFD550000)) 
     \fcw[23]_i_3 
        (.I0(LEDS_OBUF[4]),
-        .I1(\ram_reg[3][2] [1]),
-        .I2(\ram_reg[3][2] [0]),
-        .I3(\d_in_reg[2]_0 ),
+        .I1(\ram_reg[3][2] [0]),
+        .I2(\ram_reg[3][2] [1]),
+        .I3(\next_state_reg[1]_0 ),
         .I4(LEDS_OBUF[5]),
         .O(\fcw[23]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hBFFFFFFF)) 
     \fcw[23]_i_4 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(LEDS_OBUF[5]),
-        .I2(LEDS_OBUF[4]),
-        .I3(\d_in_reg[2]_0 ),
+        .I1(LEDS_OBUF[4]),
+        .I2(LEDS_OBUF[5]),
+        .I3(\next_state_reg[1]_0 ),
         .I4(\ram_reg[3][2] [0]),
         .O(\fcw[23]_i_4_n_0 ));
   LUT6 #(
@@ -5134,7 +5177,7 @@ module fsm
         .I2(\d_in[23]_i_12_n_0 ),
         .I3(\fcw[23]_i_6_n_0 ),
         .I4(\d_in[23]_i_11_n_0 ),
-        .I5(\fcw_reg[1]_0 ),
+        .I5(\fcw_reg[11]_1 ),
         .O(\fcw[23]_i_5_n_0 ));
   LUT2 #(
     .INIT(4'hE)) 
@@ -5143,51 +5186,23 @@ module fsm
         .I1(Q[16]),
         .O(\fcw[23]_i_6_n_0 ));
   LUT6 #(
-    .INIT(64'h0000F80000000800)) 
-    \fcw[2]_i_2 
-       (.I0(\ram_reg[3][2] [1]),
-        .I1(fcw1_carry_n_7),
-        .I2(\ram_reg[3][2] [0]),
-        .I3(\d_in_reg[2]_0 ),
-        .I4(\d_in[11]_i_3_n_0 ),
-        .I5(Q[2]),
-        .O(\fcw[2]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'hEEFE)) 
-    \fcw[3]_i_1 
-       (.I0(\fcw[11]_i_2_n_0 ),
-        .I1(\fcw[3]_i_2_n_0 ),
-        .I2(d_out[3]),
+    .INIT(64'h22F2FFFF22F222F2)) 
+    \fcw[6]_i_1 
+       (.I0(\fcw[6]_i_2_n_0 ),
+        .I1(\d_in[11]_i_3_n_0 ),
+        .I2(d_out[6]),
         .I3(\fcw[23]_i_3_n_0 ),
-        .O(\fcw[3]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000F80000000800)) 
-    \fcw[3]_i_2 
-       (.I0(\ram_reg[3][2] [1]),
-        .I1(fcw1_carry_n_6),
-        .I2(\ram_reg[3][2] [0]),
-        .I3(\d_in_reg[2]_0 ),
-        .I4(\d_in[11]_i_3_n_0 ),
-        .I5(fcw1[3]),
-        .O(\fcw[3]_i_2_n_0 ));
+        .I4(\fcw[23]_i_5_n_0 ),
+        .I5(fcw1_carry__0_n_7),
+        .O(\fcw[6]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hC080)) 
     \fcw[6]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\d_in_reg[2]_0 ),
+        .I1(\next_state_reg[1]_0 ),
         .I2(\ram_reg[3][2] [0]),
         .I3(fcw1[6]),
         .O(\fcw[6]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000F80000000800)) 
-    \fcw[7]_i_2 
-       (.I0(\ram_reg[3][2] [1]),
-        .I1(fcw1_carry__0_n_6),
-        .I2(\ram_reg[3][2] [0]),
-        .I3(\d_in_reg[2]_0 ),
-        .I4(\d_in[11]_i_3_n_0 ),
-        .I5(fcw1[7]),
-        .O(\fcw[7]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h22F2FFFF22F222F2)) 
     \fcw[8]_i_1 
@@ -5202,36 +5217,18 @@ module fsm
     .INIT(16'hC080)) 
     \fcw[8]_i_2 
        (.I0(\d_in[23]_i_3_n_0 ),
-        .I1(\d_in_reg[2]_0 ),
+        .I1(\next_state_reg[1]_0 ),
         .I2(\ram_reg[3][2] [0]),
         .I3(fcw1[8]),
         .O(\fcw[8]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'hEEFE)) 
-    \fcw[9]_i_1 
-       (.I0(\fcw[11]_i_2_n_0 ),
-        .I1(\fcw[9]_i_2_n_0 ),
-        .I2(d_out[9]),
-        .I3(\fcw[23]_i_3_n_0 ),
-        .O(\fcw[9]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000F80000000800)) 
-    \fcw[9]_i_2 
-       (.I0(\ram_reg[3][2] [1]),
-        .I1(fcw1_carry__0_n_4),
-        .I2(\ram_reg[3][2] [0]),
-        .I3(\d_in_reg[2]_0 ),
-        .I4(\d_in[11]_i_3_n_0 ),
-        .I5(fcw1[9]),
-        .O(\fcw[9]_i_2_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[0] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_14),
+        .D(notes_n_13),
         .Q(Q[0]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[10] 
@@ -5239,15 +5236,15 @@ module fsm
         .CE(\<const1> ),
         .D(\fcw[10]_i_1_n_0 ),
         .Q(Q[10]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[11] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_7),
+        .D(notes_n_5),
         .Q(Q[11]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[12] 
@@ -5255,7 +5252,7 @@ module fsm
         .CE(\<const1> ),
         .D(\fcw[12]_i_1_n_0 ),
         .Q(Q[12]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[13] 
@@ -5263,23 +5260,23 @@ module fsm
         .CE(\<const1> ),
         .D(\fcw[13]_i_1_n_0 ),
         .Q(Q[13]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[14] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_6),
+        .D(\fcw[14]_i_1_n_0 ),
         .Q(Q[14]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[15] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_5),
+        .D(\fcw[15]_i_1_n_0 ),
         .Q(Q[15]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[16] 
@@ -5287,47 +5284,47 @@ module fsm
         .CE(\<const1> ),
         .D(\fcw[16]_i_1_n_0 ),
         .Q(Q[16]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[17] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(\fcw[17]_i_1_n_0 ),
+        .D(notes_n_4),
         .Q(Q[17]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[18] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_4),
+        .D(\fcw[18]_i_1_n_0 ),
         .Q(Q[18]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[19] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(\fcw[19]_i_1_n_0 ),
+        .D(notes_n_3),
         .Q(Q[19]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[1] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_13),
+        .D(notes_n_12),
         .Q(Q[1]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[20] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_3),
+        .D(\fcw[20]_i_1_n_0 ),
         .Q(Q[20]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[21] 
@@ -5335,7 +5332,7 @@ module fsm
         .CE(\<const1> ),
         .D(notes_n_2),
         .Q(Q[21]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[22] 
@@ -5343,7 +5340,7 @@ module fsm
         .CE(\<const1> ),
         .D(notes_n_1),
         .Q(Q[22]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[23] 
@@ -5351,55 +5348,55 @@ module fsm
         .CE(\<const1> ),
         .D(notes_n_0),
         .Q(fcw),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[2] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_12),
+        .D(notes_n_11),
         .Q(Q[2]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[3] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(\fcw[3]_i_1_n_0 ),
+        .D(notes_n_10),
         .Q(Q[3]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[4] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_11),
+        .D(notes_n_9),
         .Q(Q[4]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[5] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_10),
+        .D(notes_n_8),
         .Q(Q[5]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[6] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_9),
+        .D(\fcw[6]_i_1_n_0 ),
         .Q(Q[6]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[7] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(notes_n_8),
+        .D(notes_n_7),
         .Q(Q[7]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[8] 
@@ -5407,15 +5404,15 @@ module fsm
         .CE(\<const1> ),
         .D(\fcw[8]_i_1_n_0 ),
         .Q(Q[8]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \fcw_reg[9] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(\<const1> ),
-        .D(\fcw[9]_i_1_n_0 ),
+        .D(notes_n_6),
         .Q(Q[9]),
-        .R(\fcw[23]_i_1_n_0 ));
+        .R(SR));
   LUT1 #(
     .INIT(2'h1)) 
     i__carry__0_i_1
@@ -5447,23 +5444,23 @@ module fsm
        (.I0(Q[3]),
         .O(i__carry_i_2_n_0));
   LUT6 #(
-    .INIT(64'h747430FF0000008B)) 
+    .INIT(64'h22F2EEF222020002)) 
     \next_state[0]_i_1 
-       (.I0(\next_state_reg[0]_0 ),
-        .I1(LEDS_OBUF[5]),
-        .I2(\next_state_reg[1]_1 ),
-        .I3(\next_state_reg[1]_2 ),
-        .I4(LEDS_OBUF[4]),
+       (.I0(\fcw_reg[0]_0 ),
+        .I1(LEDS_OBUF[4]),
+        .I2(\next_state_reg[0]_0 ),
+        .I3(LEDS_OBUF[5]),
+        .I4(\next_state_reg[0]_1 ),
         .I5(next_state[0]),
         .O(\next_state[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFE33FEABAA23AA)) 
+    .INIT(64'hA888FFFFA8880000)) 
     \next_state[1]_i_1 
-       (.I0(\next_state_reg[1]_0 ),
+       (.I0(\next_state_reg[1]_1 ),
         .I1(LEDS_OBUF[5]),
-        .I2(\next_state_reg[1]_1 ),
-        .I3(\next_state_reg[1]_2 ),
-        .I4(LEDS_OBUF[4]),
+        .I2(\next_state_reg[1]_0 ),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(\next_state_reg[1]_2 ),
         .I5(next_state[1]),
         .O(\next_state[1]_i_1_n_0 ));
   FDRE #(
@@ -5484,41 +5481,34 @@ module fsm
         .R(\<const0> ));
   fcw_ram notes
        (.CLK_125MHZ_FPGA_IBUF_BUFG(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .D({notes_n_0,notes_n_1,notes_n_2,notes_n_3,notes_n_4,notes_n_5,notes_n_6,notes_n_7,notes_n_8,notes_n_9,notes_n_10,notes_n_11,notes_n_12,notes_n_13,notes_n_14}),
+        .D({notes_n_0,notes_n_1,notes_n_2,notes_n_3,notes_n_4,notes_n_5,notes_n_6,notes_n_7,notes_n_8,notes_n_9,notes_n_10,notes_n_11,notes_n_12,notes_n_13}),
         .E(rd_en),
-        .O({fcw1_carry__3_n_4,fcw1_carry__3_n_5,fcw1_carry__3_n_7}),
-        .Q({d_out[19],d_out[17:16],d_out[13:12],d_out[10:8],d_out[3]}),
+        .O({fcw1_carry_n_4,fcw1_carry_n_5,fcw1_carry_n_6,fcw1_carry_n_7}),
+        .Q({d_out[20],d_out[18],d_out[16:12],d_out[10],d_out[8],d_out[6]}),
         .addr(addr),
-        .fcw1({fcw1[23:21],fcw1[5:4]}),
+        .fcw1({fcw1[23:21],fcw1[19],fcw1[17],fcw1[11],fcw1[9],fcw1[7],fcw1[5:3]}),
         .\fcw_reg[0] (\fcw[0]_i_2_n_0 ),
-        .\fcw_reg[0]_0 (\fcw[0]_i_3_n_0 ),
+        .\fcw_reg[0]_0 (\fcw_reg[0]_0 ),
         .\fcw_reg[0]_1 (\d_in[23]_i_4_n_0 ),
-        .\fcw_reg[0]_2 (\fcw[13]_i_3_n_0 ),
-        .\fcw_reg[11] (\fcw[11]_i_3_n_0 ),
-        .\fcw_reg[14] (\fcw[14]_i_2_n_0 ),
-        .\fcw_reg[15] (\fcw[15]_i_2_n_0 ),
-        .\fcw_reg[15]_0 ({fcw1_carry__2_n_6,fcw1_carry__2_n_7}),
-        .\fcw_reg[18] (\fcw[18]_i_2_n_0 ),
-        .\fcw_reg[1] (\fcw_reg[1]_0 ),
-        .\fcw_reg[1]_0 (Q[1]),
-        .\fcw_reg[20] (\fcw[23]_i_3_n_0 ),
-        .\fcw_reg[20]_0 (\fcw[20]_i_2_n_0 ),
-        .\fcw_reg[20]_1 (\d_in[11]_i_3_n_0 ),
-        .\fcw_reg[20]_2 (\fcw[23]_i_5_n_0 ),
-        .\fcw_reg[23] (\fcw[23]_i_4_n_0 ),
-        .\fcw_reg[23]_0 ({fcw1_carry__4_n_6,fcw1_carry__4_n_7}),
-        .\fcw_reg[2] (\fcw[11]_i_2_n_0 ),
-        .\fcw_reg[2]_0 (\fcw[2]_i_2_n_0 ),
-        .\fcw_reg[5] ({fcw1_carry_n_4,fcw1_carry_n_5}),
-        .\fcw_reg[5]_0 (LEDS_OBUF[5]),
-        .\fcw_reg[5]_1 (\d_in_reg[2]_0 ),
-        .\fcw_reg[5]_2 (LEDS_OBUF[4]),
-        .\fcw_reg[6] (\fcw[6]_i_2_n_0 ),
-        .\fcw_reg[6]_0 (fcw1_carry__0_n_7),
-        .\fcw_reg[7] (\fcw[7]_i_2_n_0 ),
-        .\ram_reg[0][0]_0 (wr_en_reg_n_0),
+        .\fcw_reg[0]_2 (\d_in[20]_i_2_n_0 ),
+        .\fcw_reg[0]_3 (\d_in[11]_i_3_n_0 ),
+        .\fcw_reg[11] (LEDS_OBUF[5]),
+        .\fcw_reg[11]_0 (LEDS_OBUF[4]),
+        .\fcw_reg[11]_1 (\fcw_reg[11]_1 ),
+        .\fcw_reg[11]_2 (fcw1_carry__1_n_6),
+        .\fcw_reg[17] (\fcw[23]_i_5_n_0 ),
+        .\fcw_reg[17]_0 (fcw1_carry__2_n_4),
+        .\fcw_reg[1] (\fcw[23]_i_4_n_0 ),
+        .\fcw_reg[1]_0 (\fcw[23]_i_3_n_0 ),
+        .\fcw_reg[21] ({fcw1_carry__3_n_4,fcw1_carry__3_n_6}),
+        .\fcw_reg[23] ({fcw1_carry__4_n_6,fcw1_carry__4_n_7}),
+        .\fcw_reg[2] (Q[2:1]),
+        .\fcw_reg[2]_0 (\fcw[11]_i_4_n_0 ),
+        .\fcw_reg[5] (\next_state_reg[1]_0 ),
+        .\fcw_reg[9] ({fcw1_carry__0_n_4,fcw1_carry__0_n_6}),
         .\ram_reg[0][23]_0 (d_in),
-        .\ram_reg[3][2]_0 (\ram_reg[3][2] ));
+        .\ram_reg[3][0]_0 (wr_en),
+        .\ram_reg[3][2]_0 ({\ram_reg[3][2] [3],\ram_reg[3][2] [1:0]}));
   LUT2 #(
     .INIT(4'h6)) 
     pa0_carry__4_i_1
@@ -5722,19 +5712,20 @@ module fsm
         .DI(Q[11:8]),
         .O(\fcw_reg[11]_0 ),
         .S({\pa[8]_i_2_n_0 ,\pa[8]_i_3_n_0 ,\pa[8]_i_4_n_0 ,\pa[8]_i_5_n_0 }));
+  (* \PinAttr:I0:HOLD_DETOUR  = "185" *) 
   (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \present_state[0]_i_1 
        (.I0(next_state[0]),
-        .I1(\ram_reg[3][2] [2]),
+        .I1(\ram_reg[3][2] [3]),
         .O(\present_state[0]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair43" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \present_state[1]_i_1 
        (.I0(next_state[1]),
-        .I1(\ram_reg[3][2] [2]),
+        .I1(\ram_reg[3][2] [3]),
         .O(\present_state[1]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -5752,13 +5743,25 @@ module fsm
         .D(\present_state[1]_i_1_n_0 ),
         .Q(LEDS_OBUF[5]),
         .R(\<const0> ));
-  LUT3 #(
-    .INIT(8'hF2)) 
+  LUT6 #(
+    .INIT(64'hBBBFBBBB888F8888)) 
     rd_en_i_1
-       (.I0(\addr[1]_i_2_n_0 ),
-        .I1(LEDS_OBUF[5]),
-        .I2(rd_en),
+       (.I0(rd_en_reg_0),
+        .I1(rd_en_i_3_n_0),
+        .I2(\addr[1]_i_4_n_0 ),
+        .I3(\addr[1]_i_3_n_0 ),
+        .I4(\addr[1]_i_2_n_0 ),
+        .I5(rd_en),
         .O(rd_en_i_1_n_0));
+  LUT5 #(
+    .INIT(32'hAAAA0080)) 
+    rd_en_i_3
+       (.I0(LEDS_OBUF[5]),
+        .I1(\next_state_reg[1]_0 ),
+        .I2(\ram_reg[3][2] [2]),
+        .I3(\ram_reg[3][2] [0]),
+        .I4(LEDS_OBUF[4]),
+        .O(rd_en_i_3_n_0));
   FDRE #(
     .INIT(1'b1)) 
     rd_en_reg
@@ -5771,9 +5774,9 @@ module fsm
     .INIT(1'b0)) 
     wr_en_reg
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .CE(\d_in[23]_i_1_n_0 ),
-        .D(wr_en),
-        .Q(wr_en_reg_n_0),
+        .CE(\<const1> ),
+        .D(wr_en_reg_0),
+        .Q(wr_en),
         .R(\<const0> ));
 endmodule
 
@@ -6291,10 +6294,10 @@ module sq_wave_gen
     sq_wave_leds,
     \COUNT_MAX_reg[10]_0 ,
     \COUNT_MAX_reg[11]_0 ,
-    \edge_detect_pulse_reg[1] ,
-    \edge_detect_pulse_reg[3] ,
     \COUNT_MAX_reg[10]_1 ,
     mode_reg_0,
+    \edge_detect_pulse_reg[1] ,
+    \edge_detect_pulse_reg[3] ,
     \code_reg[4]_0 ,
     \code_reg[2]_0 ,
     \sample_counter_reg[0]_0 ,
@@ -6302,40 +6305,40 @@ module sq_wave_gen
     CLK_125MHZ_FPGA_IBUF_BUFG,
     mode_reg_1,
     D,
-    \COUNT_MAX_reg[1]_0 ,
     \code_reg[4]_1 ,
-    \COUNT_MAX_reg[0]_0 ,
+    \COUNT_MAX_reg[1]_0 ,
+    \COUNT_MAX_reg[7]_0 ,
     \COUNT_MAX_reg[2]_0 ,
     \COUNT_MAX_reg[2]_1 ,
     \COUNT_MAX_reg[2]_2 ,
-    \COUNT_MAX_reg[8]_0 ,
-    \COUNT_MAX_reg[8]_1 ,
+    \COUNT_MAX_reg[5]_0 ,
+    \COUNT_MAX_reg[5]_1 ,
     wave_state_reg_0,
     E);
-  output [6:0]Q;
+  output [3:0]Q;
   output [0:0]CO;
   output [0:0]sq_wave_leds;
-  output [3:0]\COUNT_MAX_reg[10]_0 ;
-  output [4:0]\COUNT_MAX_reg[11]_0 ;
-  output \edge_detect_pulse_reg[1] ;
-  output \edge_detect_pulse_reg[3] ;
+  output [1:0]\COUNT_MAX_reg[10]_0 ;
+  output [2:0]\COUNT_MAX_reg[11]_0 ;
   output \COUNT_MAX_reg[10]_1 ;
   output mode_reg_0;
+  output \edge_detect_pulse_reg[1] ;
+  output \edge_detect_pulse_reg[3] ;
   output \code_reg[4]_0 ;
   output \code_reg[2]_0 ;
   input \sample_counter_reg[0]_0 ;
   input next_sample;
   input CLK_125MHZ_FPGA_IBUF_BUFG;
   input mode_reg_1;
-  input [4:0]D;
-  input \COUNT_MAX_reg[1]_0 ;
+  input [2:0]D;
   input [1:0]\code_reg[4]_1 ;
-  input [0:0]\COUNT_MAX_reg[0]_0 ;
+  input [0:0]\COUNT_MAX_reg[1]_0 ;
+  input \COUNT_MAX_reg[7]_0 ;
   input \COUNT_MAX_reg[2]_0 ;
   input \COUNT_MAX_reg[2]_1 ;
   input \COUNT_MAX_reg[2]_2 ;
-  input \COUNT_MAX_reg[8]_0 ;
-  input \COUNT_MAX_reg[8]_1 ;
+  input \COUNT_MAX_reg[5]_0 ;
+  input \COUNT_MAX_reg[5]_1 ;
   input wave_state_reg_0;
   input [0:0]E;
 
@@ -6362,37 +6365,40 @@ module sq_wave_gen
   wire \COUNT_MAX[1]_i_4_n_0 ;
   wire \COUNT_MAX[2]_i_2_n_0 ;
   wire \COUNT_MAX[2]_i_4_n_0 ;
-  wire \COUNT_MAX[3]_i_10_n_0 ;
+  wire \COUNT_MAX[3]_i_3_n_0 ;
+  wire \COUNT_MAX[3]_i_4_n_0 ;
   wire \COUNT_MAX[3]_i_5_n_0 ;
-  wire \COUNT_MAX[3]_i_6_n_0 ;
-  wire \COUNT_MAX[3]_i_7_n_0 ;
-  wire \COUNT_MAX[3]_i_8_n_0 ;
-  wire \COUNT_MAX[3]_i_9_n_0 ;
-  wire \COUNT_MAX[7]_i_2_n_0 ;
-  wire \COUNT_MAX[7]_i_5_n_0 ;
+  wire \COUNT_MAX[5]_i_2_n_0 ;
+  wire \COUNT_MAX[6]_i_2_n_0 ;
+  wire \COUNT_MAX[7]_i_10_n_0 ;
+  wire \COUNT_MAX[7]_i_12_n_0 ;
+  wire \COUNT_MAX[7]_i_13_n_0 ;
+  wire \COUNT_MAX[7]_i_14_n_0 ;
+  wire \COUNT_MAX[7]_i_15_n_0 ;
+  wire \COUNT_MAX[7]_i_16_n_0 ;
   wire \COUNT_MAX[7]_i_6_n_0 ;
   wire \COUNT_MAX[7]_i_7_n_0 ;
   wire \COUNT_MAX[7]_i_8_n_0 ;
   wire \COUNT_MAX[7]_i_9_n_0 ;
   wire \COUNT_MAX[8]_i_2_n_0 ;
   wire \COUNT_MAX[9]_i_2_n_0 ;
-  wire [0:0]\COUNT_MAX_reg[0]_0 ;
   wire \COUNT_MAX_reg[0]_i_2_n_0 ;
-  wire [3:0]\COUNT_MAX_reg[10]_0 ;
+  wire [1:0]\COUNT_MAX_reg[10]_0 ;
   wire \COUNT_MAX_reg[10]_1 ;
-  wire [4:0]\COUNT_MAX_reg[11]_0 ;
-  wire \COUNT_MAX_reg[1]_0 ;
+  wire [2:0]\COUNT_MAX_reg[11]_0 ;
+  wire [0:0]\COUNT_MAX_reg[1]_0 ;
   wire \COUNT_MAX_reg[2]_0 ;
   wire \COUNT_MAX_reg[2]_1 ;
   wire \COUNT_MAX_reg[2]_2 ;
-  wire \COUNT_MAX_reg[3]_i_4_n_0 ;
-  wire \COUNT_MAX_reg[6]_i_3_n_0 ;
-  wire \COUNT_MAX_reg[7]_i_3_n_0 ;
-  wire \COUNT_MAX_reg[8]_0 ;
-  wire \COUNT_MAX_reg[8]_1 ;
-  wire [4:0]D;
+  wire \COUNT_MAX_reg[3]_i_2_n_0 ;
+  wire \COUNT_MAX_reg[5]_0 ;
+  wire \COUNT_MAX_reg[5]_1 ;
+  wire \COUNT_MAX_reg[7]_0 ;
+  wire \COUNT_MAX_reg[7]_i_11_n_0 ;
+  wire \COUNT_MAX_reg[7]_i_4_n_0 ;
+  wire [2:0]D;
   wire [0:0]E;
-  wire [6:0]Q;
+  wire [3:0]Q;
   wire \code[2]_i_1_n_0 ;
   wire \code[4]_i_1_n_0 ;
   wire \code_reg[2]_0 ;
@@ -6456,10 +6462,10 @@ module sq_wave_gen
   wire wave_state_i_1_n_0;
   wire wave_state_reg_0;
   wire [3:0]\NLW_COUNT_MAX_reg[0]_i_2_CO_UNCONNECTED ;
-  wire [3:0]\NLW_COUNT_MAX_reg[3]_i_4_CO_UNCONNECTED ;
-  wire [3:0]\NLW_COUNT_MAX_reg[3]_i_4_O_UNCONNECTED ;
-  wire [3:0]\NLW_COUNT_MAX_reg[6]_i_3_CO_UNCONNECTED ;
-  wire [3:0]\NLW_COUNT_MAX_reg[7]_i_3_CO_UNCONNECTED ;
+  wire [3:0]\NLW_COUNT_MAX_reg[3]_i_2_CO_UNCONNECTED ;
+  wire [3:0]\NLW_COUNT_MAX_reg[3]_i_2_O_UNCONNECTED ;
+  wire [3:0]\NLW_COUNT_MAX_reg[7]_i_11_CO_UNCONNECTED ;
+  wire [3:0]\NLW_COUNT_MAX_reg[7]_i_4_CO_UNCONNECTED ;
   wire [3:0]NLW_sample_counter0_carry_CO_UNCONNECTED;
   wire [3:0]NLW_sample_counter0_carry__0_CO_UNCONNECTED;
   wire [3:0]NLW_sample_counter0_carry__1_CO_UNCONNECTED;
@@ -6474,7 +6480,7 @@ module sq_wave_gen
     .INIT(64'hFFFFFFFFFFFF2000)) 
     \COUNT_MAX[0]_i_1 
        (.I0(COUNT_MAX13_in[0]),
-        .I1(\COUNT_MAX_reg[0]_0 ),
+        .I1(\COUNT_MAX_reg[1]_0 ),
         .I2(\code_reg[4]_1 [0]),
         .I3(mode_reg_0),
         .I4(\COUNT_MAX[0]_i_3_n_0 ),
@@ -6486,7 +6492,7 @@ module sq_wave_gen
        (.I0(\COUNT_MAX[11]_i_9_n_0 ),
         .I1(Q[0]),
         .I2(COUNT_MAX[1]),
-        .I3(\COUNT_MAX_reg[1]_0 ),
+        .I3(\COUNT_MAX_reg[7]_0 ),
         .I4(sq_wave_leds),
         .O(\COUNT_MAX[0]_i_3_n_0 ));
   LUT6 #(
@@ -6496,7 +6502,7 @@ module sq_wave_gen
         .I1(\COUNT_MAX[11]_i_9_n_0 ),
         .I2(COUNT_MAX[0]),
         .I3(\code_reg[4]_1 [0]),
-        .I4(\COUNT_MAX_reg[0]_0 ),
+        .I4(\COUNT_MAX_reg[1]_0 ),
         .I5(sq_wave_leds),
         .O(\COUNT_MAX[0]_i_4_n_0 ));
   LUT1 #(
@@ -6516,15 +6522,15 @@ module sq_wave_gen
         .I1(COUNT_MAX1[10]),
         .I2(\code_reg[4]_1 [1]),
         .I3(sq_wave_leds),
-        .I4(\COUNT_MAX_reg[1]_0 ),
+        .I4(\COUNT_MAX_reg[7]_0 ),
         .I5(COUNT_MAX[11]),
         .O(\edge_detect_pulse_reg[3] ));
   LUT4 #(
     .INIT(16'hFFFE)) 
     \COUNT_MAX[11]_i_11 
-       (.I0(Q[2]),
-        .I1(Q[3]),
-        .I2(Q[4]),
+       (.I0(Q[1]),
+        .I1(COUNT_MAX[6]),
+        .I2(COUNT_MAX[7]),
         .I3(COUNT_MAX[8]),
         .O(\COUNT_MAX[11]_i_11_n_0 ));
   LUT1 #(
@@ -6535,12 +6541,12 @@ module sq_wave_gen
   LUT1 #(
     .INIT(2'h1)) 
     \COUNT_MAX[11]_i_13 
-       (.I0(Q[6]),
+       (.I0(Q[3]),
         .O(\COUNT_MAX[11]_i_13_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
     \COUNT_MAX[11]_i_14 
-       (.I0(Q[5]),
+       (.I0(Q[2]),
         .O(\COUNT_MAX[11]_i_14_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
@@ -6549,9 +6555,9 @@ module sq_wave_gen
         .O(\COUNT_MAX[11]_i_15_n_0 ));
   LUT6 #(
     .INIT(64'h0D000D0D00000000)) 
-    \COUNT_MAX[11]_i_5 
+    \COUNT_MAX[11]_i_4 
        (.I0(\code_reg[4]_1 [0]),
-        .I1(\COUNT_MAX_reg[0]_0 ),
+        .I1(\COUNT_MAX_reg[1]_0 ),
         .I2(\code_reg[4]_1 [1]),
         .I3(\COUNT_MAX[11]_i_8_n_0 ),
         .I4(sq_wave_leds),
@@ -6567,47 +6573,49 @@ module sq_wave_gen
   LUT5 #(
     .INIT(32'h00000001)) 
     \COUNT_MAX[11]_i_9 
-       (.I0(Q[5]),
-        .I1(COUNT_MAX[11]),
-        .I2(Q[6]),
-        .I3(Q[1]),
+       (.I0(Q[3]),
+        .I1(COUNT_MAX[4]),
+        .I2(Q[2]),
+        .I3(COUNT_MAX[11]),
         .I4(\COUNT_MAX[11]_i_11_n_0 ),
         .O(\COUNT_MAX[11]_i_9_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBBBFBAAAAAAAA)) 
+    .INIT(64'hFFFFFFFF00007500)) 
     \COUNT_MAX[1]_i_1 
-       (.I0(\COUNT_MAX[1]_i_2_n_0 ),
-        .I1(\COUNT_MAX[2]_i_2_n_0 ),
+       (.I0(\COUNT_MAX[2]_i_2_n_0 ),
+        .I1(sq_wave_leds),
         .I2(COUNT_MAX13_in[1]),
-        .I3(sq_wave_leds),
-        .I4(COUNT_MAX[0]),
-        .I5(\COUNT_MAX_reg[1]_0 ),
+        .I3(\code_reg[4]_1 [0]),
+        .I4(\COUNT_MAX_reg[1]_0 ),
+        .I5(\COUNT_MAX[1]_i_2_n_0 ),
         .O(p_1_in__0[1]));
   LUT6 #(
-    .INIT(64'hCCFFCCFDCCDDCCFD)) 
+    .INIT(64'hEAFFEAFAEAAFEAAA)) 
     \COUNT_MAX[1]_i_2 
        (.I0(\COUNT_MAX[1]_i_3_n_0 ),
-        .I1(\code_reg[4]_1 [1]),
-        .I2(COUNT_MAX1[1]),
-        .I3(\COUNT_MAX_reg[1]_0 ),
-        .I4(sq_wave_leds),
+        .I1(COUNT_MAX[0]),
+        .I2(sq_wave_leds),
+        .I3(\COUNT_MAX_reg[7]_0 ),
+        .I4(COUNT_MAX1[1]),
         .I5(COUNT_MAX[2]),
         .O(\COUNT_MAX[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFBFFFBFFFFFFFB)) 
+    .INIT(64'hAAAAAAAABABAAABA)) 
     \COUNT_MAX[1]_i_3 
-       (.I0(\COUNT_MAX[11]_i_11_n_0 ),
-        .I1(\COUNT_MAX[1]_i_4_n_0 ),
-        .I2(COUNT_MAX[11]),
-        .I3(Q[5]),
-        .I4(sq_wave_leds),
-        .I5(\COUNT_MAX[11]_i_8_n_0 ),
+       (.I0(\code_reg[4]_1 [1]),
+        .I1(\COUNT_MAX[11]_i_11_n_0 ),
+        .I2(\COUNT_MAX[1]_i_4_n_0 ),
+        .I3(sq_wave_leds),
+        .I4(\COUNT_MAX[11]_i_8_n_0 ),
+        .I5(\COUNT_MAX_reg[7]_0 ),
         .O(\COUNT_MAX[1]_i_3_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT4 #(
+    .INIT(16'h0001)) 
     \COUNT_MAX[1]_i_4 
-       (.I0(Q[6]),
-        .I1(Q[1]),
+       (.I0(COUNT_MAX[11]),
+        .I1(Q[2]),
+        .I2(COUNT_MAX[4]),
+        .I3(Q[3]),
         .O(\COUNT_MAX[1]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFF0000FD5D)) 
@@ -6622,18 +6630,18 @@ module sq_wave_gen
   LUT2 #(
     .INIT(4'hE)) 
     \COUNT_MAX[2]_i_2 
-       (.I0(mode_reg_0),
-        .I1(\COUNT_MAX_reg[10]_1 ),
+       (.I0(\COUNT_MAX_reg[10]_1 ),
+        .I1(mode_reg_0),
         .O(\COUNT_MAX[2]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h04FF044404440444)) 
+    .INIT(64'h044404FF04440444)) 
     \COUNT_MAX[2]_i_4 
        (.I0(\COUNT_MAX_reg[2]_1 ),
         .I1(Q[0]),
         .I2(\COUNT_MAX[11]_i_8_n_0 ),
         .I3(\COUNT_MAX[11]_i_9_n_0 ),
-        .I4(COUNT_MAX1[2]),
-        .I5(\COUNT_MAX_reg[2]_2 ),
+        .I4(\COUNT_MAX_reg[2]_2 ),
+        .I5(COUNT_MAX1[2]),
         .O(\COUNT_MAX[2]_i_4_n_0 ));
   LUT6 #(
     .INIT(64'hFFFFFFFFF8880000)) 
@@ -6642,163 +6650,209 @@ module sq_wave_gen
         .I1(COUNT_MAX[2]),
         .I2(mode_reg_0),
         .I3(COUNT_MAX13_in[3]),
-        .I4(\COUNT_MAX_reg[1]_0 ),
-        .I5(\COUNT_MAX[3]_i_5_n_0 ),
+        .I4(\COUNT_MAX_reg[7]_0 ),
+        .I5(\COUNT_MAX[3]_i_3_n_0 ),
         .O(p_1_in__0[3]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF08080B08)) 
+    \COUNT_MAX[3]_i_3 
+       (.I0(COUNT_MAX[4]),
+        .I1(sq_wave_leds),
+        .I2(\COUNT_MAX_reg[7]_0 ),
+        .I3(COUNT_MAX1[3]),
+        .I4(\COUNT_MAX[11]_i_9_n_0 ),
+        .I5(\code_reg[4]_1 [1]),
+        .O(\COUNT_MAX[3]_i_3_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
-    \COUNT_MAX[3]_i_10 
+    \COUNT_MAX[3]_i_4 
+       (.I0(Q[0]),
+        .O(\COUNT_MAX[3]_i_4_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \COUNT_MAX[3]_i_5 
        (.I0(COUNT_MAX[1]),
-        .O(\COUNT_MAX[3]_i_10_n_0 ));
+        .O(\COUNT_MAX[3]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFF4FFF4FFFFFFF4)) 
+    \COUNT_MAX[5]_i_1 
+       (.I0(\COUNT_MAX_reg[5]_0 ),
+        .I1(COUNT_MAX[4]),
+        .I2(\edge_detect_pulse_reg[1] ),
+        .I3(\COUNT_MAX[5]_i_2_n_0 ),
+        .I4(COUNT_MAX13_in[5]),
+        .I5(\COUNT_MAX_reg[5]_1 ),
+        .O(p_1_in__0[5]));
+  LUT6 #(
+    .INIT(64'h2202330322020000)) 
+    \COUNT_MAX[5]_i_2 
+       (.I0(COUNT_MAX[6]),
+        .I1(\code_reg[4]_1 [1]),
+        .I2(\code_reg[4]_1 [0]),
+        .I3(\COUNT_MAX_reg[1]_0 ),
+        .I4(sq_wave_leds),
+        .I5(COUNT_MAX1[5]),
+        .O(\COUNT_MAX[5]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFF4FFF4FFFFFFF4)) 
+    \COUNT_MAX[6]_i_1 
+       (.I0(\COUNT_MAX_reg[5]_0 ),
+        .I1(Q[1]),
+        .I2(\edge_detect_pulse_reg[1] ),
+        .I3(\COUNT_MAX[6]_i_2_n_0 ),
+        .I4(COUNT_MAX13_in[6]),
+        .I5(\COUNT_MAX_reg[5]_1 ),
+        .O(p_1_in__0[6]));
+  LUT6 #(
+    .INIT(64'h2202330322020000)) 
+    \COUNT_MAX[6]_i_2 
+       (.I0(COUNT_MAX[7]),
+        .I1(\code_reg[4]_1 [1]),
+        .I2(\code_reg[4]_1 [0]),
+        .I3(\COUNT_MAX_reg[1]_0 ),
+        .I4(sq_wave_leds),
+        .I5(COUNT_MAX1[6]),
+        .O(\COUNT_MAX[6]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFF8880000)) 
+    \COUNT_MAX[7]_i_1 
+       (.I0(\COUNT_MAX_reg[10]_1 ),
+        .I1(COUNT_MAX[6]),
+        .I2(mode_reg_0),
+        .I3(COUNT_MAX13_in[7]),
+        .I4(\COUNT_MAX_reg[7]_0 ),
+        .I5(\COUNT_MAX[7]_i_6_n_0 ),
+        .O(p_1_in__0[7]));
+  LUT6 #(
+    .INIT(64'hFFFEFFFEFFFFFFFE)) 
+    \COUNT_MAX[7]_i_10 
+       (.I0(\COUNT_MAX[11]_i_11_n_0 ),
+        .I1(COUNT_MAX[11]),
+        .I2(Q[2]),
+        .I3(\COUNT_MAX[7]_i_12_n_0 ),
+        .I4(sq_wave_leds),
+        .I5(\COUNT_MAX[11]_i_8_n_0 ),
+        .O(\COUNT_MAX[7]_i_10_n_0 ));
+  LUT2 #(
+    .INIT(4'hE)) 
+    \COUNT_MAX[7]_i_12 
+       (.I0(Q[3]),
+        .I1(COUNT_MAX[4]),
+        .O(\COUNT_MAX[7]_i_12_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \COUNT_MAX[7]_i_13 
+       (.I0(COUNT_MAX[7]),
+        .O(\COUNT_MAX[7]_i_13_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \COUNT_MAX[7]_i_14 
+       (.I0(COUNT_MAX[6]),
+        .O(\COUNT_MAX[7]_i_14_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \COUNT_MAX[7]_i_15 
+       (.I0(Q[1]),
+        .O(\COUNT_MAX[7]_i_15_n_0 ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \COUNT_MAX[7]_i_16 
+       (.I0(COUNT_MAX[4]),
+        .O(\COUNT_MAX[7]_i_16_n_0 ));
   LUT6 #(
     .INIT(64'h0000000075770000)) 
-    \COUNT_MAX[3]_i_2 
-       (.I0(Q[6]),
-        .I1(Q[5]),
-        .I2(\COUNT_MAX[3]_i_6_n_0 ),
-        .I3(\COUNT_MAX[3]_i_7_n_0 ),
+    \COUNT_MAX[7]_i_2 
+       (.I0(Q[3]),
+        .I1(Q[2]),
+        .I2(\COUNT_MAX[7]_i_7_n_0 ),
+        .I3(\COUNT_MAX[7]_i_8_n_0 ),
         .I4(sq_wave_leds),
         .I5(COUNT_MAX[11]),
         .O(\COUNT_MAX_reg[10]_1 ));
   LUT6 #(
-    .INIT(64'h4545454545455545)) 
-    \COUNT_MAX[3]_i_3 
+    .INIT(64'h4545455545454545)) 
+    \COUNT_MAX[7]_i_3 
        (.I0(sq_wave_leds),
-        .I1(\COUNT_MAX[3]_i_8_n_0 ),
+        .I1(\COUNT_MAX[7]_i_9_n_0 ),
         .I2(COUNT_MAX[11]),
-        .I3(\COUNT_MAX[3]_i_6_n_0 ),
-        .I4(Q[1]),
-        .I5(Q[6]),
+        .I3(COUNT_MAX[4]),
+        .I4(Q[3]),
+        .I5(\COUNT_MAX[7]_i_7_n_0 ),
         .O(mode_reg_0));
   LUT6 #(
-    .INIT(64'hFFFFFFFF08080B08)) 
-    \COUNT_MAX[3]_i_5 
-       (.I0(Q[1]),
-        .I1(sq_wave_leds),
-        .I2(\COUNT_MAX_reg[1]_0 ),
-        .I3(COUNT_MAX1[3]),
-        .I4(\COUNT_MAX[11]_i_9_n_0 ),
-        .I5(\code_reg[4]_1 [1]),
-        .O(\COUNT_MAX[3]_i_5_n_0 ));
+    .INIT(64'hCCCCFDFFCCCCFDDD)) 
+    \COUNT_MAX[7]_i_6 
+       (.I0(\COUNT_MAX[7]_i_10_n_0 ),
+        .I1(\code_reg[4]_1 [1]),
+        .I2(COUNT_MAX[8]),
+        .I3(sq_wave_leds),
+        .I4(\COUNT_MAX_reg[7]_0 ),
+        .I5(COUNT_MAX1[7]),
+        .O(\COUNT_MAX[7]_i_6_n_0 ));
   LUT4 #(
     .INIT(16'h575F)) 
-    \COUNT_MAX[3]_i_6 
+    \COUNT_MAX[7]_i_7 
        (.I0(Q[0]),
         .I1(COUNT_MAX[1]),
         .I2(COUNT_MAX[2]),
         .I3(COUNT_MAX[0]),
-        .O(\COUNT_MAX[3]_i_6_n_0 ));
+        .O(\COUNT_MAX[7]_i_7_n_0 ));
   LUT5 #(
     .INIT(32'h80000000)) 
-    \COUNT_MAX[3]_i_7 
-       (.I0(Q[1]),
-        .I1(Q[4]),
-        .I2(Q[3]),
+    \COUNT_MAX[7]_i_8 
+       (.I0(COUNT_MAX[4]),
+        .I1(COUNT_MAX[7]),
+        .I2(COUNT_MAX[6]),
         .I3(COUNT_MAX[8]),
-        .I4(Q[2]),
-        .O(\COUNT_MAX[3]_i_7_n_0 ));
+        .I4(Q[1]),
+        .O(\COUNT_MAX[7]_i_8_n_0 ));
   LUT6 #(
     .INIT(64'h1555555555555555)) 
-    \COUNT_MAX[3]_i_8 
-       (.I0(Q[6]),
-        .I1(Q[2]),
-        .I2(COUNT_MAX[8]),
-        .I3(Q[3]),
-        .I4(Q[4]),
-        .I5(Q[5]),
-        .O(\COUNT_MAX[3]_i_8_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \COUNT_MAX[3]_i_9 
-       (.I0(Q[0]),
-        .O(\COUNT_MAX[3]_i_9_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFFFFFFFAFAEAAAE)) 
-    \COUNT_MAX[7]_i_1 
-       (.I0(\COUNT_MAX[7]_i_2_n_0 ),
-        .I1(COUNT_MAX1[7]),
-        .I2(\COUNT_MAX_reg[1]_0 ),
-        .I3(sq_wave_leds),
-        .I4(COUNT_MAX[8]),
-        .I5(\COUNT_MAX[7]_i_5_n_0 ),
-        .O(p_1_in__0[7]));
-  LUT6 #(
-    .INIT(64'h4444400040004000)) 
-    \COUNT_MAX[7]_i_2 
-       (.I0(\COUNT_MAX_reg[0]_0 ),
-        .I1(\code_reg[4]_1 [0]),
-        .I2(COUNT_MAX13_in[7]),
-        .I3(mode_reg_0),
-        .I4(Q[3]),
-        .I5(\COUNT_MAX_reg[10]_1 ),
-        .O(\COUNT_MAX[7]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hEEAEEEAEAAAAEEAE)) 
-    \COUNT_MAX[7]_i_5 
-       (.I0(\code_reg[4]_1 [1]),
-        .I1(\COUNT_MAX[11]_i_9_n_0 ),
-        .I2(sq_wave_leds),
-        .I3(\COUNT_MAX[11]_i_8_n_0 ),
-        .I4(\code_reg[4]_1 [0]),
-        .I5(\COUNT_MAX_reg[0]_0 ),
-        .O(\COUNT_MAX[7]_i_5_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \COUNT_MAX[7]_i_6 
-       (.I0(Q[4]),
-        .O(\COUNT_MAX[7]_i_6_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \COUNT_MAX[7]_i_7 
-       (.I0(Q[3]),
-        .O(\COUNT_MAX[7]_i_7_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \COUNT_MAX[7]_i_8 
-       (.I0(Q[2]),
-        .O(\COUNT_MAX[7]_i_8_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
     \COUNT_MAX[7]_i_9 
-       (.I0(Q[1]),
+       (.I0(Q[3]),
+        .I1(Q[1]),
+        .I2(COUNT_MAX[8]),
+        .I3(COUNT_MAX[6]),
+        .I4(COUNT_MAX[7]),
+        .I5(Q[2]),
         .O(\COUNT_MAX[7]_i_9_n_0 ));
   LUT6 #(
     .INIT(64'hFFF4FFF4FFFFFFF4)) 
     \COUNT_MAX[8]_i_1 
-       (.I0(\COUNT_MAX_reg[8]_0 ),
-        .I1(Q[4]),
+       (.I0(\COUNT_MAX_reg[5]_0 ),
+        .I1(COUNT_MAX[7]),
         .I2(\edge_detect_pulse_reg[1] ),
         .I3(\COUNT_MAX[8]_i_2_n_0 ),
         .I4(COUNT_MAX13_in[8]),
-        .I5(\COUNT_MAX_reg[8]_1 ),
+        .I5(\COUNT_MAX_reg[5]_1 ),
         .O(p_1_in__0[8]));
   LUT6 #(
     .INIT(64'h2202330322020000)) 
     \COUNT_MAX[8]_i_2 
-       (.I0(Q[5]),
+       (.I0(Q[2]),
         .I1(\code_reg[4]_1 [1]),
         .I2(\code_reg[4]_1 [0]),
-        .I3(\COUNT_MAX_reg[0]_0 ),
+        .I3(\COUNT_MAX_reg[1]_0 ),
         .I4(sq_wave_leds),
         .I5(COUNT_MAX1[8]),
         .O(\COUNT_MAX[8]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hFFF4FFF4FFFFFFF4)) 
     \COUNT_MAX[9]_i_1 
-       (.I0(\COUNT_MAX_reg[8]_0 ),
+       (.I0(\COUNT_MAX_reg[5]_0 ),
         .I1(COUNT_MAX[8]),
         .I2(\edge_detect_pulse_reg[1] ),
         .I3(\COUNT_MAX[9]_i_2_n_0 ),
         .I4(COUNT_MAX13_in[9]),
-        .I5(\COUNT_MAX_reg[8]_1 ),
+        .I5(\COUNT_MAX_reg[5]_1 ),
         .O(p_1_in__0[9]));
   LUT6 #(
     .INIT(64'h2202330322020000)) 
     \COUNT_MAX[9]_i_2 
-       (.I0(Q[6]),
+       (.I0(Q[3]),
         .I1(\code_reg[4]_1 [1]),
         .I2(\code_reg[4]_1 [0]),
-        .I3(\COUNT_MAX_reg[0]_0 ),
+        .I3(\COUNT_MAX_reg[1]_0 ),
         .I4(sq_wave_leds),
         .I5(COUNT_MAX1[9]),
         .O(\COUNT_MAX[9]_i_2_n_0 ));
@@ -6824,33 +6878,33 @@ module sq_wave_gen
     \COUNT_MAX_reg[10] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
-        .D(D[3]),
-        .Q(Q[6]),
+        .D(D[1]),
+        .Q(Q[3]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \COUNT_MAX_reg[11] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
-        .D(D[4]),
+        .D(D[2]),
         .Q(COUNT_MAX[11]),
         .R(\<const0> ));
   (* ADDER_THRESHOLD = "35" *) 
   (* OPT_MODIFIED = "SWEEP" *) 
   CARRY4 \COUNT_MAX_reg[11]_i_10 
-       (.CI(\COUNT_MAX_reg[7]_i_3_n_0 ),
+       (.CI(\COUNT_MAX_reg[7]_i_11_n_0 ),
         .CYINIT(\<const0> ),
-        .DI({\<const0> ,Q[6:5],COUNT_MAX[8]}),
-        .O({\COUNT_MAX_reg[10]_0 [3],COUNT_MAX1[10:8]}),
+        .DI({\<const0> ,Q[3:2],COUNT_MAX[8]}),
+        .O({\COUNT_MAX_reg[10]_0 [1],COUNT_MAX1[10:8]}),
         .S({\COUNT_MAX[11]_i_12_n_0 ,\COUNT_MAX[11]_i_13_n_0 ,\COUNT_MAX[11]_i_14_n_0 ,\COUNT_MAX[11]_i_15_n_0 }));
   (* ADDER_THRESHOLD = "35" *) 
   (* OPT_MODIFIED = "SWEEP" *) 
-  CARRY4 \COUNT_MAX_reg[11]_i_4 
-       (.CI(\COUNT_MAX_reg[6]_i_3_n_0 ),
+  CARRY4 \COUNT_MAX_reg[11]_i_6 
+       (.CI(\COUNT_MAX_reg[7]_i_4_n_0 ),
         .CYINIT(\<const0> ),
         .DI({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
-        .O({\COUNT_MAX_reg[11]_0 [4:3],COUNT_MAX13_in[9:8]}),
-        .S({COUNT_MAX[11],Q[6:5],COUNT_MAX[8]}));
+        .O({\COUNT_MAX_reg[11]_0 [2:1],COUNT_MAX13_in[9:8]}),
+        .S({COUNT_MAX[11],Q[3:2],COUNT_MAX[8]}));
   FDRE #(
     .INIT(1'b1)) 
     \COUNT_MAX_reg[1] 
@@ -6877,63 +6931,63 @@ module sq_wave_gen
         .R(\<const0> ));
   (* ADDER_THRESHOLD = "35" *) 
   (* OPT_MODIFIED = "PROPCONST SWEEP" *) 
-  CARRY4 \COUNT_MAX_reg[3]_i_4 
+  CARRY4 \COUNT_MAX_reg[3]_i_2 
        (.CI(\<const0> ),
-        .CO({\COUNT_MAX_reg[3]_i_4_n_0 ,\NLW_COUNT_MAX_reg[3]_i_4_CO_UNCONNECTED [2:0]}),
+        .CO({\COUNT_MAX_reg[3]_i_2_n_0 ,\NLW_COUNT_MAX_reg[3]_i_2_CO_UNCONNECTED [2:0]}),
         .CYINIT(\<const0> ),
         .DI({Q[0],\<const0> ,COUNT_MAX[1],\<const0> }),
-        .O({COUNT_MAX13_in[3:1],\NLW_COUNT_MAX_reg[3]_i_4_O_UNCONNECTED [0]}),
-        .S({\COUNT_MAX[3]_i_9_n_0 ,COUNT_MAX[2],\COUNT_MAX[3]_i_10_n_0 ,COUNT_MAX[0]}));
+        .O({COUNT_MAX13_in[3:1],\NLW_COUNT_MAX_reg[3]_i_2_O_UNCONNECTED [0]}),
+        .S({\COUNT_MAX[3]_i_4_n_0 ,COUNT_MAX[2],\COUNT_MAX[3]_i_5_n_0 ,COUNT_MAX[0]}));
   FDRE #(
     .INIT(1'b0)) 
     \COUNT_MAX_reg[4] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(D[0]),
-        .Q(Q[1]),
+        .Q(COUNT_MAX[4]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \COUNT_MAX_reg[5] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
-        .D(D[1]),
-        .Q(Q[2]),
+        .D(p_1_in__0[5]),
+        .Q(Q[1]),
         .R(\<const0> ));
   FDRE #(
     .INIT(1'b0)) 
     \COUNT_MAX_reg[6] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
-        .D(D[2]),
-        .Q(Q[3]),
+        .D(p_1_in__0[6]),
+        .Q(COUNT_MAX[6]),
         .R(\<const0> ));
-  (* ADDER_THRESHOLD = "35" *) 
-  (* OPT_MODIFIED = "SWEEP" *) 
-  CARRY4 \COUNT_MAX_reg[6]_i_3 
-       (.CI(\COUNT_MAX_reg[3]_i_4_n_0 ),
-        .CO({\COUNT_MAX_reg[6]_i_3_n_0 ,\NLW_COUNT_MAX_reg[6]_i_3_CO_UNCONNECTED [2:0]}),
-        .CYINIT(\<const0> ),
-        .DI({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
-        .O({COUNT_MAX13_in[7],\COUNT_MAX_reg[11]_0 [2:0]}),
-        .S(Q[4:1]));
   FDRE #(
     .INIT(1'b1)) 
     \COUNT_MAX_reg[7] 
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(p_1_in__0[7]),
-        .Q(Q[4]),
+        .Q(COUNT_MAX[7]),
         .R(\<const0> ));
   (* ADDER_THRESHOLD = "35" *) 
   (* OPT_MODIFIED = "SWEEP" *) 
-  CARRY4 \COUNT_MAX_reg[7]_i_3 
+  CARRY4 \COUNT_MAX_reg[7]_i_11 
        (.CI(\COUNT_MAX_reg[0]_i_2_n_0 ),
-        .CO({\COUNT_MAX_reg[7]_i_3_n_0 ,\NLW_COUNT_MAX_reg[7]_i_3_CO_UNCONNECTED [2:0]}),
+        .CO({\COUNT_MAX_reg[7]_i_11_n_0 ,\NLW_COUNT_MAX_reg[7]_i_11_CO_UNCONNECTED [2:0]}),
         .CYINIT(\<const0> ),
-        .DI(Q[4:1]),
-        .O({COUNT_MAX1[7],\COUNT_MAX_reg[10]_0 [2:0]}),
-        .S({\COUNT_MAX[7]_i_6_n_0 ,\COUNT_MAX[7]_i_7_n_0 ,\COUNT_MAX[7]_i_8_n_0 ,\COUNT_MAX[7]_i_9_n_0 }));
+        .DI({COUNT_MAX[7:6],Q[1],COUNT_MAX[4]}),
+        .O({COUNT_MAX1[7:5],\COUNT_MAX_reg[10]_0 [0]}),
+        .S({\COUNT_MAX[7]_i_13_n_0 ,\COUNT_MAX[7]_i_14_n_0 ,\COUNT_MAX[7]_i_15_n_0 ,\COUNT_MAX[7]_i_16_n_0 }));
+  (* ADDER_THRESHOLD = "35" *) 
+  (* OPT_MODIFIED = "SWEEP" *) 
+  CARRY4 \COUNT_MAX_reg[7]_i_4 
+       (.CI(\COUNT_MAX_reg[3]_i_2_n_0 ),
+        .CO({\COUNT_MAX_reg[7]_i_4_n_0 ,\NLW_COUNT_MAX_reg[7]_i_4_CO_UNCONNECTED [2:0]}),
+        .CYINIT(\<const0> ),
+        .DI({\<const0> ,\<const0> ,\<const0> ,\<const0> }),
+        .O({COUNT_MAX13_in[7:5],\COUNT_MAX_reg[11]_0 [0]}),
+        .S({COUNT_MAX[7:6],Q[1],COUNT_MAX[4]}));
   FDRE #(
     .INIT(1'b0)) 
     \COUNT_MAX_reg[8] 
@@ -6948,7 +7002,7 @@ module sq_wave_gen
        (.C(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CE(E),
         .D(p_1_in__0[9]),
-        .Q(Q[5]),
+        .Q(Q[2]),
         .R(\<const0> ));
   GND GND
        (.G(\<const0> ));
@@ -7126,7 +7180,7 @@ module sq_wave_gen
        (.CI(\<const0> ),
         .CO({sample_counter1_carry_n_0,NLW_sample_counter1_carry_CO_UNCONNECTED[2:0]}),
         .CYINIT(COUNT_MAX[0]),
-        .DI({Q[1:0],COUNT_MAX[2:1]}),
+        .DI({COUNT_MAX[4],Q[0],COUNT_MAX[2:1]}),
         .O(sample_counter1[4:1]),
         .S({sample_counter1_carry_i_1_n_0,sample_counter1_carry_i_2_n_0,sample_counter1_carry_i_3_n_0,sample_counter1_carry_i_4_n_0}));
   (* OPT_MODIFIED = "SWEEP" *) 
@@ -7134,7 +7188,7 @@ module sq_wave_gen
        (.CI(sample_counter1_carry_n_0),
         .CO({sample_counter1_carry__0_n_0,NLW_sample_counter1_carry__0_CO_UNCONNECTED[2:0]}),
         .CYINIT(\<const0> ),
-        .DI({COUNT_MAX[8],Q[4:2]}),
+        .DI({COUNT_MAX[8:6],Q[1]}),
         .O(sample_counter1[8:5]),
         .S({sample_counter1_carry__0_i_1_n_0,sample_counter1_carry__0_i_2_n_0,sample_counter1_carry__0_i_3_n_0,sample_counter1_carry__0_i_4_n_0}));
   LUT1 #(
@@ -7145,24 +7199,24 @@ module sq_wave_gen
   LUT1 #(
     .INIT(2'h1)) 
     sample_counter1_carry__0_i_2
-       (.I0(Q[4]),
+       (.I0(COUNT_MAX[7]),
         .O(sample_counter1_carry__0_i_2_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     sample_counter1_carry__0_i_3
-       (.I0(Q[3]),
+       (.I0(COUNT_MAX[6]),
         .O(sample_counter1_carry__0_i_3_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     sample_counter1_carry__0_i_4
-       (.I0(Q[2]),
+       (.I0(Q[1]),
         .O(sample_counter1_carry__0_i_4_n_0));
   (* OPT_MODIFIED = "SWEEP" *) 
   CARRY4 sample_counter1_carry__1
        (.CI(sample_counter1_carry__0_n_0),
         .CO({sample_counter1_carry__1_n_0,NLW_sample_counter1_carry__1_CO_UNCONNECTED[2:0]}),
         .CYINIT(\<const0> ),
-        .DI({\<const0> ,COUNT_MAX[11],Q[6:5]}),
+        .DI({\<const0> ,COUNT_MAX[11],Q[3:2]}),
         .O(sample_counter1[11:9]),
         .S({\<const1> ,sample_counter1_carry__1_i_1_n_0,sample_counter1_carry__1_i_2_n_0,sample_counter1_carry__1_i_3_n_0}));
   LUT1 #(
@@ -7173,17 +7227,17 @@ module sq_wave_gen
   LUT1 #(
     .INIT(2'h1)) 
     sample_counter1_carry__1_i_2
-       (.I0(Q[6]),
+       (.I0(Q[3]),
         .O(sample_counter1_carry__1_i_2_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     sample_counter1_carry__1_i_3
-       (.I0(Q[5]),
+       (.I0(Q[2]),
         .O(sample_counter1_carry__1_i_3_n_0));
   LUT1 #(
     .INIT(2'h1)) 
     sample_counter1_carry_i_1
-       (.I0(Q[1]),
+       (.I0(COUNT_MAX[4]),
         .O(sample_counter1_carry_i_1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
@@ -7443,14 +7497,12 @@ module synchronizer__parameterized0
     Q,
     DI,
     \sync_signal_reg[0]_0 ,
-    \sync_signal_reg[0]_1 ,
     CO,
     DOADO,
     pwm0_carry__0_i_2,
     pwm0_carry__0_i_1_0,
     pwm0_carry__0,
-    \next_state_reg[1] ,
-    LEDS_OBUF,
+    \fcw_reg[0] ,
     D,
     CLK_125MHZ_FPGA_IBUF_BUFG);
   output AUD_PWM_OBUF;
@@ -7458,14 +7510,12 @@ module synchronizer__parameterized0
   output [1:0]Q;
   output [0:0]DI;
   output \sync_signal_reg[0]_0 ;
-  output \sync_signal_reg[0]_1 ;
   input [0:0]CO;
   input [9:0]DOADO;
   input pwm0_carry__0_i_2;
   input pwm0_carry__0_i_1_0;
   input [1:0]pwm0_carry__0;
-  input [1:0]\next_state_reg[1] ;
-  input [0:0]LEDS_OBUF;
+  input [0:0]\fcw_reg[0] ;
   input [1:0]D;
   input CLK_125MHZ_FPGA_IBUF_BUFG;
 
@@ -7481,18 +7531,16 @@ module synchronizer__parameterized0
   wire [1:0]D;
   wire [0:0]DI;
   wire [9:0]DOADO;
-  wire [0:0]LEDS_OBUF;
   wire [1:0]Q;
+  wire [0:0]\fcw_reg[0] ;
   wire \middle_reg[0]_inv_n_0 ;
   wire \middle_reg[1]_inv_n_0 ;
-  wire [1:0]\next_state_reg[1] ;
   wire [1:0]pwm0_carry__0;
   wire pwm0_carry__0_i_1_0;
   wire pwm0_carry__0_i_2;
   wire pwm0_carry__0_i_3_n_0;
   wire sel;
   wire \sync_signal_reg[0]_0 ;
-  wire \sync_signal_reg[0]_1 ;
 
   LUT6 #(
     .INIT(64'hAAAAA8AAAAAAAAAA)) 
@@ -7565,18 +7613,11 @@ module synchronizer__parameterized0
         .D(D[1]),
         .Q(\middle_reg[1]_inv_n_0 ),
         .R(\<const0> ));
-  LUT3 #(
-    .INIT(8'h80)) 
-    \next_state[1]_i_2 
-       (.I0(Q[0]),
-        .I1(\next_state_reg[1] [1]),
-        .I2(LEDS_OBUF),
-        .O(\sync_signal_reg[0]_1 ));
   LUT2 #(
-    .INIT(4'h8)) 
-    \next_state[1]_i_4 
+    .INIT(4'h7)) 
+    \next_state[0]_i_2 
        (.I0(Q[0]),
-        .I1(\next_state_reg[1] [0]),
+        .I1(\fcw_reg[0] ),
         .O(\sync_signal_reg[0]_0 ));
   LUT6 #(
     .INIT(64'h00E2FFFF000000E2)) 
@@ -7613,7 +7654,7 @@ module synchronizer__parameterized0
         .R(\<const0> ));
 endmodule
 
-(* B_PULSE_CNT_MAX = "200" *) (* B_SAMPLE_CNT_MAX = "62500" *) (* ECO_CHECKSUM = "b8f88d26" *) 
+(* B_PULSE_CNT_MAX = "200" *) (* B_SAMPLE_CNT_MAX = "62500" *) (* ECO_CHECKSUM = "6d3b019a" *) 
 (* POWER_OPT_BRAM_CDC = "0" *) (* POWER_OPT_BRAM_SR_ADDR = "0" *) (* POWER_OPT_LOOPED_NET_PERCENTAGE = "0" *) 
 (* STRUCTURAL_NETLIST = "yes" *)
 module z1top
@@ -7649,24 +7690,28 @@ module z1top
   wire [1:0]SWITCHES;
   wire [1:0]SWITCHES_IBUF;
   wire bp_n_0;
-  wire bp_n_12;
-  wire bp_n_13;
-  wire bp_n_14;
+  wire bp_n_10;
+  wire bp_n_11;
   wire bp_n_15;
   wire bp_n_16;
   wire bp_n_17;
+  wire bp_n_18;
   wire bp_n_19;
   wire bp_n_20;
   wire bp_n_21;
   wire bp_n_22;
+  wire bp_n_23;
+  wire bp_n_24;
   wire bp_n_5;
   wire bp_n_6;
+  wire bp_n_7;
+  wire bp_n_8;
+  wire bp_n_9;
   wire [3:0]buttons_pressed;
   wire [9:8]counter;
   wire dac_n_4;
   wire data0;
   wire [22:0]fcw;
-  wire fsm_n_23;
   wire fsm_n_24;
   wire fsm_n_25;
   wire fsm_n_26;
@@ -7690,13 +7735,15 @@ module z1top
   wire fsm_n_44;
   wire fsm_n_45;
   wire fsm_n_46;
-  wire fsm_n_53;
-  wire gen_n_18;
-  wire gen_n_19;
-  wire gen_n_20;
-  wire gen_n_21;
-  wire gen_n_22;
-  wire gen_n_23;
+  wire fsm_n_47;
+  wire fsm_n_54;
+  wire fsm_n_55;
+  wire gen_n_11;
+  wire gen_n_12;
+  wire gen_n_13;
+  wire gen_n_14;
+  wire gen_n_15;
+  wire gen_n_16;
   wire nco_n_24;
   wire nco_n_25;
   wire nco_n_26;
@@ -7723,7 +7770,6 @@ module z1top
   wire switch_sync_n_1;
   wire switch_sync_n_4;
   wire switch_sync_n_5;
-  wire switch_sync_n_6;
   wire [0:0]switches_sync;
   wire wr_en;
 
@@ -7782,33 +7828,39 @@ module z1top
   button_parser bp
        (.CLK_125MHZ_FPGA_IBUF_BUFG(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CO(sample_counter0),
-        .COUNT_MAX1({COUNT_MAX1[11],COUNT_MAX1[6:4]}),
-        .COUNT_MAX13_in({COUNT_MAX13_in[11:10],COUNT_MAX13_in[6:4]}),
-        .\COUNT_MAX_reg[10] (gen_n_19),
+        .COUNT_MAX1({COUNT_MAX1[11],COUNT_MAX1[4]}),
+        .COUNT_MAX13_in({COUNT_MAX13_in[11:10],COUNT_MAX13_in[4]}),
+        .\COUNT_MAX_reg[10] (gen_n_14),
         .\COUNT_MAX_reg[11] (switches_sync),
-        .\COUNT_MAX_reg[11]_0 (gen_n_18),
-        .\COUNT_MAX_reg[11]_1 ({COUNT_MAX[10:9],COUNT_MAX[7:3]}),
-        .\COUNT_MAX_reg[11]_2 (gen_n_20),
-        .\COUNT_MAX_reg[11]_3 (gen_n_21),
-        .D({p_1_in__0[11:10],p_1_in__0[6:4]}),
-        .E(bp_n_15),
+        .\COUNT_MAX_reg[11]_0 ({COUNT_MAX[10:9],COUNT_MAX[5],COUNT_MAX[3]}),
+        .\COUNT_MAX_reg[11]_1 (gen_n_13),
+        .\COUNT_MAX_reg[11]_2 (gen_n_12),
+        .\COUNT_MAX_reg[11]_3 (gen_n_11),
+        .D({p_1_in__0[11:10],p_1_in__0[4]}),
+        .E(bp_n_18),
         .LEDS_OBUF(LEDS_OBUF[5:4]),
         .Q(buttons_pressed),
-        .\edge_detect_pulse_reg[0] (bp_n_6),
-        .\edge_detect_pulse_reg[1] (bp_n_5),
-        .\edge_detect_pulse_reg[1]_0 (bp_n_12),
-        .\edge_detect_pulse_reg[1]_1 (bp_n_13),
-        .\edge_detect_pulse_reg[1]_2 (bp_n_16),
-        .\edge_detect_pulse_reg[2] (bp_n_17),
+        .SR(fsm_n_55),
+        .\edge_detect_pulse_reg[0] (bp_n_5),
+        .\edge_detect_pulse_reg[0]_0 (bp_n_9),
+        .\edge_detect_pulse_reg[0]_1 (bp_n_10),
+        .\edge_detect_pulse_reg[0]_2 (bp_n_11),
+        .\edge_detect_pulse_reg[0]_3 (bp_n_21),
+        .\edge_detect_pulse_reg[1] (bp_n_15),
+        .\edge_detect_pulse_reg[1]_0 (bp_n_16),
+        .\edge_detect_pulse_reg[1]_1 (bp_n_20),
+        .\edge_detect_pulse_reg[2] (bp_n_7),
+        .\edge_detect_pulse_reg[2]_0 (bp_n_8),
         .\edge_detect_pulse_reg[3] (bp_n_0),
-        .\edge_detect_pulse_reg[3]_0 (bp_n_14),
-        .\edge_detect_pulse_reg[3]_1 (bp_n_20),
-        .\edge_detect_pulse_reg[3]_2 (bp_n_21),
-        .\edge_detect_pulse_reg[3]_3 (bp_n_22),
+        .\edge_detect_pulse_reg[3]_0 (bp_n_17),
+        .\edge_detect_pulse_reg[3]_1 (bp_n_19),
+        .\edge_detect_pulse_reg[3]_2 (bp_n_23),
+        .\edge_detect_pulse_reg[3]_3 (bp_n_24),
         .\middle_reg[3]_inv (BUTTONS_IBUF),
+        .\present_state_reg[0] (bp_n_6),
         .\sample_counter_reg[0] (dac_n_4),
         .sq_wave_leds(sq_wave_leds),
-        .\sync_signal_reg[0] (bp_n_19),
+        .\sync_signal_reg[0] (bp_n_22),
         .wr_en(wr_en));
   dac dac
        (.CLK_125MHZ_FPGA_IBUF_BUFG(CLK_125MHZ_FPGA_IBUF_BUFG),
@@ -7820,53 +7872,58 @@ module z1top
         .\counter_reg[9]_0 (counter),
         .\counter_reg[9]_1 (buttons_pressed[3]),
         .next_sample(next_sample),
-        .pwm0_carry_0(gen_n_23),
-        .pwm0_carry__0_0(gen_n_22),
+        .pwm0_carry_0(gen_n_16),
+        .pwm0_carry__0_0(gen_n_15),
         .pwm0_carry__0_1(switch_sync_n_1));
   fsm fsm
        (.CLK_125MHZ_FPGA_IBUF_BUFG(CLK_125MHZ_FPGA_IBUF_BUFG),
         .LEDS_OBUF(LEDS_OBUF),
-        .O({fsm_n_23,fsm_n_24,fsm_n_25,fsm_n_26}),
+        .O({fsm_n_24,fsm_n_25,fsm_n_26,fsm_n_27}),
         .Q(fcw),
-        .S(fsm_n_53),
-        .\d_in_reg[2]_0 (switches_sync),
-        .\fcw_reg[11]_0 ({fsm_n_31,fsm_n_32,fsm_n_33,fsm_n_34}),
-        .\fcw_reg[15]_0 ({fsm_n_35,fsm_n_36,fsm_n_37,fsm_n_38}),
-        .\fcw_reg[19]_0 ({fsm_n_39,fsm_n_40,fsm_n_41,fsm_n_42}),
-        .\fcw_reg[1]_0 (bp_n_6),
-        .\fcw_reg[22]_0 ({fsm_n_43,fsm_n_44,fsm_n_45,fsm_n_46}),
-        .\fcw_reg[7]_0 ({fsm_n_27,fsm_n_28,fsm_n_29,fsm_n_30}),
-        .\next_state_reg[0]_0 (bp_n_17),
-        .\next_state_reg[1]_0 (switch_sync_n_6),
+        .S(fsm_n_54),
+        .SR(fsm_n_55),
+        .\d_in_reg[0]_0 (bp_n_10),
+        .\fcw_reg[0]_0 (switch_sync_n_5),
+        .\fcw_reg[11]_0 ({fsm_n_32,fsm_n_33,fsm_n_34,fsm_n_35}),
+        .\fcw_reg[11]_1 (bp_n_9),
+        .\fcw_reg[15]_0 ({fsm_n_36,fsm_n_37,fsm_n_38,fsm_n_39}),
+        .\fcw_reg[19]_0 ({fsm_n_40,fsm_n_41,fsm_n_42,fsm_n_43}),
+        .\fcw_reg[22]_0 ({fsm_n_44,fsm_n_45,fsm_n_46,fsm_n_47}),
+        .\fcw_reg[7]_0 ({fsm_n_28,fsm_n_29,fsm_n_30,fsm_n_31}),
+        .\next_state_reg[0]_0 (bp_n_11),
+        .\next_state_reg[0]_1 (bp_n_8),
+        .\next_state_reg[1]_0 (switches_sync),
         .\next_state_reg[1]_1 (bp_n_5),
-        .\next_state_reg[1]_2 (switch_sync_n_5),
+        .\next_state_reg[1]_2 (bp_n_6),
         .pa_reg(pa_reg),
-        .\ram_reg[3][2] ({buttons_pressed[3],buttons_pressed[1:0]}),
+        .\ram_reg[3][2] (buttons_pressed),
+        .rd_en_reg_0(bp_n_7),
         .sq_wave_leds(sq_wave_leds),
-        .wr_en(wr_en));
+        .wr_en(wr_en),
+        .wr_en_reg_0(bp_n_21));
   sq_wave_gen gen
        (.CLK_125MHZ_FPGA_IBUF_BUFG(CLK_125MHZ_FPGA_IBUF_BUFG),
         .CO(sample_counter0),
-        .\COUNT_MAX_reg[0]_0 (switches_sync),
-        .\COUNT_MAX_reg[10]_0 ({COUNT_MAX1[11],COUNT_MAX1[6:4]}),
-        .\COUNT_MAX_reg[10]_1 (gen_n_20),
-        .\COUNT_MAX_reg[11]_0 ({COUNT_MAX13_in[11:10],COUNT_MAX13_in[6:4]}),
-        .\COUNT_MAX_reg[1]_0 (bp_n_16),
-        .\COUNT_MAX_reg[2]_0 (bp_n_21),
-        .\COUNT_MAX_reg[2]_1 (bp_n_14),
-        .\COUNT_MAX_reg[2]_2 (bp_n_22),
-        .\COUNT_MAX_reg[8]_0 (bp_n_13),
-        .\COUNT_MAX_reg[8]_1 (bp_n_12),
-        .D({p_1_in__0[11:10],p_1_in__0[6:4]}),
-        .E(bp_n_15),
-        .Q({COUNT_MAX[10:9],COUNT_MAX[7:3]}),
-        .\code_reg[2]_0 (gen_n_23),
-        .\code_reg[4]_0 (gen_n_22),
+        .\COUNT_MAX_reg[10]_0 ({COUNT_MAX1[11],COUNT_MAX1[4]}),
+        .\COUNT_MAX_reg[10]_1 (gen_n_11),
+        .\COUNT_MAX_reg[11]_0 ({COUNT_MAX13_in[11:10],COUNT_MAX13_in[4]}),
+        .\COUNT_MAX_reg[1]_0 (switches_sync),
+        .\COUNT_MAX_reg[2]_0 (bp_n_24),
+        .\COUNT_MAX_reg[2]_1 (bp_n_17),
+        .\COUNT_MAX_reg[2]_2 (bp_n_19),
+        .\COUNT_MAX_reg[5]_0 (bp_n_15),
+        .\COUNT_MAX_reg[5]_1 (bp_n_16),
+        .\COUNT_MAX_reg[7]_0 (bp_n_20),
+        .D({p_1_in__0[11:10],p_1_in__0[4]}),
+        .E(bp_n_18),
+        .Q({COUNT_MAX[10:9],COUNT_MAX[5],COUNT_MAX[3]}),
+        .\code_reg[2]_0 (gen_n_16),
+        .\code_reg[4]_0 (gen_n_15),
         .\code_reg[4]_1 ({buttons_pressed[3],buttons_pressed[1]}),
-        .\edge_detect_pulse_reg[1] (gen_n_18),
-        .\edge_detect_pulse_reg[3] (gen_n_19),
-        .mode_reg_0(gen_n_21),
-        .mode_reg_1(bp_n_19),
+        .\edge_detect_pulse_reg[1] (gen_n_13),
+        .\edge_detect_pulse_reg[3] (gen_n_14),
+        .mode_reg_0(gen_n_12),
+        .mode_reg_1(bp_n_22),
         .next_sample(next_sample),
         .\sample_counter_reg[0]_0 (bp_n_0),
         .sq_wave_leds(sq_wave_leds),
@@ -7874,17 +7931,17 @@ module z1top
   nco nco
        (.ADDRARDADDR({nco_n_24,nco_n_25,nco_n_26,nco_n_27,nco_n_28,nco_n_29,nco_n_30,nco_n_31}),
         .CLK_125MHZ_FPGA_IBUF_BUFG(CLK_125MHZ_FPGA_IBUF_BUFG),
-        .O({fsm_n_23,fsm_n_24,fsm_n_25,fsm_n_26}),
+        .O({fsm_n_24,fsm_n_25,fsm_n_26,fsm_n_27}),
         .Q(buttons_pressed[3]),
-        .S(fsm_n_53),
+        .S(fsm_n_54),
         .next_sample(next_sample),
         .pa0_carry__4_0(fcw),
         .pa_reg(pa_reg),
-        .\pa_reg[11]_0 ({fsm_n_31,fsm_n_32,fsm_n_33,fsm_n_34}),
-        .\pa_reg[15]_0 ({fsm_n_35,fsm_n_36,fsm_n_37,fsm_n_38}),
-        .\pa_reg[19]_0 ({fsm_n_39,fsm_n_40,fsm_n_41,fsm_n_42}),
-        .\pa_reg[23]_0 ({fsm_n_43,fsm_n_44,fsm_n_45,fsm_n_46}),
-        .\pa_reg[7]_0 ({fsm_n_27,fsm_n_28,fsm_n_29,fsm_n_30}));
+        .\pa_reg[11]_0 ({fsm_n_32,fsm_n_33,fsm_n_34,fsm_n_35}),
+        .\pa_reg[15]_0 ({fsm_n_36,fsm_n_37,fsm_n_38,fsm_n_39}),
+        .\pa_reg[19]_0 ({fsm_n_40,fsm_n_41,fsm_n_42,fsm_n_43}),
+        .\pa_reg[23]_0 ({fsm_n_44,fsm_n_45,fsm_n_46,fsm_n_47}),
+        .\pa_reg[7]_0 ({fsm_n_28,fsm_n_29,fsm_n_30,fsm_n_31}));
   (* \MEM.PORTA.DATA_BIT_LAYOUT  = "p0_d10" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-6 {cell *THIS*}}" *) 
   (* RTL_RAM_BITS = "2560" *) 
@@ -7997,7 +8054,7 @@ module z1top
         .DIPADIP({\<const0> ,\<const0> }),
         .DIPBDIP({\<const1> ,\<const1> }),
         .DOADO({sel_n_6,sel_n_7,sel_n_8,sel_n_9,sel_n_10,sel_n_11,sel_n_12,sel_n_13,sel_n_14,sel_n_15}),
-        .ENARDEN(bp_n_20),
+        .ENARDEN(bp_n_23),
         .ENBWREN(\<const0> ),
         .REGCEAREGCE(\<const0> ),
         .REGCEB(\<const0> ),
@@ -8014,13 +8071,11 @@ module z1top
         .D(SWITCHES_IBUF),
         .DI(switch_sync_n_4),
         .DOADO({sel_n_6,sel_n_7,sel_n_8,sel_n_9,sel_n_10,sel_n_11,sel_n_12,sel_n_13,sel_n_14,sel_n_15}),
-        .LEDS_OBUF(LEDS_OBUF[5]),
         .Q({AUD_SD_OBUF,switches_sync}),
-        .\next_state_reg[1] ({buttons_pressed[2],buttons_pressed[0]}),
+        .\fcw_reg[0] (buttons_pressed[0]),
         .pwm0_carry__0(counter),
-        .pwm0_carry__0_i_1_0(gen_n_22),
-        .pwm0_carry__0_i_2(gen_n_23),
+        .pwm0_carry__0_i_1_0(gen_n_15),
+        .pwm0_carry__0_i_2(gen_n_16),
         .sel(switch_sync_n_1),
-        .\sync_signal_reg[0]_0 (switch_sync_n_5),
-        .\sync_signal_reg[0]_1 (switch_sync_n_6));
+        .\sync_signal_reg[0]_0 (switch_sync_n_5));
 endmodule

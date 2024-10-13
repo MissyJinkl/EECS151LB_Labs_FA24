@@ -2,11 +2,11 @@
 # Webtalk v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Thu Oct 10 01:08:08 2024
-# Process ID: 577517
+# Start of session at: Thu Oct 10 19:07:12 2024
+# Process ID: 61334
 # Current directory: /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/build/impl
-# Command line: wbtcv -mode batch -source /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/build/impl/.Xil/Vivado-577038-c111-16.EECS.Berkeley.EDU/webtalk/labtool_webtalk.tcl -notrace
+# Command line: wbtcv -mode batch -source /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/build/impl/.Xil/Vivado-60849-c111-16.EECS.Berkeley.EDU/webtalk/labtool_webtalk.tcl -notrace
 # Log file: /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/build/impl/webtalk.log
 # Journal file: /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/build/impl/webtalk.jou
 #-----------------------------------------------------------
-source /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/build/impl/.Xil/Vivado-577038-c111-16.EECS.Berkeley.EDU/webtalk/labtool_webtalk.tcl -notrace
+source /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab4/build/impl/.Xil/Vivado-60849-c111-16.EECS.Berkeley.EDU/webtalk/labtool_webtalk.tcl -notrace

@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Thu Oct 10 01:07:32 2024
+| Date         : Thu Oct 10 18:25:42 2024
 | Host         : c111-16.EECS.Berkeley.EDU running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 | Command      : report_timing_summary -warn_on_violation -file post_route_timing_summary.rpt
 | Design       : z1top
@@ -136,7 +136,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      1.115        0.000                      0                  783        0.051        0.000                      0                  783        3.500        0.000                       0                   339  
+      1.121        0.000                      0                  782        0.050        0.000                      0                  782        3.500        0.000                       0                   339  
 
 
 All user specified timing constraints are met.
@@ -159,7 +159,7 @@ clk_125mhz_fpga  {0.000 4.000}        8.000           125.000
 
 Clock                WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----                -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk_125mhz_fpga        1.115        0.000                      0                  783        0.051        0.000                      0                  783        3.500        0.000                       0                   339  
+clk_125mhz_fpga        1.121        0.000                      0                  782        0.050        0.000                      0                  782        3.500        0.000                       0                   339  
 
 
 ------------------------------------------------------------------------------------------------
@@ -190,15 +190,15 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  clk_125mhz_fpga
   To Clock:  clk_125mhz_fpga
 
-Setup :            0  Failing Endpoints,  Worst Slack        1.115ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.051ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        1.121ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.050ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        3.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             1.115ns  (required time - arrival time)
+Slack (MET) :             1.121ns  (required time - arrival time)
   Source:                 gen/COUNT_MAX_reg[1]/C
                             (rising edge-triggered cell FDRE clocked by clk_125mhz_fpga  {rise@0.000ns fall@4.000ns period=8.000ns})
   Destination:            gen/sample_counter_reg[4]/R
@@ -206,11 +206,11 @@ Slack (MET) :             1.115ns  (required time - arrival time)
   Path Group:             clk_125mhz_fpga
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            8.000ns  (clk_125mhz_fpga rise@8.000ns - clk_125mhz_fpga rise@0.000ns)
-  Data Path Delay:        6.080ns  (logic 2.748ns (45.200%)  route 3.332ns (54.800%))
+  Data Path Delay:        6.150ns  (logic 2.788ns (45.334%)  route 3.362ns (54.666%))
   Logic Levels:           9  (CARRY4=6 LUT1=1 LUT3=1 LUT4=1)
-  Clock Path Skew:        -0.139ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    5.544ns = ( 13.544 - 8.000 ) 
-    Source Clock Delay      (SCD):    6.124ns
+  Clock Path Skew:        -0.062ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    5.548ns = ( 13.548 - 8.000 ) 
+    Source Clock Delay      (SCD):    6.051ns
     Clock Pessimism Removal (CPR):    0.441ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
@@ -227,36 +227,36 @@ Slack (MET) :             1.115ns  (required time - arrival time)
     H16                  IBUF (Prop_ibuf_I_O)         1.451     1.451 r  CLK_125MHZ_FPGA_IBUF_inst/O
                          net (fo=1, routed)           2.522     3.973    CLK_125MHZ_FPGA_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.101     4.074 r  CLK_125MHZ_FPGA_IBUF_BUFG_inst/O
-                         net (fo=338, routed)         2.050     6.124    gen/CLK_125MHZ_FPGA_IBUF_BUFG
-    SLICE_X106Y113       FDRE                                         r  gen/COUNT_MAX_reg[1]/C
+                         net (fo=338, routed)         1.977     6.051    gen/CLK_125MHZ_FPGA_IBUF_BUFG
+    SLICE_X98Y103        FDRE                                         r  gen/COUNT_MAX_reg[1]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X106Y113       FDRE (Prop_fdre_C_Q)         0.456     6.580 f  gen/COUNT_MAX_reg[1]/Q
-                         net (fo=10, routed)          0.902     7.482    gen/COUNT_MAX[1]
-    SLICE_X103Y111       LUT1 (Prop_lut1_I0_O)        0.124     7.606 r  gen/sample_counter1_carry_i_4/O
-                         net (fo=1, routed)           0.000     7.606    gen/sample_counter1_carry_i_4_n_0
-    SLICE_X103Y111       CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.532     8.138 r  gen/sample_counter1_carry/CO[3]
-                         net (fo=1, routed)           0.000     8.138    gen/sample_counter1_carry_n_0
-    SLICE_X103Y112       CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.114     8.252 r  gen/sample_counter1_carry__0/CO[3]
-                         net (fo=1, routed)           0.000     8.252    gen/sample_counter1_carry__0_n_0
-    SLICE_X103Y113       CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     8.586 r  gen/sample_counter1_carry__1/O[1]
-                         net (fo=2, routed)           0.571     9.157    gen/sample_counter1[10]
-    SLICE_X102Y113       LUT4 (Prop_lut4_I0_O)        0.303     9.460 r  gen/sample_counter0_carry__0_i_3/O
-                         net (fo=1, routed)           0.000     9.460    gen/sample_counter0_carry__0_i_3_n_0
-    SLICE_X102Y113       CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.533     9.993 r  gen/sample_counter0_carry__0/CO[3]
-                         net (fo=1, routed)           0.000     9.993    gen/sample_counter0_carry__0_n_0
-    SLICE_X102Y114       CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    10.110 r  gen/sample_counter0_carry__1/CO[3]
-                         net (fo=1, routed)           0.000    10.110    gen/sample_counter0_carry__1_n_0
-    SLICE_X102Y115       CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117    10.227 r  gen/sample_counter0_carry__2/CO[3]
-                         net (fo=2, routed)           1.112    11.339    bp/button_edge_detector/CO[0]
-    SLICE_X106Y113       LUT3 (Prop_lut3_I2_O)        0.118    11.457 r  bp/button_edge_detector/sample_counter[0]_i_1/O
-                         net (fo=12, routed)          0.746    12.203    gen/sample_counter_reg[0]_0
-    SLICE_X105Y112       FDRE                                         r  gen/sample_counter_reg[4]/R
+    SLICE_X98Y103        FDRE (Prop_fdre_C_Q)         0.518     6.569 f  gen/COUNT_MAX_reg[1]/Q
+                         net (fo=10, routed)          0.751     7.319    gen/COUNT_MAX[1]
+    SLICE_X102Y105       LUT1 (Prop_lut1_I0_O)        0.124     7.443 r  gen/sample_counter1_carry_i_4/O
+                         net (fo=1, routed)           0.000     7.443    gen/sample_counter1_carry_i_4_n_0
+    SLICE_X102Y105       CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513     7.956 r  gen/sample_counter1_carry/CO[3]
+                         net (fo=1, routed)           0.000     7.956    gen/sample_counter1_carry_n_0
+    SLICE_X102Y106       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     8.073 r  gen/sample_counter1_carry__0/CO[3]
+                         net (fo=1, routed)           0.000     8.073    gen/sample_counter1_carry__0_n_0
+    SLICE_X102Y107       CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     8.396 r  gen/sample_counter1_carry__1/O[1]
+                         net (fo=2, routed)           0.813     9.209    gen/sample_counter1[10]
+    SLICE_X104Y106       LUT4 (Prop_lut4_I0_O)        0.306     9.515 r  gen/sample_counter0_carry__0_i_3/O
+                         net (fo=1, routed)           0.000     9.515    gen/sample_counter0_carry__0_i_3_n_0
+    SLICE_X104Y106       CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    10.048 r  gen/sample_counter0_carry__0/CO[3]
+                         net (fo=1, routed)           0.000    10.048    gen/sample_counter0_carry__0_n_0
+    SLICE_X104Y107       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.165 r  gen/sample_counter0_carry__1/CO[3]
+                         net (fo=1, routed)           0.000    10.165    gen/sample_counter0_carry__1_n_0
+    SLICE_X104Y108       CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    10.282 r  gen/sample_counter0_carry__2/CO[3]
+                         net (fo=2, routed)           1.015    11.298    bp/button_edge_detector/CO[0]
+    SLICE_X105Y103       LUT3 (Prop_lut3_I2_O)        0.120    11.418 r  bp/button_edge_detector/sample_counter[0]_i_1/O
+                         net (fo=12, routed)          0.783    12.200    gen/sample_counter_reg[0]_0
+    SLICE_X105Y106       FDRE                                         r  gen/sample_counter_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_125mhz_fpga rise edge)
@@ -266,16 +266,16 @@ Slack (MET) :             1.115ns  (required time - arrival time)
     H16                  IBUF (Prop_ibuf_I_O)         1.380     9.380 r  CLK_125MHZ_FPGA_IBUF_inst/O
                          net (fo=1, routed)           2.293    11.673    CLK_125MHZ_FPGA_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    11.764 r  CLK_125MHZ_FPGA_IBUF_BUFG_inst/O
-                         net (fo=338, routed)         1.779    13.544    gen/CLK_125MHZ_FPGA_IBUF_BUFG
-    SLICE_X105Y112       FDRE                                         r  gen/sample_counter_reg[4]/C
-                         clock pessimism              0.441    13.985    
-                         clock uncertainty           -0.035    13.949    
-    SLICE_X105Y112       FDRE (Setup_fdre_C_R)       -0.631    13.318    gen/sample_counter_reg[4]
+                         net (fo=338, routed)         1.783    13.548    gen/CLK_125MHZ_FPGA_IBUF_BUFG
+    SLICE_X105Y106       FDRE                                         r  gen/sample_counter_reg[4]/C
+                         clock pessimism              0.441    13.989    
+                         clock uncertainty           -0.035    13.953    
+    SLICE_X105Y106       FDRE (Setup_fdre_C_R)       -0.632    13.321    gen/sample_counter_reg[4]
   -------------------------------------------------------------------
-                         required time                         13.318    
-                         arrival time                         -12.203    
+                         required time                         13.321    
+                         arrival time                         -12.200    
   -------------------------------------------------------------------
-                         slack                                  1.115    
+                         slack                                  1.121    
 
 
 
@@ -283,19 +283,19 @@ Slack (MET) :             1.115ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.051ns  (arrival time - required time)
-  Source:                 fsm/clk_counter_reg[4]/C
+Slack (MET) :             0.050ns  (arrival time - required time)
+  Source:                 fsm/notes/ram_reg[1][23]/C
                             (rising edge-triggered cell FDRE clocked by clk_125mhz_fpga  {rise@0.000ns fall@4.000ns period=8.000ns})
-  Destination:            fsm/clk_counter_reg[8]/D
+  Destination:            fsm/notes/d_out_reg[23]/D
                             (rising edge-triggered cell FDRE clocked by clk_125mhz_fpga  {rise@0.000ns fall@4.000ns period=8.000ns})
   Path Group:             clk_125mhz_fpga
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_125mhz_fpga rise@0.000ns - clk_125mhz_fpga rise@0.000ns)
-  Data Path Delay:        0.509ns  (logic 0.392ns (77.018%)  route 0.117ns (22.982%))
-  Logic Levels:           2  (CARRY4=2)
-  Clock Path Skew:        0.353ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.337ns
-    Source Clock Delay      (SCD):    1.723ns
+  Data Path Delay:        0.327ns  (logic 0.186ns (56.804%)  route 0.141ns (43.196%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.186ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.251ns
+    Source Clock Delay      (SCD):    1.805ns
     Clock Pessimism Removal (CPR):    0.261ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -307,18 +307,14 @@ Slack (MET) :             0.051ns  (arrival time - required time)
     H16                  IBUF (Prop_ibuf_I_O)         0.219     0.219 r  CLK_125MHZ_FPGA_IBUF_inst/O
                          net (fo=1, routed)           0.842     1.060    CLK_125MHZ_FPGA_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026     1.086 r  CLK_125MHZ_FPGA_IBUF_BUFG_inst/O
-                         net (fo=338, routed)         0.637     1.723    fsm/CLK_125MHZ_FPGA_IBUF_BUFG
-    SLICE_X111Y99        FDRE                                         r  fsm/clk_counter_reg[4]/C
+                         net (fo=338, routed)         0.718     1.805    fsm/notes/CLK_125MHZ_FPGA_IBUF_BUFG
+    SLICE_X109Y100       FDRE                                         r  fsm/notes/ram_reg[1][23]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X111Y99        FDRE (Prop_fdre_C_Q)         0.141     1.864 r  fsm/clk_counter_reg[4]/Q
-                         net (fo=2, routed)           0.116     1.980    fsm/clk_counter_reg[4]
-    SLICE_X111Y99        CARRY4 (Prop_carry4_S[0]_CO[3])
-                                                      0.197     2.177 r  fsm/clk_counter_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.001     2.178    fsm/clk_counter_reg[4]_i_1_n_0
-    SLICE_X111Y100       CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.054     2.232 r  fsm/clk_counter_reg[8]_i_1/O[0]
-                         net (fo=1, routed)           0.000     2.232    fsm/clk_counter_reg[8]_i_1_n_7
-    SLICE_X111Y100       FDRE                                         r  fsm/clk_counter_reg[8]/D
+    SLICE_X109Y100       FDRE (Prop_fdre_C_Q)         0.141     1.946 r  fsm/notes/ram_reg[1][23]/Q
+                         net (fo=1, routed)           0.141     2.087    fsm/notes/ram_reg[1][23]
+    SLICE_X111Y99        LUT6 (Prop_lut6_I2_O)        0.045     2.132 r  fsm/notes/d_out[23]_i_1/O
+                         net (fo=1, routed)           0.000     2.132    fsm/notes/d_out[23]_i_1_n_0
+    SLICE_X111Y99        FDRE                                         r  fsm/notes/d_out_reg[23]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_125mhz_fpga rise edge)
@@ -328,15 +324,15 @@ Slack (MET) :             0.051ns  (arrival time - required time)
     H16                  IBUF (Prop_ibuf_I_O)         0.406     0.406 r  CLK_125MHZ_FPGA_IBUF_inst/O
                          net (fo=1, routed)           0.907     1.313    CLK_125MHZ_FPGA_IBUF
     BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029     1.342 r  CLK_125MHZ_FPGA_IBUF_BUFG_inst/O
-                         net (fo=338, routed)         0.995     2.337    fsm/CLK_125MHZ_FPGA_IBUF_BUFG
-    SLICE_X111Y100       FDRE                                         r  fsm/clk_counter_reg[8]/C
-                         clock pessimism             -0.261     2.076    
-    SLICE_X111Y100       FDRE (Hold_fdre_C_D)         0.105     2.181    fsm/clk_counter_reg[8]
+                         net (fo=338, routed)         0.909     2.251    fsm/notes/CLK_125MHZ_FPGA_IBUF_BUFG
+    SLICE_X111Y99        FDRE                                         r  fsm/notes/d_out_reg[23]/C
+                         clock pessimism             -0.261     1.990    
+    SLICE_X111Y99        FDRE (Hold_fdre_C_D)         0.092     2.082    fsm/notes/d_out_reg[23]
   -------------------------------------------------------------------
-                         required time                         -2.181    
-                         arrival time                           2.232    
+                         required time                         -2.082    
+                         arrival time                           2.132    
   -------------------------------------------------------------------
-                         slack                                  0.051    
+                         slack                                  0.050    
 
 
 
@@ -350,9 +346,9 @@ Period(ns):         8.000
 Sources:            { CLK_125MHZ_FPGA }
 
 Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
-Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         8.000       5.424      RAMB18_X5Y44    sel/CLKARDCLK
-Low Pulse Width   Slow    FDRE/C              n/a            0.500         4.000       3.500      SLICE_X104Y102  bp/button_debouncer/debounce_logic[0].debounced_signal_reg[0]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         4.000       3.500      SLICE_X104Y102  bp/button_debouncer/debounce_logic[0].debounced_signal_reg[0]/C
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         8.000       5.424      RAMB18_X5Y40    sel/CLKARDCLK
+Low Pulse Width   Slow    FDRE/C              n/a            0.500         4.000       3.500      SLICE_X110Y108  bp/button_debouncer/debounce_logic[0].debounced_signal_reg[0]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         4.000       3.500      SLICE_X110Y108  bp/button_debouncer/debounce_logic[0].debounced_signal_reg[0]/C
 
 
 
