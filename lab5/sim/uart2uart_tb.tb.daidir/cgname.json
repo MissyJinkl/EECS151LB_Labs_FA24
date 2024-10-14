@@ -1,0 +1,26 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "uart": [
+        "uart",
+        "bvImI",
+        "module",
+        4
+    ],
+    "uart2uart_tb": [
+        "uart2uart_tb",
+        "rZ3my",
+        "module",
+        5
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        3
+    ]
+}

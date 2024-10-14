@@ -1,0 +1,9 @@
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/sim/uart_transmitter_tb.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/button_parser.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/debouncer.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/edge_detector.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/fifo.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/synchronizer.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/uart.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/uart_receiver.v
+/home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/uart_transmitter.v
