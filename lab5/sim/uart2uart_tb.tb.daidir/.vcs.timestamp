@@ -47,11 +47,11 @@ uart2uart_tb.v
 75
 which_declare=declare -f
 XILINX_SOURCED=yes
-XDG_SESSION_ID=414
+XDG_SESSION_ID=429
 XDG_RUNTIME_DIR=/run/user/90911
 XDG_DATA_DIRS=/home/cc/eecs151/fa24/class/eecs151-agk/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
-VSCODE_IPC_HOOK_CLI=/run/user/90911/vscode-ipc-819e004e-2f64-41b8-972e-9c8a92dd591d.sock
-VSCODE_GIT_IPC_HANDLE=/run/user/90911/vscode-git-d1df56562b.sock
+VSCODE_IPC_HOOK_CLI=/run/user/90911/vscode-ipc-7b48a537-3bd3-49fd-bfec-ddbb8badb2af.sock
+VSCODE_GIT_IPC_HANDLE=/run/user/90911/vscode-git-627e098acf.sock
 VSCODE_GIT_ASKPASS_NODE=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-384ff7382de624fb94dbaf6da11977bba1ecd427/server/node
 VSCODE_GIT_ASKPASS_MAIN=/home/cc/eecs151/fa24/class/eecs151-agk/.vscode-server/cli/servers/Stable-384ff7382de624fb94dbaf6da11977bba1ecd427/server/extensions/git/dist/askpass-main.js
 VSCODE_GIT_ASKPASS_EXTRA_ARGS=
@@ -71,8 +71,8 @@ S_COLORS=auto
 SYNOPSYS_ROOT=/home/ff/cs250/tools/synopsys
 SSL_CERT_FILE=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 SSL_CERT_DIR=/etc/pki/tls/certs
-SSH_CONNECTION=10.41.84.69 60720 128.32.40.184 22
-SSH_CLIENT=10.41.84.69 60720 22
+SSH_CONNECTION=10.41.84.69 52586 128.32.40.184 22
+SSH_CLIENT=10.41.84.69 52586 22
 SERIALTTY=/dev/ttyPMOD
 SELINUX_USE_CURRENT_RANGE=
 SELINUX_ROLE_REQUESTED=
@@ -94,8 +94,8 @@ MFLAGS=
 MENTOR_SOURCED=yes
 MASTERDIR=/home/ff/eecs151
 MASTER=eecs151
-MAKE_TERMOUT=/dev/pts/7
-MAKE_TERMERR=/dev/pts/7
+MAKE_TERMOUT=/dev/pts/13
+MAKE_TERMERR=/dev/pts/13
 MAKELEVEL=1
 MAKEFLAGS=
 LOADEDMODULES=
@@ -127,7 +127,7 @@ ADS_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
 1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/uart_receiver.v
 1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/uart.v
 1728795575 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/synchronizer.v
-1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/fifo.v
+1728873460 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/fifo.v
 1728795576 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/edge_detector.v
 1728795575 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/debouncer.v
 1728255748 /home/tmp/eecs151-agk/fpga-labs-fa24-MissyJinkl/lab5/src/button_parser.v
@@ -137,5 +137,5 @@ ADS_LICENSE_FILE=27000@license-srv.eecs.berkeley.edu
 1559360051 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/liberrorinf.so
 1559360008 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libsnpsmalloc.so
 1559360050 /share/instsww/synopsys-new/vcs/P-2019.06/linux64/lib/libvfs.so
-1728868168 uart2uart_tb.tb.daidir
+1729037774 uart2uart_tb.tb.daidir
 -1 partitionlib

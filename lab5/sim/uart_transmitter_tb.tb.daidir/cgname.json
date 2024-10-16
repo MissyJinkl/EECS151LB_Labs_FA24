@@ -1,15 +1,15 @@
 {
-    "uart_transmitter_tb": [
-        "uart_transmitter_tb",
-        "cp0Di",
-        "module",
-        2
-    ],
     "std": [
         "std",
         "reYIK",
         "module",
         1
+    ],
+    "uart_transmitter_tb": [
+        "uart_transmitter_tb",
+        "cp0Di",
+        "module",
+        4
     ],
     "...MASTER...": [
         "SIM",
