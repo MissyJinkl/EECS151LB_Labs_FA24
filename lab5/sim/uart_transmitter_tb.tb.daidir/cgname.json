@@ -9,7 +9,7 @@
         "uart_transmitter_tb",
         "cp0Di",
         "module",
-        4
+        2
     ],
     "...MASTER...": [
         "SIM",

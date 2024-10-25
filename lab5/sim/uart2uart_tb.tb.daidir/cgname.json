@@ -1,21 +1,21 @@
 {
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
-        "module",
-        3
-    ],
-    "uart": [
-        "uart",
-        "bvImI",
-        "module",
-        2
-    ],
     "std": [
         "std",
         "reYIK",
         "module",
         1
+    ],
+    "uart": [
+        "uart",
+        "bvImI",
+        "module",
+        4
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        3
     ],
     "uart2uart_tb": [
         "uart2uart_tb",

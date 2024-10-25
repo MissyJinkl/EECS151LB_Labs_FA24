@@ -176,21 +176,21 @@ module mem_controller_tb();
 
                 verify_addr = test_write[w][15:8];
                 verify_data = test_write[w][23:16];
-               
-                // wait (tb_rx_dout == 8'd49);               
+               /*
+                wait (tb_rx_dout == 8'd49);               
 
-                // wait (~rx_fifo_empty && mem_rx_rd_en) begin
-                //     @(posedge clk);
-                //     #1; 
-                //     verify_addr = rx_dout;
-                // end
+                wait (~rx_fifo_empty && mem_rx_rd_en) begin
+                     @(posedge clk);
+                     #1; 
+                     verify_addr = rx_dout;
+                 end
 
-                // wait (~rx_fifo_empty && mem_rx_rd_en) begin
-                //     @(posedge clk);
-                //     #1; 
-                //     verify_data = rx_dout;
-                // end
-
+                 wait (~rx_fifo_empty && mem_rx_rd_en) begin
+                     @(posedge clk);
+                     #1; 
+                     verify_data = rx_dout;
+                 end
+                */
                 repeat (10) @(posedge clk);
                 assert (mem_ctrl.mem.mem[verify_addr] == verify_data) $display("PASSED! Expected : %d Actual %d", verify_data, mem_ctrl.mem.mem[verify_addr]); else $error("FAILED! Expected : %d Actual %d", verify_data, mem_ctrl.mem.mem[verify_addr]);
 
